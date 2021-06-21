@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'enccrm-general-card',
-  templateUrl: './general-card.component.html',
+  template: `
+            <mat-card>
+              <ng-content></ng-content>
+            </mat-card> 
+  `,
   styleUrls: ['./general-card.component.scss']
 })
 export class GeneralCardComponent implements OnInit {

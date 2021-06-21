@@ -1,0 +1,10 @@
+@import url("../../../../styles/_main.scss");
+
+mat-card {
+  background-color: white;
+  width: 75vmax;
+  border-radius: 0.7vmax;
+  height: auto;
+
+  @include card-shadow;
+}
