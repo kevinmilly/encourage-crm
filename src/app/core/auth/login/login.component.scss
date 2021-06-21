@@ -1,0 +1,30 @@
+    .parent-container {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        background: url("../../../../assets/images/background.jpg");
+        background-repeat: no-repeat;
+        background-size: contain;
+
+        &__background-cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1000;
+        }
+
+        &__context {
+            position: absolute;
+            top: 75vh;
+            left: 45vw;
+            z-index: 1000;
+        }
+
+        &__login-button {
+            position: absolute;
+            top: 90vh;
+            left: 45vw;
+            z-index: 1000;
+        }
+    }
+   

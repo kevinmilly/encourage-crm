@@ -1,0 +1,15 @@
+.main-container {
+    background-color: var(--accent-color);
+    height:100vh;
+    width: 100vmax;
+    overflow: hidden;
+  
+    .nav-content {
+      height:100vh;
+      width: 100vmax;
+       background-color: var(--accent-color);
+        padding-left: 5rem;
+      
+     
+    }
+  }

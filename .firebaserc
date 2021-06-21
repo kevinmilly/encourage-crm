@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "encouragement-crm": {
+      "hosting": {
+        "encouragement-crm": [
+          "encouragement-crm"
+        ]
+      }
+    }
+  }
+}

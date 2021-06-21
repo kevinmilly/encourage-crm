@@ -1,0 +1,52 @@
+.toolbar {
+    background-color: var(--primary-darker-color);
+    color: ivory;
+  
+    .row-container {
+      display:flex;
+      justify-content: space-between;
+      width: 100%;
+      &__title-elements {
+   
+        h1.title {
+          font-size: 3rem;
+          text-transform: uppercase;
+          font-family: 'Righteous', cursive;
+          display: flex;
+          justify-content: center;
+          
+       
+        }
+        h1.emphasis-portion {
+            font-size: 4.2rem;
+            
+        }
+      }
+      .username {
+        font-family: 'Mate SC', serif;
+      }
+    }
+  
+  
+    a {
+      font-size: 1.2rem;
+      font-family: "Merriweather Sans", sans-serif, "Helvetica Neue", sans-serif;
+    }
+  
+    .router-link-active {
+      color: rgb(46, 6, 36);
+      font-size: 1.3rem;
+      text-decoration: underline;
+    }
+  
+    &__content {
+      overflow: hidden;
+      background-color: var(--accent-lighter-color);
+    }
+  
+  }
+  
+  mat-icon {
+    font-size: 3rem;
+    margin-left: 2vmax;
+  }
