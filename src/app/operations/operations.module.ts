@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ContactComponent } from './contacts/components/contact/contact.component';
 import { ContactListComponent } from './contacts/components/contact-list/contact-list.component';
 import { ContactKanbanComponent } from './contacts/components/contact-kanban/contact-kanban.component';
@@ -17,6 +16,8 @@ import { ContactService } from './contacts/services/contact.service';
 import { AddCommunicationComponent } from './communications/components/add-communication/add-communication.component';
 import { EditCommunicationComponent } from './communications/components/edit-communication/edit-communication.component';
 import { OperationsRoutingModule } from './operations.routing.module';
+import { SharedModule } from '@shared/shared.module';
+import { MaterialModule } from '@shared/material/material.module';
 
 
 
@@ -37,8 +38,8 @@ import { OperationsRoutingModule } from './operations.routing.module';
     EditNoteComponent
   ],
   imports: [
-    CommonModule,
-    OperationsRoutingModule
+    OperationsRoutingModule,
+    SharedModule
   ],
   providers: [NoteService,CommunicationService,ContactService],
 })

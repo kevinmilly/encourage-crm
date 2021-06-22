@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { SidenavComponent } from '@core/layout/sidenav/sidenav.component';
 import { AuthService } from './core/auth/services/auth.service';
 
 @Component({
@@ -9,5 +10,16 @@ import { AuthService } from './core/auth/services/auth.service';
 export class AppComponent {
   title = 'encouragement-crm';
 
-  constructor(private auth: AuthService) {}
+  user:any;
+
+  @ViewChild(SidenavComponent)
+  sidenavComponent:any;
+
+  constructor(private auth: AuthService) {
+    this.user = this.auth.user;
+  }
+
+  toggleSideNav() {
+    this.sidenavComponent.sidenav.toggle();
+  }
 }

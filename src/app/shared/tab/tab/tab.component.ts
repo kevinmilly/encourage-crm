@@ -1,3 +1,4 @@
+import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -20,6 +21,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tab.component.scss']
 })
 export class TabComponent implements OnInit {
+
+  @Input() labels: string[] = [];
+  @Input() selectedIndex:number=0;;
 
   constructor() { }
 

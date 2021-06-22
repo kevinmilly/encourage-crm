@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ReportsComponent } from './components/reports/reports.component';
 import { AnalyticsRoutingModule } from './analytics.routing.module';
+import { SharedModule } from '@shared/shared.module';
 
 
 
@@ -12,8 +12,8 @@ import { AnalyticsRoutingModule } from './analytics.routing.module';
     ReportsComponent
   ],
   imports: [
-    CommonModule,
-    AnalyticsRoutingModule
+    AnalyticsRoutingModule,
+    SharedModule
   ]
 })
 export class AnalyticsModule { }

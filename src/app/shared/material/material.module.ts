@@ -62,8 +62,6 @@ const modules = [
   MatToolbarModule,
   MatSelectModule,
   MatGridListModule,
-  FormsModule,
-  ReactiveFormsModule,
   FlexLayoutModule,
   NgxSpinnerModule,
   MatAutocompleteModule

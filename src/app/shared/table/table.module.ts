@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TableComponent } from './table/table.component';
+import { MaterialModule } from '@shared/material/material.module';
 
 
 
@@ -9,7 +10,9 @@ import { TableComponent } from './table/table.component';
     TableComponent
   ],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    MaterialModule
+  ],
+  exports: [TableComponent]
 })
 export class TableModule { }

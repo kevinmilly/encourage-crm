@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
 
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
+import { User } from '@core/auth/models/users';
 @Component({
   selector: 'enccrm-header',
   template: `
@@ -16,8 +17,8 @@ import { Component, OnInit } from '@angular/core';
                       <mat-icon>menu</mat-icon>
                     </button>
                   </div>
-                  <div *ngIf="username" class="username">
-                    Welcome {{username}}!
+                  <div *ngIf="user.name" class="username">
+                    Welcome {{user.name}}!
                   </div>
                 </div>
               </mat-toolbar-row>
@@ -31,9 +32,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  @Output() clicked = new EventEmitter();
+  @Input() user:any;
+
+
   constructor() { }
 
   ngOnInit(): void {
+ 
+      
+  }
+
+  onToggle() {
+    this.clicked.emit("sidenav toggled from toolbar");
   }
 
 }
