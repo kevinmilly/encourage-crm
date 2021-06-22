@@ -14,6 +14,7 @@ import { LayoutModule } from './layout/layout.module';
     CommonModule,
     CoreRoutingModule,
     LayoutModule
-  ]
+  ],
+  exports: [LayoutModule, LoginComponent]
 })
 export class CoreModule { }

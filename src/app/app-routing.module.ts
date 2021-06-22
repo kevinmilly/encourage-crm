@@ -3,9 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '@core/auth/guards/auth.guard';
 
 const routes: Routes = [
-  {path:'', loadChildren: () => import('./core/core.module').then(m => m.CoreModule),canActivate: [AuthGuard]},
-  {path:'analytics', loadChildren: () => import('./analytics/analytics.module').then(m => m.AnalyticsModule), canActivate: [AuthGuard]},
-  {path:'operations', loadChildren: () => import('./operations/operations.module').then(m => m.OperationsModule), canActivate: [AuthGuard]},
+  { path: '', loadChildren: () => import('./core/core.module').then(m => m.CoreModule), canActivate: [AuthGuard] },
+  { path: 'login', loadChildren: () => import('./core/core.module').then(m => m.CoreModule), canActivate: [AuthGuard] },
+  { path: 'analytics', loadChildren: () => import('./analytics/analytics.module').then(m => m.AnalyticsModule), canActivate: [AuthGuard] },
+  { path: 'operations', loadChildren: () => import('./operations/operations.module').then(m => m.OperationsModule), canActivate: [AuthGuard] },
 ];
 
 @NgModule({

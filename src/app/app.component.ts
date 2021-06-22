@@ -10,13 +10,14 @@ import { AuthService } from './core/auth/services/auth.service';
 export class AppComponent {
   title = 'encouragement-crm';
 
-  user:any;
+  user: any;
 
   @ViewChild(SidenavComponent)
-  sidenavComponent:any;
+  sidenavComponent: any;
 
   constructor(private auth: AuthService) {
     this.user = this.auth.user;
+    console.dir(this.user);
   }
 
   toggleSideNav() {
