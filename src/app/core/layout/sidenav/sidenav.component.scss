@@ -1,14 +1,17 @@
 mat-sidenav-container {
     padding: 0;
-    height: 100vh;
-    width: 100vw;
-    overflow-y:hidden;
-    position: relative;
+    // height: 100vh;
+    // width: 100vw;
+    height: 100%;
+    width: 100%;
+    // overflow-y:hidden;
+    // position: relative;
     background-color: var(--accent-color);
 
     color: #361c12;
   
     mat-sidenav {
+
       padding: 0;
       display: flex;
       justify-content: center;
@@ -20,31 +23,45 @@ mat-sidenav-container {
       // background-color: #fdeaff;
       position: relative;
   
-      img {
-        // background-position: center;
-        background-size: contain;
-        position: absolute;
-        top:-2%;
-        left: 0;
-        width: 100%;
-  
+      .profile-photo-container {
+
+        margin: 2vmax;
+
+        img {
+          border-radius: 50%;
+          background-size: contain;
+          // position: absolute;
+          // top:-2%;
+          // left: 0;
+          width: 90%;
+          
+        }
       }
 
   
     }
-  
+   .links {
+
+     &__header {
+      font-size: 1.2vmax;
+      font-weight: 500;
+      margin: 1vmax .1vmax;
+
+
+    }
+
+    margin-top: 5%;
     mat-nav-list {
-      margin-top: 85%;
       mat-icon {
-          margin-top: .4rem;
+        
           font-weight: 500;
         
       }
   
       a {
-        font-size: 1.5vmax;
-        font-weight: 500;
-        margin: 1vmax auto;
+        // font-size: 1.5vmax;
+        // font-weight: 500;
+        // margin: 1vmax auto;
   
         &:active, a:focus, a:target {
           text-indent: 1vmax;
@@ -52,7 +69,8 @@ mat-sidenav-container {
         }
    
         .link-text {
-            margin: .5vmax 0 0 .5vmax;
+            margin: .2vmax 0 0 .1vmax;
+
         }
       }
      
@@ -63,6 +81,8 @@ mat-sidenav-container {
   
   
     }
+   }
+
   
     mat-sidenav-content {
       width: 100;
