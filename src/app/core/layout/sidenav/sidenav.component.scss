@@ -1,95 +1,94 @@
 mat-sidenav-container {
+  padding: 0;
+  // height: 100vh;
+  // width: 100vw;
+  height: 100%;
+  width: 100%;
+  // overflow-y:hidden;
+  // position: relative;
+  background-color: var(--accent-color);
+
+  color: #361c12;
+
+  mat-sidenav {
     padding: 0;
-    // height: 100vh;
-    // width: 100vw;
+    display: flex;
+    justify-content: center;
+    width: 14vmax;
     height: 100%;
-    width: 100%;
-    // overflow-y:hidden;
-    // position: relative;
-    background-color: var(--accent-color);
+    overflow: hidden;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    // background-color: #fdeaff;
+    position: relative;
 
-    color: #361c12;
-  
-    mat-sidenav {
+    background: #cc997f;
+    background: -webkit-linear-gradient(bottom right, #cc997f, #efe0d8);
+    background: -moz-linear-gradient(bottom right, #cc997f, #efe0d8);
+    background: linear-gradient(to top left, #cc997f, #efe0d8);
 
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      width: 14vmax;
-      height: 100%;
-      overflow: hidden;
-      -ms-overflow-style: none;  /* IE and Edge */
-      scrollbar-width: none;  /* Firefox */
-      // background-color: #fdeaff;
-      position: relative;
-  
-      .profile-photo-container {
+    .profile-photo-container {
+      width: 95%;
+      margin: 2vmax auto;
+      text-align: center;
 
-        margin: 2vmax;
-
-        img {
-          border-radius: 50%;
-          background-size: contain;
-          // position: absolute;
-          // top:-2%;
-          // left: 0;
-          width: 90%;
-          
-        }
+      img {
+        border-radius: 50%;
+        background-size: contain;
+        // position: absolute;
+        // top:-2%;
+        // left: 0;
+        width: 50%;
       }
-
-  
+      .content {
+      }
     }
-   .links {
-
-     &__header {
-      font-size: 1.2vmax;
+  }
+  .links {
+    &__header {
+      font-size: 1vmax;
       font-weight: 500;
-      margin: 1vmax .1vmax;
-
-
+      margin: 1vmax 0.1vmax 1vmax 1;
+      text-transform: uppercase;
     }
 
     margin-top: 5%;
     mat-nav-list {
+      margin-top: 1%;
       mat-icon {
-        
-          font-weight: 500;
-        
+        font-weight: 500;
+        margin-right: 0.2vmax;
       }
-  
-      a {
-        // font-size: 1.5vmax;
-        // font-weight: 500;
-        // margin: 1vmax auto;
-  
-        &:active, a:focus, a:target {
-          text-indent: 1vmax;
-          font-size: 1.47vmax;
-        }
-   
-        .link-text {
-            margin: .2vmax 0 0 .1vmax;
 
-        }
-      }
-     
-  
       .logout {
         margin-top: 90%;
-     }
-  
-  
+      }
     }
-   }
-
-  
-    mat-sidenav-content {
-      width: 100;
-      height: 100%;
-      position: absolute;
-      top:2vmax;
-      left: 10vmax;
-    }
-  
   }
+
+  mat-sidenav-content {
+    width: 100;
+    height: 100%;
+    position: absolute;
+    top: 2vmax;
+    left: 10vmax;
+  }
+}
+
+.link-text {
+  margin: 0.1vh 0 0 0.5vh;
+  font-size: 1vmax;
+  color: rgb(43, 39, 68);
+  font-weight: 500;
+}
+
+a {
+  font-size: 1.2vmax;
+
+  &:active,
+  a:focus,
+  a:target {
+    text-indent: 1vmax;
+    font-size: 1.2vmax;
+  }
+}

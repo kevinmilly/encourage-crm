@@ -1,59 +1,71 @@
 <mat-sidenav-container hasBackdrop="false">
-    <mat-sidenav #sidenav opened="true" mode="over">
-      <div class="profile-photo-container">
-        <img src="{{user.photoURL}}" alt="user photo"> 
-      </div>
-      <div class="links">
-        <mat-nav-list>
-                <mat-list-item> 
-                    <mat-icon>contacts</mat-icon>
-                    <span class="links__header"> Contacts </span>
-                </mat-list-item>
-                        <mat-nav-list style="margin-left:3rem;">
-                                <mat-list-item>
-                                        <a  mat-list-item class="link-text" [routerLink]="'/operations'"  routerLinkActive="router-link-active" >
-                                            Contact List
-                                        </a>
-                                </mat-list-item>
-                                <mat-list-item>
-                                    <a class="link-text" [routerLink]="'/operations'"  routerLinkActive="router-link-active" >
-                                        Contact Actions
-                                    </a>
-                                </mat-list-item>
-                            </mat-nav-list>
-                        
-                    <mat-list-item> 
-                        <mat-icon>chat</mat-icon>
-                        <span class="links__header"> Communication  </span>
-                    </mat-list-item>
-                        <mat-nav-list style="margin-left:3rem;">
-                            <mat-list-item>
-                                    <a  mat-list-item class="link-text"  [routerLink]="'/operations'"  routerLinkActive="router-link-active" >
-                                Messages
-                            </a>
-                            </mat-list-item>
-                            
-                        </mat-nav-list>
-                    <mat-list-item> 
-                        <mat-icon>leaderboard</mat-icon>
-                        <span class="links__header" > Metrics </span>
-                    </mat-list-item>
-                        <mat-nav-list style="margin-left:3rem;">
-                            <mat-list-item>
-                                    <a  mat-list-item class="link-text"  [routerLink]="'/operations'"  routerLinkActive="router-link-active" >
-                                Dashboard
-                            </a>
-                            </mat-list-item>
-                            
-                        </mat-nav-list>
-            </mat-nav-list>
-      </div>    
-    </mat-sidenav>
-
-    <mat-sidenav-content>
+  <mat-sidenav #sidenav opened="true" mode="over">
+    <div class="profile-photo-container">
+      <img src="{{ user.photoURL }}" alt="user photo" />
       <div class="content">
-        <ng-content></ng-content>
+        <h4>Welcome {{ user.displayName }}</h4>
       </div>
-    </mat-sidenav-content>
-  
-  </mat-sidenav-container> 
+    </div>
+    <div class="links">
+      <mat-nav-list>
+        <mat-list-item>
+          <mat-icon>contacts</mat-icon>
+          <span class="links__header"> Contacts </span>
+        </mat-list-item>
+        <mat-nav-list style="margin-left: 1vw">
+          <mat-list-item>
+            <a
+              [routerLink]="'/operations'"
+              routerLinkActive="router-link-active"
+            >
+              <span class="link-text">Contact List</span>
+            </a>
+          </mat-list-item>
+          <mat-list-item>
+            <a
+              [routerLink]="'/operations'"
+              routerLinkActive="router-link-active"
+            >
+              <span class="link-text">Contact Flow</span>
+            </a>
+          </mat-list-item>
+        </mat-nav-list>
+
+        <mat-list-item>
+          <mat-icon>chat</mat-icon>
+          <span class="links__header"> Communication </span>
+        </mat-list-item>
+        <mat-nav-list style="margin-left: 1vw">
+          <mat-list-item>
+            <a
+              [routerLink]="'/operations'"
+              routerLinkActive="router-link-active"
+            >
+              <span class="link-text">Messages</span>
+            </a>
+          </mat-list-item>
+        </mat-nav-list>
+        <mat-list-item>
+          <mat-icon>leaderboard</mat-icon>
+          <span class="links__header"> Metrics </span>
+        </mat-list-item>
+        <mat-nav-list style="margin-left: 1vw">
+          <mat-list-item>
+            <a
+              [routerLink]="'/operations'"
+              routerLinkActive="router-link-active"
+            >
+              <span class="link-text"> Dashboard </span>
+            </a>
+          </mat-list-item>
+        </mat-nav-list>
+      </mat-nav-list>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="content">
+      <ng-content></ng-content>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

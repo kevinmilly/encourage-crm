@@ -16,7 +16,7 @@ export class AppComponent {
   @ViewChild(SidenavComponent)
   sidenavComponent: any;
 
-  constructor(private auth: AuthService, private router:Router) {
+  constructor(private auth: AuthService, private router: Router) {
     this.auth.user$.subscribe(user => {
       this.user = user;
       this.router.navigate(["/operations"]);

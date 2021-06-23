@@ -8,11 +8,7 @@ import { User } from '@core/auth/models/users';
               <mat-toolbar-row>
                 <div class="row-container">
                   <div class="row-container__title-elements" fxLayout="row" fxLayoutAlign="space-evenly center" >
-                    <h1 class="title">Encouragement <span class="emphasis-portion">
-                      <span style="color:#1daf9e">C</span>
-                      <span style="color:#ffa706">R</span>
-                      <span style="color:#d81159">M</span>
-                      </span></h1>
+                    <h1 class="title">Enc CRM</h1>
                     <button mat-icon-button (click)="onToggle()">
                       <mat-icon>menu</mat-icon>
                     </button>
@@ -33,14 +29,14 @@ import { User } from '@core/auth/models/users';
 export class HeaderComponent implements OnInit {
 
   @Output() clicked = new EventEmitter();
-  @Input() user:any;
+  @Input() user: any;
 
 
   constructor() { }
 
   ngOnInit(): void {
- 
-      
+
+
   }
 
   onToggle() {
