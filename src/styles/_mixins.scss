@@ -172,11 +172,4 @@ $header-button-width: 2.5rem;
   width: 10rem;
 }
 
-@mixin card-shadow {
-  // box-shadow: 0 2rem 4rem 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
 
-  &:hover {
-    box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.2);
-  }
-}

@@ -1,4 +1,4 @@
-@import url("../../../../styles/_main.scss");
+@import url("../../../../styles/_mixins.scss");
 
 mat-card {
   background-color: white;
@@ -6,5 +6,9 @@ mat-card {
   border-radius: 0.7vmax;
   height: auto;
 
-  @include card-shadow;
+  transition: 0.3s;
+
+  &:hover {
+    box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.2);
+  }
 }

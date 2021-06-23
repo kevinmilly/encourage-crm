@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'enccrm-login',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
       <div class="parent-container__background-cover"> </div>
       <div class="parent-container__context">Maximize your relationships</div>
       <div class="parent-container__login-button">
-        <img src="../../../../assets/images/btn_google_signin.png" />
+        <img src="../../../../assets/images/btn_google_signin.png" (click)="login()" />
       </div>
     </div>
   `,
@@ -16,9 +17,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+
+  }
+
+  login() {
+    this.authService.googleSignin();
   }
 
 }

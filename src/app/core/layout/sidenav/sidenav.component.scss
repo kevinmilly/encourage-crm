@@ -5,6 +5,8 @@ mat-sidenav-container {
     overflow-y:hidden;
     position: relative;
     background-color: var(--accent-color);
+
+    color: #361c12;
   
     mat-sidenav {
       padding: 0;
@@ -35,20 +37,17 @@ mat-sidenav-container {
       margin-top: 85%;
       mat-icon {
           margin-top: .4rem;
-          color: #ffffff;
           font-weight: 500;
         
       }
   
       a {
         font-size: 1.5vmax;
-        color: #ffffff;
         font-weight: 500;
         margin: 1vmax auto;
   
         &:active, a:focus, a:target {
           text-indent: 1vmax;
-          color:rgb(205, 253, 205);
           font-size: 1.47vmax;
         }
    

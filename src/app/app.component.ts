@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { SidenavComponent } from '@core/layout/sidenav/sidenav.component';
 import { AuthService } from './core/auth/services/auth.service';
 
@@ -15,9 +16,11 @@ export class AppComponent {
   @ViewChild(SidenavComponent)
   sidenavComponent: any;
 
-  constructor(private auth: AuthService) {
-    this.user = this.auth.user;
-    console.dir(this.user);
+  constructor(private auth: AuthService, private router:Router) {
+    this.auth.user$.subscribe(user => {
+      this.user = user;
+      this.router.navigate(["/operations"]);
+    });
   }
 
   toggleSideNav() {
