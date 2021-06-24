@@ -15,6 +15,7 @@ import { AddCommunicationComponent } from './communications/components/add-commu
 import { EditCommunicationComponent } from './communications/components/edit-communication/edit-communication.component';
 import { OperationsRoutingModule } from './operations.routing.module';
 import { SharedModule } from '@shared/shared.module';
+import { ContactDetailComponent } from './contacts/components/contact-detail/contact-detail.component';
 
 
 
@@ -31,7 +32,8 @@ import { SharedModule } from '@shared/shared.module';
     NotesListComponent,
     NotesComponent,
     AddNoteComponent,
-    EditNoteComponent
+    EditNoteComponent,
+    ContactDetailComponent
   ],
   imports: [
     OperationsRoutingModule,
