@@ -3,9 +3,9 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'enccrm-communication-list',
   template: `
-    <p>
-      communication-list works!
-    </p>
+            <enccrm-general-card> 
+                <enccrm-table></enccrm-table>
+            </enccrm-general-card>
   `,
   styleUrls: ['./communication-list.component.scss']
 })

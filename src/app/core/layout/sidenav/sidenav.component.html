@@ -15,7 +15,7 @@
         <mat-nav-list style="margin-left: 1vw">
           <mat-list-item>
             <a
-              [routerLink]="'/operations'"
+              [routerLink]="'contact-list'"
               routerLinkActive="router-link-active"
             >
               <span class="link-text">Contact List</span>
@@ -23,10 +23,18 @@
           </mat-list-item>
           <mat-list-item>
             <a
-              [routerLink]="'/operations'"
+              [routerLink]="'contact-flow'"
               routerLinkActive="router-link-active"
             >
               <span class="link-text">Contact Flow</span>
+            </a>
+          </mat-list-item>
+          <mat-list-item>
+            <a
+              [routerLink]="'contact-notes'"
+              routerLinkActive="router-link-active"
+            >
+              <span class="link-text">Contact Notes</span>
             </a>
           </mat-list-item>
         </mat-nav-list>
@@ -38,7 +46,7 @@
         <mat-nav-list style="margin-left: 1vw">
           <mat-list-item>
             <a
-              [routerLink]="'/operations'"
+              [routerLink]="'/messages'"
               routerLinkActive="router-link-active"
             >
               <span class="link-text">Messages</span>
@@ -52,7 +60,7 @@
         <mat-nav-list style="margin-left: 1vw">
           <mat-list-item>
             <a
-              [routerLink]="'/operations'"
+              [routerLink]="'analytics/dashboard'"
               routerLinkActive="router-link-active"
             >
               <span class="link-text"> Dashboard </span>

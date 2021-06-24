@@ -1,1 +1,79 @@
-<p>dashboard works!</p>
+<div class="dashboard-container">
+    <ngx-spinner></ngx-spinner>
+    <mat-card [class.mat-elevation-z8]="true" class="standard-metrics first-1">
+      <mat-card-header
+        ><mat-card-title>Title 1</mat-card-title></mat-card-header
+      >
+      <div class="card-container">
+        <div
+          class="card-container__graph-container"
+          fxLayout="row"
+          fxAlign="center center"
+          *ngIf="data && data.length > 0; else noStandardData"
+        >
+          <div id="first">
+          
+          </div>
+          <hr />
+          <br />
+          <div id="second">
+          
+            <ul class="double">
+              <ng-container *ngFor="let d of data">
+               
+              </ng-container>
+            </ul>
+          </div>
+        </div>
+        <ng-template #noStandardData>
+          <div class="no-data">
+            <h1>Sorry. No Data to Measure yet.</h1>
+          </div>
+        </ng-template>
+      </div>
+    </mat-card>
+    <mat-card [class.mat-elevation-z8]="true" class="pie first-2">
+      <mat-card-header
+        ><mat-card-title>Title 2</mat-card-title></mat-card-header
+      >
+      <div
+        class="card-container"
+        *ngIf="data && data.length > 0; else noPieData"
+      >
+        <div
+          class="card-container__graph-container"
+          fxLayout="row"
+          fxAlign="center center"
+        >
+        
+        </div>
+      </div>
+      <ng-template #noPieData>
+        <div class="no-data">
+          <h1>Sorry. No Data to Measure yet.</h1>
+        </div>
+      </ng-template>
+    </mat-card>
+    <mat-card [class.mat-elevation-z8]="true" class="bar second">
+      <mat-card-header
+        ><mat-card-title>Title 3</mat-card-title></mat-card-header
+      >
+      <div class="card-container">
+        <div
+          class="card-container__bar-graph-container"
+          *ngIf="
+            data && data.length > 0;
+            else noBarData
+          "
+        >
+       
+        </div>
+        <ng-template #noBarData>
+          <div class="no-data">
+            <h1>Sorry. No Data to Measure yet.</h1>
+          </div>
+        </ng-template>
+      </div>
+    </mat-card>
+  </div>
+  

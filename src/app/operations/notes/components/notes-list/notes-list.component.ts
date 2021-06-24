@@ -3,9 +3,9 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'enccrm-notes-list',
   template: `
-    <p>
-      notes-list works!
-    </p>
+  <enccrm-general-card>
+     <enccrm-table></enccrm-table>
+  </enccrm-general-card>
   `,
   styleUrls: ['./notes-list.component.scss']
 })
