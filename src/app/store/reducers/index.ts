@@ -10,4 +10,4 @@ export interface OperationState {
 export const operationReducers:ActionReducerMap<OperationState> = {
     contacts: fromContactReducer.contactReducer,
     notes: fromNoteReducer.noteReducer
-}
+} 

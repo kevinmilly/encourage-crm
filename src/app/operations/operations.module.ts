@@ -40,7 +40,7 @@ import * as fromOperationReducer from '../store/reducers/index';
   imports: [
     OperationsRoutingModule,
     SharedModule,
-    StoreModule.forFeature('contact', reducers),
+    StoreModule.forFeature('operations', fromOperationReducer.operationReducers),
   ],
   providers: [NoteService,CommunicationService,ContactService],
 })

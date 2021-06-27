@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from 'environments/environment';
 import { CoreModule } from '@core/core.module';
+import { StoreModule } from '@ngrx/store';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { CoreModule } from '@core/core.module';
     CoreModule,
     BrowserModule,
     AppRoutingModule,
+    StoreModule.forRoot({}),
     BrowserAnimationsModule,
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
