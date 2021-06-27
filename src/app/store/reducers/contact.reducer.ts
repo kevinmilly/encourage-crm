@@ -1,3 +1,4 @@
+import { createReducer, on } from '@ngrx/store';
 import * as fromOperations from '@operations/index';
 import * as fromContactAction from '../actions';
 
@@ -13,20 +14,28 @@ const initialState:ContactState = {
     loading:false
 }
 
-
-export function contactReducer(
-        state=initialState, 
-        action:fromContactAction.ContactActionsUnion
-    ): ContactState {
-                    
-        switch (action.type) {
-            case fromContactAction.ContactActionTypes.LOAD_CONTACTS_SUCCESS:
-                return ({
-                        ...initialState, 
-                        ...action.payload
-                        });
-            default:
-                return state;
+export const contactReducer = createReducer(
+    initialState, 
+    on(fromContactAction.loadContacts, (state,action) => {
+        return {
+            ...state, 
+            loading: true 
+            }
+    }),
+    on(fromContactAction.loadContactSuccess, (state,action) => {
+            return {
+                ...state,
+                loaded:true,
+                loading:false
+            }
+    }),
+    on(fromContactAction.loadContactsFail, (state,action) => {
+        return {
+            ...state,
+            loaded:true,
+            loading:false
         }
-    }
+    })
+    
+)
 

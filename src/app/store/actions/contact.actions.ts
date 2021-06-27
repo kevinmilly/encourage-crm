@@ -1,4 +1,4 @@
-import { Action } from "@ngrx/store";
+import { Action, createAction, props } from "@ngrx/store";
 
 import * as fromOperations from '@operations/index';
 
@@ -9,27 +9,22 @@ export enum ContactActionTypes {
 }
 
 
-export class LoadContacts implements Action { 
-    constructor(public payload: any = null) { }
-    readonly type: string = ContactActionTypes.LOAD_CONTACTS;
-}
 
-export class LoadContactsFail implements Action {
-    constructor(public payload: any = null) { }
-    readonly type = ContactActionTypes.LOAD_CONTACTS_FAIL;
-  
-}
+export const loadContacts = createAction(
+    ContactActionTypes.LOAD_CONTACTS
+)
 
-export class LoadContactSuccess implements Action {
-        constructor(public payload: fromOperations.Contact[]) {} 
-        readonly type = ContactActionTypes.LOAD_CONTACTS_SUCCESS;
-}
-
-
+export const loadContactsFail = createAction(
+    ContactActionTypes.LOAD_CONTACTS_FAIL,
+    props<{error:any}>()
+)
+    
+export const loadContactSuccess = createAction(
+    ContactActionTypes.LOAD_CONTACTS_SUCCESS,
+    props<{Contacts:fromOperations.Contact[]}>()
+) 
+      
 
 
 
 
-export type ContactActionsUnion =  LoadContacts | LoadContactSuccess | LoadContactsFail;
-                              
- 

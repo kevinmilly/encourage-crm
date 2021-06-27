@@ -20,15 +20,6 @@ import { ActionReducerMap, StoreModule } from '@ngrx/store';
 
 import * as fromOperationReducer from '../store/reducers/index';
 
-export interface OperationState {
-  contacts: fromOperationReducer.ContactState;
-  notes: fromOperationReducer.NoteState;
-}
-
-export const reducers: ActionReducerMap<OperationState> = {
-  contacts: fromOperationReducer.contactReducer,
-  notes: fromOperationReducer.noteReducer
-} 
 
 
 @NgModule({
