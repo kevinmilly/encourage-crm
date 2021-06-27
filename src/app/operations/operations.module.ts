@@ -16,8 +16,19 @@ import { EditCommunicationComponent } from './communications/components/edit-com
 import { OperationsRoutingModule } from './operations.routing.module';
 import { SharedModule } from '@shared/shared.module';
 import { ContactDetailComponent } from './contacts/components/contact-detail/contact-detail.component';
+import { ActionReducerMap, StoreModule } from '@ngrx/store';
 
+import * as fromOperationReducer from '../store/reducers/index';
 
+export interface OperationState {
+  contacts: fromOperationReducer.ContactState;
+  notes: fromOperationReducer.NoteState;
+}
+
+export const reducers: ActionReducerMap<OperationState> = {
+  contacts: fromOperationReducer.contactReducer,
+  notes: fromOperationReducer.noteReducer
+} 
 
 
 @NgModule({
@@ -37,7 +48,8 @@ import { ContactDetailComponent } from './contacts/components/contact-detail/con
   ],
   imports: [
     OperationsRoutingModule,
-    SharedModule
+    SharedModule,
+    StoreModule.forFeature('contact', reducers),
   ],
   providers: [NoteService,CommunicationService,ContactService],
 })

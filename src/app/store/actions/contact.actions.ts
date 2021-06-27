@@ -1,20 +1,35 @@
 import { Action } from "@ngrx/store";
 
+import * as fromOperations from '@operations/index';
 
-export const LOAD_CONTACTS = "[CONTACTS] Load CONTACTS";
-export const LOAD_CONTACTS_FAIL = "[CONTACTS] Load CONTACTS Fail";
-export const LOAD_CONTACTS_SUCCESS = "[CONTACTS] Load CONTACTS Success";
+export enum ContactActionTypes {
+    LOAD_CONTACTS = "[CONTACTS] Load CONTACTS",
+    LOAD_CONTACTS_FAIL = "[CONTACTS] Load CONTACTS Fail",
+    LOAD_CONTACTS_SUCCESS = "[CONTACTS] Load CONTACTS Success"
+}
 
-export class LoadContacts implements Action { readonly type: string = LOAD_CONTACTS;}
+
+export class LoadContacts implements Action { 
+    constructor(public payload: any = null) { }
+    readonly type: string = ContactActionTypes.LOAD_CONTACTS;
+}
 
 export class LoadContactsFail implements Action {
-    readonly type = LOAD_CONTACTS_FAIL;
-    constructor(public payload: any) {}
+    constructor(public payload: any = null) { }
+    readonly type = ContactActionTypes.LOAD_CONTACTS_FAIL;
+  
 }
 
-export class LoadContaSuccess
-    implements Action {
-        readonly type = LOAD_CONTACTS_SUCCESS;
-        constructor(public payload: fromCore.Hero[])
-{}
+export class LoadContactSuccess implements Action {
+        constructor(public payload: fromOperations.Contact[]) {} 
+        readonly type = ContactActionTypes.LOAD_CONTACTS_SUCCESS;
 }
+
+
+
+
+
+
+export type ContactActionsUnion =  LoadContacts | LoadContactSuccess | LoadContactsFail;
+                              
+ 
