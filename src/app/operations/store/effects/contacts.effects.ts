@@ -6,11 +6,11 @@ import { catchError, concatMap, map } from 'rxjs/operators';
 import * as fromContactAction from '../actions/contact.actions';
 import { BackendService } from '@core/services/backend.service';
 import { Contact } from '@operations/contacts/models/interfaces/contact';
-import { EMPTY } from 'rxjs';
+import { EMPTY, of } from 'rxjs';
 
 
 @Injectable()
-export class ContactsEffects {
+export class ContactEffects {
   
 
 loadContacts$ = createEffect(() => 
@@ -21,16 +21,16 @@ loadContacts$ = createEffect(() =>
         map((contacts:Contact[]) => fromContactAction.contactActions.loadContactSuccess({contacts}))
       )
     }),
-    catchError(() => EMPTY)
+    catchError(error => of(fromContactAction.contactActions.loadContactsFail({error})))
   )
 );
 
 addContacts$ = createEffect(() => 
   this.actions$.pipe( 
-   ofType(fromContactAction.contactActions.addContacts),
+   ofType(fromContactAction.contactActions.addContact),
    concatMap(() => {
      return this.backend.getContacts().pipe(
-       map((contacts:Contact[]) => fromContactAction.contactActions.loadContactSuccess({contacts}))
+       map((contacts:Contact[]) => fromContactAction.contactActions.addContactSuccess())
      )
    }),
    catchError(() => EMPTY)

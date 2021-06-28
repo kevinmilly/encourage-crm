@@ -10,6 +10,7 @@ import { environment } from 'environments/environment';
 import { CoreModule } from '@core/core.module';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { reducers } from './reducers';
 
 
 @NgModule({
@@ -20,11 +21,12 @@ import { EffectsModule } from '@ngrx/effects';
     CoreModule,
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({}),
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([]),
     BrowserAnimationsModule,
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    EffectsModule.forRoot([])
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

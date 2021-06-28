@@ -1,35 +1,35 @@
 import { createReducer, on } from '@ngrx/store';
 import * as fromOperations from '@operations/index';
-import * as fromContactAction from '../actions';
+import * as fromNoteAction from '../actions';
 
-export interface ContactState {
-    contacts: fromOperations.Contact[];
+export interface NoteState {
+    notes: fromOperations.Note[];
     loaded: boolean;
     loading: boolean;
 }
 
-const initialState:ContactState = {
-    contacts:[],
+const initialState:NoteState = { 
+    notes:[],
     loaded: false,
     loading:false
 }
 
-export const contactReducer = createReducer(
+export const noteReducer = createReducer(
     initialState, 
-    on(fromContactAction.contactActions.loadContacts, (state,action) => {
+    on(fromNoteAction.loadNotes, (state,action) => {
         return {
             ...state, 
             loading: true 
             }
     }),
-    on(fromContactAction.contactActions.loadContactSuccess, (state,action) => {
+    on(fromNoteAction.loadNotesSuccess, (state,action) => {
             return {
                 ...state,
                 loaded:true,
                 loading:false
             }
-    }),
-    on(fromContactAction.contactActions.loadContactsFail, (state,action) => {
+    }), 
+    on(fromNoteAction.loadNotesFail, (state,action) => {
         return {
             ...state,
             loaded:true,
@@ -38,4 +38,6 @@ export const contactReducer = createReducer(
     })
     
 )
+ 
 
+    

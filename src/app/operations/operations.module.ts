@@ -18,10 +18,9 @@ import { SharedModule } from '@shared/shared.module';
 import { ContactDetailComponent } from './contacts/components/contact-detail/contact-detail.component';
 import { ActionReducerMap, StoreModule } from '@ngrx/store';
 
-import * as fromOperationReducer from '../store/reducers/index';
 import { EffectsModule } from '@ngrx/effects';
-import { ContactsEffects } from '../store/effects/contacts.effects';
-
+import { ContactEffects } from './store/effects/contacts.effects';
+import * as fromOperationReducers from "./store/reducers";
 
 
 @NgModule({
@@ -42,8 +41,8 @@ import { ContactsEffects } from '../store/effects/contacts.effects';
   imports: [
     OperationsRoutingModule,
     SharedModule,
-    StoreModule.forFeature('operations', fromOperationReducer.operationReducers),
-    EffectsModule.forFeature([ContactsEffects]),
+    StoreModule.forFeature('operations', fromOperationReducers.operationReducers),
+    EffectsModule.forFeature([ContactEffects]),
   ],
   providers: [NoteService,CommunicationService,ContactService],
 })
