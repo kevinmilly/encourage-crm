@@ -23,78 +23,70 @@ export class BackendService {
     this.user = this.auth.user;
   }
 
-
-  getItemsFromFirestore(type:string):Observable<Contact[]>|Observable<Note[]>|Observable<Communication[]> | null {
-    switch (type) {
-      case "notes":
-        return this.firestore.collection<Note>(`users/${this.user.uid}/Notes`)
+  getContacts():Observable<Contact[]> {
+    return this.firestore.collection<Contact>(`users/${this.user.uid}/Contacts`)
           .valueChanges();
-      case "contacts":
-        return this.firestore.collection<Contact>(`users/${this.user.uid}/Contacts`)
+  }
+
+  getNotes():Observable<Note[]> {
+    return this.firestore.collection<Note>(`users/${this.user.uid}/Notes`)
           .valueChanges();
-      case "communications":
-        return this.firestore.collection<Communication>(`users/${this.user.uid}/Communications`)
+  }
+
+  getCommunications():Observable<Communication[]> {
+    return this.firestore.collection<Communication>(`users/${this.user.uid}/Communications`)
           .valueChanges();
-      default:
-        return null;
-    }
   }
 
-  updateTask(type:string, item:Note | Communication | Contact) {
-    switch (type) {
-      case "notes":
-        const notesCollection = this.firestore.collection<Note>(`users/${this.user.uid}/Notes`);
-        notesCollection.doc(item.id).update(item);
-        break;
-      case "contacts":
-        const contactCollection = this.firestore.collection<Contact>(`users/${this.user.uid}/Contacts`);
-        contactCollection.doc(item.id).update(item);
-        break;
-      case "communications":
-        const commCollection = this.firestore.collection<Communication>(`users/${this.user.uid}/Communications`);
-        commCollection.doc(item.id).update(item);
-        break;
-    }
+  updateContact(contact:Contact) {
+    const contactCollection = this.firestore.collection<Contact>(`users/${this.user.uid}/Contacts`);
+    contactCollection.doc(contact.id).update(contact);
   }
 
-  addTask(type:string, item:(Note | Communication | Contact)) {
-    switch (type) {
-      case "notes":
-        const noteAdded = this.firestore.collection<Note>(`users/${this.user.uid}/Notes`)
-        .doc(item.id)
-        .set(item as Note, { merge: true });
-        break;
-      case "contacts":
-        const contactAdded = this.firestore.collection<Contact>(`users/${this.user.uid}/Contacts`)
-        .doc(item.id)
-        .set(item as Contact, { merge: true });
-        break;
-      case "communications":
-        const commAdded = this.firestore.collection<Communication>(`users/${this.user.uid}/Communications`)
-        .doc(item.id)
-        .set(item as Communication, { merge: true });
-        break;
-    }
+  updateCommunication(communication:Communication) {
+    const communicationCollection = this.firestore.collection<Communication>(`users/${this.user.uid}/Communications`);
+    communicationCollection.doc(communication.id).update(communication);
+  }
+
+  updateNote(note:Note) {
+    const noteCollection = this.firestore.collection<Note>(`users/${this.user.uid}/Notes`);
+    noteCollection.doc(note.id).update(note);
+  }
+
+  addContact(contact:Contact) {
+    const contactAdded = this.firestore.collection<Contact>(`users/${this.user.uid}/Contacts`)
+        .doc(contact.id)
+        .set(contact as Contact, { merge: true });
+  }
+
+  addNote(note:Note) {
+    const noteAdded = this.firestore.collection<Note>(`users/${this.user.uid}/Notes`)
+        .doc(note.id)
+        .set(note as Note, { merge: true });
+  }
+
+  addCommunication(communication:Communication) {
+    const communicationAdded = this.firestore.collection<Communication>(`users/${this.user.uid}/Communications`)
+        .doc(communication.id)
+        .set(communication as Communication, { merge: true });
+  }
+
+  deleteContact(contact:Contact) {
+    this.firestore.collection<Contact>(`users/${this.user.uid}/Contacts`)
+    .doc(contact.id).delete();
+  }
+
+  deleteNote(note:Note) {
+    this.firestore.collection<Note>(`users/${this.user.uid}/Notes`)
+    .doc(note.id).delete();
   }
 
 
-  delete(type:string, item:(Note | Communication | Contact)) {
-    switch (type) {
-      case "notes":
-      this.firestore.collection<Note>(`users/${this.user.uid}/Notes`)
-        .doc(item.id).delete();
-        break;
-      case "contacts":
-      this.firestore.collection<Contact>(`users/${this.user.uid}/Contacts`)
-        .doc(item.id).delete();
-        break;
-      case "communications":
-       this.firestore.collection<Communication>(`users/${this.user.uid}/Communications`)
-        .doc(item.id).delete();
-        break;
-    }
-
+  deleteCommunication(communication:Contact) {
+    this.firestore.collection<Contact>(`users/${this.user.uid}/Contacts`)
+    .doc(communication.id).delete();
   }
+
 
 
 

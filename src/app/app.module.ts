@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from 'environments/environment';
 import { CoreModule } from '@core/core.module';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { StoreModule } from '@ngrx/store';
     StoreModule.forRoot({}),
     BrowserAnimationsModule,
     AngularFirestoreModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    EffectsModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]

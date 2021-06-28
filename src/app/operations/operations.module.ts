@@ -19,6 +19,8 @@ import { ContactDetailComponent } from './contacts/components/contact-detail/con
 import { ActionReducerMap, StoreModule } from '@ngrx/store';
 
 import * as fromOperationReducer from '../store/reducers/index';
+import { EffectsModule } from '@ngrx/effects';
+import { ContactsEffects } from '../store/effects/contacts.effects';
 
 
 
@@ -41,6 +43,7 @@ import * as fromOperationReducer from '../store/reducers/index';
     OperationsRoutingModule,
     SharedModule,
     StoreModule.forFeature('operations', fromOperationReducer.operationReducers),
+    EffectsModule.forFeature([ContactsEffects]),
   ],
   providers: [NoteService,CommunicationService,ContactService],
 })

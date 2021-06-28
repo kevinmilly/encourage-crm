@@ -16,20 +16,20 @@ const initialState:ContactState = {
 
 export const contactReducer = createReducer(
     initialState, 
-    on(fromContactAction.loadContacts, (state,action) => {
+    on(fromContactAction.contactActions.loadContacts, (state,action) => {
         return {
             ...state, 
             loading: true 
             }
     }),
-    on(fromContactAction.loadContactSuccess, (state,action) => {
+    on(fromContactAction.contactActions.loadContactSuccess, (state,action) => {
             return {
                 ...state,
                 loaded:true,
                 loading:false
             }
     }),
-    on(fromContactAction.loadContactsFail, (state,action) => {
+    on(fromContactAction.contactActions.loadContactsFail, (state,action) => {
         return {
             ...state,
             loaded:true,
