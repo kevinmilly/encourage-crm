@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-import * as fromContactReducer from '../reducers/contact.reducer';
+import * as fromContactReducer from './contact.reducer';
  
 
  

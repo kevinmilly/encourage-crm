@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 
 import { catchError, concatMap, map } from 'rxjs/operators';
 
-import * as fromContactAction from '../actions/contact.actions';
+import * as fromContactAction from './contact.actions';
 import { BackendService } from '@core/services/backend.service';
 import { Contact } from '@operations/contacts/models/interfaces/contact';
 import { EMPTY, of } from 'rxjs';

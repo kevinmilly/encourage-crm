@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import * as fromOperations from '@operations/index';
-import * as fromNoteAction from '../actions';
+import * as fromNoteAction from '../../../store/actions';
 
 export interface NoteState {
     notes: fromOperations.Note[];

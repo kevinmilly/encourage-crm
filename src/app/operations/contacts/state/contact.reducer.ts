@@ -1,8 +1,8 @@
 import { createEntityAdapter } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
 import * as fromOperations from '@operations/index';
-import * as fromContactAction from '../actions';
-import * as fromNoteAction from '../actions';
+import * as fromContactAction from '../../../store/actions';
+import * as fromNoteAction from '../../../store/actions';
 
 export interface ContactState {
     entities: {[id:number]:fromOperations.Contact};

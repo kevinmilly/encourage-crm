@@ -10,7 +10,7 @@ import { environment } from 'environments/environment';
 import { CoreModule } from '@core/core.module';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { reducers } from './reducers';
+import { reducers } from './store/reducers';
 
 
 @NgModule({

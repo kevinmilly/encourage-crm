@@ -20,7 +20,7 @@ export const loadNotesFail = createAction(
     
 export const loadNotesSuccess = createAction(
     NotesActionTypes.LOAD_NOTES_SUCCESS,
-    props<{Contacts:fromOperations.Contact[]}>()
+    props<{Notes:fromOperations.Note[]}>()
 ) 
     
                               
