@@ -6,15 +6,15 @@ export enum ContactActionTypes {
     LOAD_CONTACTS = "[CONTACTS COMPONENT] Load CONTACTS",
     LOAD_CONTACTS_FAIL = "[CONTACTS EFFECT] Load CONTACTS Fail",
     LOAD_CONTACTS_SUCCESS = "[CONTACTS EFFECT] Load CONTACTS Success",
-    ADD_CONTACTS = "[CONTACTS COMPONENT] Add CONTACTS",
-    ADD_CONTACTS_FAIL = "[CONTACTS EFFECT] Add CONTACTS Fail",
-    ADD_CONTACTS_SUCCESS = "[CONTACTS EFFECT] Add CONTACTS Success",
-    UPDATE_CONTACTS = "[CONTACTS COMPONENT] Update CONTACTS",
-    UPDATE_CONTACTS_FAIL = "[CONTACTS EFFECT] Update CONTACTS Fail",
-    UPDATE_CONTACTS_SUCCESS = "CONTACTS EFFECT] Update CONTACTS Success",
-    DELETE_CONTACTS = "[CONTACTS COMPONENT] Delete CONTACTS",
-    DELETE_CONTACTS_FAIL = "[CONTACTS EFFECT] Delete CONTACTS Fail",
-    DELETE_CONTACTS_SUCCESS = "[CONTACTS EFFECT] Delete CONTACTS Success",
+    ADD_CONTACT = "[CONTACTS COMPONENT] Add CONTACTS",
+    ADD_CONTACT_FAIL = "[CONTACTS EFFECT] Add CONTACTS Fail",
+    ADD_CONTACT_SUCCESS = "[CONTACTS EFFECT] Add CONTACTS Success",
+    UPDATE_CONTACT = "[CONTACTS COMPONENT] Update CONTACTS",
+    UPDATE_CONTACT_FAIL = "[CONTACTS EFFECT] Update CONTACTS Fail",
+    UPDATE_CONTACT_SUCCESS = "CONTACTS EFFECT] Update CONTACTS Success",
+    DELETE_CONTACT = "[CONTACTS COMPONENT] Delete CONTACTS",
+    DELETE_CONTACT_FAIL = "[CONTACTS EFFECT] Delete CONTACTS Fail",
+    DELETE_CONTACT_SUCCESS = "[CONTACTS EFFECT] Delete CONTACTS Success",
 }
 
 export const contactActions = {
@@ -28,34 +28,35 @@ export const contactActions = {
         props<{contacts:fromOperations.Contact[]}>()
     ),
     addContact: createAction(
-        ContactActionTypes.ADD_CONTACTS,
-        props<{contacts:fromOperations.Contact}>()),
+        ContactActionTypes.ADD_CONTACT,
+        props<{contact:fromOperations.Contact}>()
+    ),
     addContactFail:createAction(
-        ContactActionTypes.ADD_CONTACTS_FAIL,
+        ContactActionTypes.ADD_CONTACT_FAIL,
         props<{error:any}>()
     ),
     addContactSuccess:createAction(
-        ContactActionTypes.ADD_CONTACTS_SUCCESS
+        ContactActionTypes.ADD_CONTACT_SUCCESS,
+        props<{contact:fromOperations.Contact}>()
     ),
     updateContact: createAction(
-        ContactActionTypes.UPDATE_CONTACTS,
-        props<{contacts:fromOperations.Contact}>()),
+        ContactActionTypes.UPDATE_CONTACT,
+        props<{contact:fromOperations.Contact}>()
+    ),
      updateContactFail:createAction(
-        ContactActionTypes.UPDATE_CONTACTS_FAIL,
+        ContactActionTypes.UPDATE_CONTACT_FAIL,
         props<{error:any}>()
     ),
     updateContactSuccess:createAction(
-        ContactActionTypes.UPDATE_CONTACTS_SUCCESS
+        ContactActionTypes.UPDATE_CONTACT_SUCCESS,
+        props<{contact:fromOperations.Contact}>()
     ),
-    deleteContact: createAction(
-        ContactActionTypes.DELETE_CONTACTS,
-        props<{contacts:fromOperations.Contact}>()),
     deleteContactFail: createAction(
-        ContactActionTypes.UPDATE_CONTACTS_FAIL,
+        ContactActionTypes.DELETE_CONTACT_FAIL,
         props<{error:any}>()
     ),
     deleteContactSuccess: createAction(
-        ContactActionTypes.UPDATE_CONTACTS_SUCCESS
+        ContactActionTypes.DELETE_CONTACT_SUCCESS
     ),
 
 }

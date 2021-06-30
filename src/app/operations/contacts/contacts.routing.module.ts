@@ -6,7 +6,9 @@ import * as fromConcepts from './index';
 const routes:Routes = [
     {path:'', component:fromConcepts.ContactListComponent},
     {path:'contact-list', component:fromConcepts.ContactListComponent},
-    {path:'contact-flow', component:fromConcepts.ContactKanbanComponent} 
+    {path:'contact-flow', component:fromConcepts.ContactKanbanComponent},
+    {path:'contact-add', component:fromConcepts.AddContactComponent},
+
 ]
 
 

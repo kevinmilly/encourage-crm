@@ -9,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddContactComponent implements OnInit {
 
-  constructor() { }
+  //@TODO add variables to input into add contact component; use the form component
+
+  constructor() { }; 
 
   ngOnInit(): void {
   }

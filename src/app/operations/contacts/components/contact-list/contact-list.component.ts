@@ -28,6 +28,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactListComponent implements OnInit {
 
+  //@TODO use selectors
+
   constructor() { }
 
   ngOnInit(): void {

@@ -1,17 +1,16 @@
-import { createEntityAdapter } from '@ngrx/entity';
+import { createEntityAdapter, EntityState } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
 import * as fromOperations from '@operations/index';
 import * as fromContactAction from './contact.actions';
 
 
-export interface ContactState {
-    entities: {[id:number]:fromOperations};
+export interface ContactState extends EntityState<fromOperations.Contact> {
     loaded: boolean;
     loading: boolean;
     error:any;
 }
 
-export const contactAdapter = createEntityAdapter<ContactState>();
+export const contactAdapter = createEntityAdapter<fromOperations.Contact>();
 
 const initialContactState = contactAdapter.getInitialState({
     loaded: false,
@@ -24,8 +23,9 @@ const initialContactState = contactAdapter.getInitialState({
 
 export const contactReducer = createReducer(
     initialContactState, 
+    //load
     on(fromContactAction.contactActions.loadContactSuccess, (state,action) => {
-           return contactAdapter.addMany(action.contacts,{
+           return contactAdapter.setAll(action.contacts,{
                                             ...state,
                                             loaded:true,
                                             loading:false
@@ -38,7 +38,22 @@ export const contactReducer = createReducer(
             loading:false,
             error: action.error
         }
-    })
+    }),
+
+    //add
+    on(fromContactAction.contactActions.addContactSuccess, (state,action) => {
+        return contactAdapter.addOne(action.contact,state)
+    }),
+    on(fromContactAction.contactActions.addContactFail, (state,action) => {
+        return {...state,error:action.error}
+    }),
+    // //update
+    // on(fromContactAction.contactActions.updateContactSuccess, (state,action) => {
+    //     return contactAdapter.updateOne(action.contact, state)
+    // }),
+    // on(fromContactAction.contactActions.updateContactFail, (state,action) => {
+    //     return {...state,error:action.error}
+    // })
     
 )
 
