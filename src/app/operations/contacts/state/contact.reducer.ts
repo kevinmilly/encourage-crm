@@ -14,7 +14,7 @@ export const contactAdapter = createEntityAdapter<fromOperations.Contact>();
 
 const initialContactState = contactAdapter.getInitialState({
     loaded: false,
-    loading:false,
+    loading:false, 
     error:null,
 })
 
@@ -46,15 +46,7 @@ export const contactReducer = createReducer(
     }),
     on(fromContactAction.contactActions.addContactFail, (state,action) => {
         return {...state,error:action.error}
-    }),
-    // //update
-    // on(fromContactAction.contactActions.updateContactSuccess, (state,action) => {
-    //     return contactAdapter.updateOne(action.contact, state)
-    // }),
-    // on(fromContactAction.contactActions.updateContactFail, (state,action) => {
-    //     return {...state,error:action.error}
-    // })
-    
+    })
 )
 
-export const { selectAll } = contactAdapter.getSelectors();
+// export const { selectAll } = contactAdapter.getSelectors();  

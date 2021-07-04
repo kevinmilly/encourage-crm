@@ -36,7 +36,7 @@ export const contactActions = {
         props<{error:any}>()
     ),
     addContactSuccess:createAction(
-        ContactActionTypes.ADD_CONTACT_SUCCESS,
+        ContactActionTypes.ADD_CONTACT_SUCCESS, 
         props<{contact:fromOperations.Contact}>()
     ),
     updateContact: createAction(
@@ -61,4 +61,4 @@ export const contactActions = {
 
 }
 
-      
+       

@@ -1,13 +1,13 @@
 import { ActionReducerMap } from "@ngrx/store";
-import * as fromContact from "../../operations/index";
+import * as fromOperation from "../../operations/index";
 
 
 export interface AppState {
-    contactState: fromContact.ContactState,
-    noteState: fromContact.NoteState
+    contactState: fromOperation.ContactState,
+    noteState: fromOperation.NoteState
 }
 
 export const reducers:ActionReducerMap<AppState> = {
-  contactState: fromContact.contactReducer,
-  noteState: fromContact.noteReducer
+  contactState: fromOperation.contactReducer,
+  noteState: fromOperation.noteReducer
 }

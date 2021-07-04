@@ -1,43 +1,53 @@
+import { createEntityAdapter, EntityState } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
 import * as fromOperations from '@operations/index';
-import * as fromNoteAction from '../../../store/actions';
+import * as fromNoteAction from './note.action';
 
-export interface NoteState {
-    notes: fromOperations.Note[];
+
+export interface NoteState extends EntityState<fromOperations.Note> {
     loaded: boolean;
     loading: boolean;
+    error:any;
 }
 
-const initialState:NoteState = { 
-    notes:[],
+export const noteAdapter = createEntityAdapter<fromOperations.Note>();
+
+const initialNoteState = noteAdapter.getInitialState({
     loaded: false,
-    loading:false
-}
-
+    loading:false,
+    error:null,
+})
+ 
 export const noteReducer = createReducer(
-    initialState, 
-    on(fromNoteAction.loadNotes, (state,action) => {
-        return {
-            ...state, 
-            loading: true 
-            }
+    initialNoteState, 
+    //load
+    on(fromNoteAction.noteActions.loadNotesSuccess, (state,action) => {
+           return noteAdapter.setAll(action.notes,{
+                                            ...state,
+                                            loaded:true,
+                                            loading:false
+                                            });
     }),
-    on(fromNoteAction.loadNotesSuccess, (state,action) => {
-            return {
-                ...state,
-                loaded:true,
-                loading:false
-            }
-    }), 
-    on(fromNoteAction.loadNotesFail, (state,action) => {
+    on(fromNoteAction.noteActions.loadNotesFail, (state,action) => {
         return {
             ...state,
             loaded:true,
-            loading:false
+            loading:false,
+            error: action.error
         }
-    })
-    
+    }),
+
+    //add
+    on(fromNoteAction.noteActions.addNotesSuccess, (state,action) => {
+        return noteAdapter.addOne(action.note,state)
+    }),
+    on(fromNoteAction.noteActions.addNotesFail, (state,action) => {
+        return {...state,error:action.error}
+    }),
+     
 )
+
+// export const { selectAll } = noteAdapter.getSelectors(); 
  
 
     

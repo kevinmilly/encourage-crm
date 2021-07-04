@@ -8,7 +8,7 @@ import { ButtonComponent } from './button/button.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 import { RouterModule } from '@angular/router';
-import { KanbanComponent } from './kanban/kanban.component';
+
 
 const modules = [
   CardsModule,
@@ -25,8 +25,7 @@ const modules = [
 @NgModule({
   declarations: [
     FormComponent,
-    ButtonComponent,
-    KanbanComponent,
+    ButtonComponent
 
   ],
   imports: [

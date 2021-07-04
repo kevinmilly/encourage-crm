@@ -5,23 +5,64 @@ import * as fromOperations from '@operations/index';
 export enum NotesActionTypes {
     LOAD_NOTES = "[NOTES] Load NOTES",
     LOAD_NOTES_FAIL = "[NOTES] Load NOTES Fail",
-    LOAD_NOTES_SUCCESS = "[NOTES] Load NOTES Success"
+    LOAD_NOTES_SUCCESS = "[NOTES] Load NOTES Success",
+
+    ADD_NOTE = "[NOTES COMPONENT] Add NOTES",
+    ADD_NOTE_FAIL = "[NOTES EFFECT] Add NOTES Fail",
+    ADD_NOTE_SUCCESS = "[NOTES EFFECT] Add NOTES Success",
+
+    UPDATE_NOTE = "[NOTES COMPONENT] Update NOTES",
+    UPDATE_NOTE_FAIL = "[NOTES EFFECT] Update NOTES Fail",
+    UPDATE_NOTE_SUCCESS = "NOTES EFFECT] Update NOTES Success",
+
+    DELETE_NOTE = "[NOTES COMPONENT] Delete NOTES",
+    DELETE_NOTE_FAIL = "[NOTES EFFECT] Delete NOTES Fail",
+    DELETE_NOTE_SUCCESS = "[NOTES EFFECT] Delete NOTES Success",
 }
 
 
-export const loadNotes = createAction(
-    NotesActionTypes.LOAD_NOTES
-)
 
-export const loadNotesFail = createAction(
-    NotesActionTypes.LOAD_NOTES_FAIL,
-    props<{error:any}>()
-)
-    
-export const loadNotesSuccess = createAction(
-    NotesActionTypes.LOAD_NOTES_SUCCESS,
-    props<{Notes:fromOperations.Note[]}>()
-) 
-    
-                              
- 
+                               
+export const noteActions = {
+    loadNotes: createAction(NotesActionTypes.LOAD_NOTES),
+    loadNotesFail: createAction(
+        NotesActionTypes.LOAD_NOTES_FAIL,
+        props<{error:any}>()
+    ),
+    loadNotesSuccess: createAction(
+        NotesActionTypes.LOAD_NOTES_SUCCESS,
+        props<{notes:fromOperations.Note[]}>()
+    ),
+    addNotes: createAction(
+        NotesActionTypes.ADD_NOTE,
+        props<{note:fromOperations.Note}>()
+    ),
+    addNotesFail:createAction(
+        NotesActionTypes.ADD_NOTE_FAIL,
+        props<{error:any}>()
+    ),
+    addNotesSuccess:createAction(
+        NotesActionTypes.ADD_NOTE_SUCCESS, 
+        props<{note:fromOperations.Note}>()
+    ),
+    updateNotes: createAction(
+        NotesActionTypes.UPDATE_NOTE,
+        props<{note:fromOperations.Note}>()
+    ),
+     updateNotesFail:createAction(
+        NotesActionTypes.UPDATE_NOTE_FAIL,
+        props<{error:any}>()
+    ),
+    updateNotesSuccess:createAction(
+        NotesActionTypes.UPDATE_NOTE_SUCCESS,
+        props<{note:fromOperations.Note}>()
+    ),
+    deleteNotesFail: createAction(
+        NotesActionTypes.DELETE_NOTE_FAIL,
+        props<{error:any}>()
+    ),
+    deleteNotesSuccess: createAction(
+        NotesActionTypes.DELETE_NOTE_SUCCESS
+    ),
+
+}
