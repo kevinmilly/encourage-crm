@@ -1,13 +1,13 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import * as fromConcepts from './index';
+import { AddContactComponent } from "./components/add-contact/add-contact.component";
+import { ContactListComponent } from "./components/contact-list/contact-list.component";
 
 
 const routes:Routes = [
-    {path:'', component:fromConcepts.ContactListComponent},
-    {path:'contact-list', component:fromConcepts.ContactListComponent},
-    {path:'contact-flow', component:fromConcepts.ContactKanbanComponent},
-    {path:'contact-add', component:fromConcepts.AddContactComponent},
+    {path:'', component:ContactListComponent},
+    {path:'contact-list', component:ContactListComponent},
+    {path:'contact-add', component:AddContactComponent},
 
 ]
 

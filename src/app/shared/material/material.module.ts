@@ -25,8 +25,7 @@ import { MatListModule } from '@angular/material/list';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatChipsModule } from '@angular/material/chips';
 
@@ -62,6 +61,7 @@ const modules = [
   MatToolbarModule,
   MatSelectModule,
   MatGridListModule,
+  MatDatepickerModule,
   FlexLayoutModule,
   NgxSpinnerModule,
   MatAutocompleteModule

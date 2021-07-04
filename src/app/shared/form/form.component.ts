@@ -11,9 +11,10 @@ import { IControlModel } from '@shared/models/control.model';
 export class FormComponent implements OnInit {
   @Input() controlsToCreate: IControlModel[] = [];
   @Input() orientation: string = 'horizontal';
+  @Input() formatted: boolean = true;
   @Output() onSubmit = new EventEmitter();
 
-
+ 
  
 
   submission: any = {};
@@ -27,6 +28,7 @@ export class FormComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
 
     this.generateControls(this.controlsToCreate);
 
@@ -94,6 +96,12 @@ export class FormComponent implements OnInit {
           break;
         case "password":
           if (c.required) vals.push(Validators.required); //@TODO: add custom validator for password strength
+          this.controlsCreated.push(
+            new FormControl(c.default, vals)
+          )
+          break;
+        case "date":
+          if (c.required) vals.push(Validators.required);
           this.controlsCreated.push(
             new FormControl(c.default, vals)
           )
