@@ -49,4 +49,4 @@ export const contactReducer = createReducer(
     })
 )
 
-// export const { selectAll } = contactAdapter.getSelectors();  
+export const { selectAll } = contactAdapter.getSelectors();  
