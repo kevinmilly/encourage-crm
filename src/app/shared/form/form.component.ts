@@ -28,8 +28,7 @@ export class FormComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-
-
+    console.dir(this.controlsToCreate);
     this.generateControls(this.controlsToCreate);
 
 
@@ -101,6 +100,7 @@ export class FormComponent implements OnInit {
           )
           break;
         case "date":
+          console.log("found date");
           if (c.required) vals.push(Validators.required);
           this.controlsCreated.push(
             new FormControl(c.default, vals)
@@ -115,8 +115,9 @@ export class FormComponent implements OnInit {
     this.controlsToCreate.forEach((control, i) => {
 
       this.submission[control.name.toLowerCase()] = this.controlsCreated[i].value;
+      
     });
-
+    console.dir(this.submission);
     this.onSubmit.emit(this.submission);
     // this.controlsCreated.forEach((control, i) => {
     //   control.setValue(this.controlsToCreate[i].default)

@@ -20,10 +20,10 @@ loadContacts$ = createEffect(() =>
       return this.backend.getContacts().pipe(
         map((contacts:Contact[]) => fromContactAction.contactActions.loadContactSuccess({contacts}))
       )
-    }),
+    }), 
     catchError(error => of(fromContactAction.contactActions.loadContactsFail({error})))
   )
-);
+); 
 
 addContacts$ = createEffect(() => 
   this.actions$.pipe( 

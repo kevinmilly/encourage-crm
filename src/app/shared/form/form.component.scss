@@ -20,7 +20,7 @@
   &__horiz-content {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1vmax;
+    gap: .4vmax;
     ::ng-deep .mat-form-field {
       font-size: 1vmax;
     }
@@ -30,6 +30,11 @@
         height: auto;
         font-size: 1vmax;
         width: 20vmax;
+
+        .mat-input-element {
+          width: 20vmax;
+     
+        }
   
       }
     }

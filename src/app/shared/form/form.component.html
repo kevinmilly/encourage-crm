@@ -99,7 +99,17 @@
                 </mat-error>
               </mat-form-field>
             </div>
- 
+            <div *ngSwitchCase="'date'">
+              <mat-form-field appearance="fill">
+                <mat-label>{{ controlsToCreate[i].name }}</mat-label>
+                <input matInput [matDatepicker]="picker" />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
             <div *ngSwitchCase="'stringChoiceSet'">
               <mat-form-field class="medium">
                 <mat-label>{{ controlsToCreate[i].name }}</mat-label>
@@ -202,17 +212,6 @@
               <mat-error *ngIf="indexedCreatedControls(i).invalid">
                 Please check {{ controlsToCreate[i].name }}
               </mat-error>
-            </mat-form-field>
-          </div>
-          <div *ngSwitchCase="'date'">
-            <mat-form-field appearance="fill">
-              <mat-label>{{ controlsToCreate[i].name }}</mat-label>
-              <input matInput [matDatepicker]="picker" />
-              <mat-datepicker-toggle
-                matSuffix
-                [for]="picker"
-              ></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
           </div>
           <div *ngSwitchCase="'longString'">

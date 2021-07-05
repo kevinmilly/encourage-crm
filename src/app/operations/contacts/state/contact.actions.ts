@@ -28,7 +28,7 @@ export const contactActions = {
         props<{contacts:fromOperations.Contact[]}>()
     ),
     addContact: createAction(
-        ContactActionTypes.ADD_CONTACT,
+        ContactActionTypes.ADD_CONTACT, 
         props<{contact:fromOperations.Contact}>()
     ),
     addContactFail:createAction(

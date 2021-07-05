@@ -26,6 +26,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatChipsModule } from '@angular/material/chips';
 
@@ -34,7 +35,8 @@ import { FlexLayoutModule, BREAKPOINT } from '@angular/flex-layout';
 import { NgxSpinnerModule } from "ngx-spinner";
 
 const appearance: MatFormFieldDefaultOptions = {
-  appearance: 'outline'
+  appearance: 'fill',
+  floatLabel: 'auto'
 };
 
 const modules = [
@@ -62,6 +64,8 @@ const modules = [
   MatSelectModule,
   MatGridListModule,
   MatDatepickerModule,
+  MatNativeDateModule,
+  MatRippleModule,
   FlexLayoutModule,
   NgxSpinnerModule,
   MatAutocompleteModule

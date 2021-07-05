@@ -7,7 +7,7 @@ import { ContactListComponent } from "./components/contact-list/contact-list.com
 const routes:Routes = [
     {path:'', component:ContactListComponent},
     {path:'contact-list', component:ContactListComponent},
-    {path:'contact-add', component:AddContactComponent},
+    {path:'contact-add', component:AddContactComponent}
 
 ]
 

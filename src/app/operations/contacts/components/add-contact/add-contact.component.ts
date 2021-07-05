@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import * as fromContactState from "../../state/index";
+import { Contact } from "@operations/contacts/index";
+
 import { ContactType, Context, Priorities } from '@operations/contacts';
 import { EnergyLevel } from '@operations/contacts/models/enums/energy-level.enum';
 import { Statuses } from '@operations/contacts/models/enums/statuses.enum';
@@ -10,6 +15,7 @@ import { IControlModel } from '@shared/models/control.model';
   <enccrm-general-card>
     <enccrm-form
       [controlsToCreate]="addConceptControls"
+      (onSubmit)="submit($event)"
     >
       <div 
       horizontal
@@ -79,11 +85,11 @@ export class AddContactComponent implements OnInit {
       name: "Contact Type",
       type: "stringChoice",
       required: true,
-      default: 1,
+      default: 14,
       stringChoices: this.contactTypeChoices
     },
     {
-      name: "Where Do You Know Them From?",
+      name: "Know From?",
       type: "stringChoice",
       required: true,
       default: 1,
@@ -112,7 +118,7 @@ export class AddContactComponent implements OnInit {
     {
       name: "Initial Notes",
       type: "longString",
-      required: false,
+      required: false, 
       default: '',
     },
     {
@@ -129,10 +135,14 @@ export class AddContactComponent implements OnInit {
     }
   ];
 
-  constructor() { };
+  constructor(private store: Store) { };
 
   ngOnInit(): void {
     console.dir(this.priorities)
+  }
+
+  submit(contact:Contact) {
+    this.store.dispatch(fromContactState.contactActions.addContact({contact}));
   }
 
 }

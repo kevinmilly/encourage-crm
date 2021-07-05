@@ -15,7 +15,7 @@ export const contactAdapter = createEntityAdapter<fromOperations.Contact>();
 const initialContactState = contactAdapter.getInitialState({
     loaded: false,
     loading:false, 
-    error:null,
+    error:null, 
 })
 
 

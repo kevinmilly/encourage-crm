@@ -4,6 +4,7 @@ export enum ContactType {
     Brother,
     Mother,
     Father,
+    Spouse,
     Child,
     Cousin,
     Niece,

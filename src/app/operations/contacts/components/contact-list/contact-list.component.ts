@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import * as fromOperations from '@operations/index';
 
 @Component({
   selector: 'enccrm-contact-list',
@@ -28,11 +31,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactListComponent implements OnInit {
 
-  //@TODO use selectors
+  data:fromOperations.Contact[] = [];
 
-  constructor() { }
+  constructor(private store:Store) { }
 
   ngOnInit(): void {
+    this.store.select()
   }
 
 }
