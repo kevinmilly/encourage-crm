@@ -154,7 +154,7 @@ export class AddContactComponent implements OnInit {
   constructor(private store: Store) { };
 
   ngOnInit(): void {
-    console.dir(this.priorities)
+   
   }
 
   submit(contact:Contact) {

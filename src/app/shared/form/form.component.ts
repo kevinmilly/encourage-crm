@@ -116,8 +116,8 @@ export class FormComponent implements OnInit {
   submit() {
     this.controlsToCreate.forEach((control, i) => {
       if(control.type === 'date') {
-        console.log(this.controlsCreated[i].value);
-         this.submission[control.controlName] = moment(new Date(this.controlsCreated[i].value)).format('LLLL');
+
+         this.submission[control.controlName] = moment(new Date(this.controlsCreated[i].value)).format('LL');
       } else {
          this.submission[control.controlName] = this.controlsCreated[i].value;
       }

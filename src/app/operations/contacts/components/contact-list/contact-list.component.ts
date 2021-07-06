@@ -14,6 +14,7 @@ import * as fromContactState from '../../state/index';
   selector: 'enccrm-contact-list',
   template: `
           <h1>Contact List</h1>
+          <div class="container">
             <enccrm-general-card> 
             <mat-form-field appearance="fill">
               <mat-label>Contact Types</mat-label>
@@ -26,7 +27,7 @@ import * as fromContactState from '../../state/index';
                 [data]="data"
                 [columns]="columns"
                 [displayNames]="displayNames"
-                [action]="true"
+                [action]="false"
                 [actionButtonIcon]="'zoom_in'"
                 [pipesNeeded]="pipeOptions"
                 (onZoom)="detailContact($event)"
@@ -34,6 +35,7 @@ import * as fromContactState from '../../state/index';
               ></enccrm-table>
               <ng-template #noData><h1>No Data Yet</h1></ng-template>
             </enccrm-general-card>
+            </div>
   `,
   styleUrls: ['./contact-list.component.scss']
 })
@@ -46,7 +48,6 @@ export class ContactListComponent implements OnInit {
   dataSaved:Contact[] = []; 
 
   columns:string[] = [
-    'action',
     'name',
     'email',
     'phone',
@@ -54,26 +55,24 @@ export class ContactListComponent implements OnInit {
     'priority', //choices
     'energyLevel', //choices
     'notes',
-    'context', //choices
     'age',
     'birthDate',
     'otherDate',
-    'known',
+    'known',//choices
     'description'
   ];
   displayNames:string[] = [
-    'Action',
-    'Name',
+    'Name', 
     'Email',
     'Phone',
     'Contact Type', //choices
     'Priority', //choices
     'Energy Level', //choices
     'Notes',
-    'Known From', //choices
     'Age',
     'Birth Date',
     'Other Date',
+    'Known From', //choices
     'Description'
   ];
  

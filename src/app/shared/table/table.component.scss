@@ -1,8 +1,8 @@
 .main-container {
-    height: 75vh;
+    height: 65vh;
     width: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
+    // overflow-x: hidden;
+    overflow: auto;
   
     .mat-form-field {
       font-size: 1rem;
@@ -19,8 +19,8 @@
        table {
         width: 100%;
         border-radius: 5%;
-        
-    
+        height: auto;
+
         td,
         th {
           word-wrap: initial;
@@ -37,9 +37,17 @@
        
         }
 
+        td:nth-child(1),td:nth-child(2), td:nth-child(3) {
+         padding-right: 3vw;
+        }
+
         td {
             font-size: .9rem;
             text-align: center;
+        }
+
+        td:last-child {
+          text-overflow: ellipsis;
         }
   
   
@@ -68,7 +76,7 @@
   // }
   
   .table-container {
-    height: 40rem;
+    height: 55vh;
      overflow: auto;
   }
   
@@ -83,19 +91,21 @@
   
     @keyframes myfirst {
       0% {
-        background: #d8fad5;
+        background: #fae9d5;
         
       }
       25% {
-        background: #bef5b9;
+        background: #f78d64;
+        color: blanchedalmond;
         
       }
       75% {
-        background: #86c080;
+        background: #f8c182;
+        color: white;
      
       }
       100% {
-        background: #d8fad5;
+        background: #fae9d5;
        
       }
     }

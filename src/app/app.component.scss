@@ -5,9 +5,10 @@
   overflow: hidden;
 
   .nav-content {
-    height: 100vh;
+    height: 98vh;
     width: 100vmax;
     background-color: var(--accent-color);
     padding-left: 5vmax;
+    overflow: auto;
   }
 }

@@ -14,27 +14,10 @@
             cdkDropListOrientation="horizontal"
             (cdkDropListDropped)="drop($event)"
             *ngIf="data.length > 0; else noData">
-            <ng-container matColumnDef="action">
-                <th mat-header-cell cdkDrag *matHeaderCellDef mat-sort-header> Action </th>
-                <td mat-cell *matCellDef="let row"> 
-                    <enccrm-button
-                        [type]="'icon'" 
-                        [content]="actionButtonIcon"
-                        (clicked)="onClicked('zoom', row)"
-                    >
-                    </enccrm-button>
-                    <enccrm-button
-                        *ngIf="deleteable"
-                        [type]="'icon'" 
-                        [content]="secondaryButtonIcon"
-                        (clicked)="onClicked('delete', row)"
-                >
-                </enccrm-button>
-                </td>
-            </ng-container>
+
         
                     <ng-container *ngFor="let c of columns; let i = index">
-                        <ng-container *ngIf="i !== 0">
+                    
                             <ng-container *ngIf="pipesNeeded.includes(c); else noPipeNeeded">
                                 <ng-container matColumnDef="{{c}}">
                                     <th mat-header-cell cdkDrag *matHeaderCellDef mat-sort-header> {{displayedColumns[i]}} </th>
@@ -52,7 +35,7 @@
                                     </td>
                                     </ng-container>
                             </ng-template>
-                        </ng-container>
+                   
                     </ng-container>
     
         <tr mat-header-row *matHeaderRowDef="columns; sticky: true"></tr>
