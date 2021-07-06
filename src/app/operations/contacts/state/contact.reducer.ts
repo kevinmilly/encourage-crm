@@ -46,7 +46,23 @@ export const contactReducer = createReducer(
     }),
     on(fromContactAction.contactActions.addContactFail, (state,action) => {
         return {...state,error:action.error}
-    })
+    }),
+
+    //update
+    // on(fromContactAction.contactActions.updateContactSuccess, (state,action) => {
+    //     return contactAdapter.updateOne(action.contact,state)
+    // }),
+    // on(fromContactAction.contactActions.updateContactFail, (state,action) => {
+    //     return {...state,error:action.error}
+    // }),
+
+    //delete
+    // on(fromContactAction.contactActions.deleteContactSuccess, (state,action) => {
+    //     return contactAdapter.removeOne(action.contact,state)
+    // }),
+    // on(fromContactAction.contactActions.deleteContactFail, (state,action) => {
+    //     return {...state,error:action.error}
+    // })
 )
 
 export const { selectAll } = contactAdapter.getSelectors();  

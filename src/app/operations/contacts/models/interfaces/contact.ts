@@ -1,16 +1,18 @@
 import { Day } from "./day";
 
-export interface Contact {
+export interface Contact { 
     id:string;
     name: string;
     email: string;
     phone: string;
-    contact_type: string;
-    priority: string;
+    contactType: string; //choices
+    priority: string; //choices
+    energyLevel: string; //choices
     notes: string[];
-    context: string;
+    context: string; //choices
     age: number;
-    special_days: Day[];
+    birthdate:string;
+    otherDate:string;
     known: number;
     company: string;
     description:string;

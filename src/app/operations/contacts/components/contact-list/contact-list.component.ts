@@ -1,47 +1,137 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { select } from '@ngrx/store';
 import { Store } from '@ngrx/store';
+import { Contact, ContactOptions, ContactType } from '@operations/contacts';
 
 import * as fromOperations from '@operations/index';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subscription } from 'rxjs';
+import { SubSink } from 'subsink';
 import * as fromContactState from '../../state/index';
+
 
 @Component({
   selector: 'enccrm-contact-list',
   template: `
-      <enccrm-tab [labels]="['Family','Friends','Acquaintances']">
-        <div id="first">
-          <h1>Family</h1>
+          <h1>Contact List</h1>
             <enccrm-general-card> 
-              <enccrm-table></enccrm-table>
+            <mat-form-field appearance="fill">
+              <mat-label>Contact Types</mat-label>
+              <mat-select [formControl]="contactTypeFilter" multiple>
+                <mat-option *ngFor="let type of contactTypes" [value]="type">{{type}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+              <enccrm-table
+                *ngIf="data.length > 0; else noData"
+                [data]="data"
+                [columns]="columns"
+                [displayNames]="displayNames"
+                [action]="true"
+                [actionButtonIcon]="'zoom_in'"
+                [pipesNeeded]="pipeOptions"
+                (onZoom)="detailContact($event)"
+                (onDelete)="deleteContact($event)"
+              ></enccrm-table>
+              <ng-template #noData><h1>No Data Yet</h1></ng-template>
             </enccrm-general-card>
-          </div>
-          <div id="second">
-            <h1>Friends</h1>
-              <enccrm-general-card>
-                <enccrm-table></enccrm-table>
-              </enccrm-general-card>
-          </div>
-          <div id="third">
-            <h1>Acquaintances</h1>
-              <enccrm-general-card>
-                <enccrm-table></enccrm-table>
-              </enccrm-general-card>
-          </div>
-      </enccrm-tab>
   `,
   styleUrls: ['./contact-list.component.scss']
 })
 export class ContactListComponent implements OnInit {
+  
+  private subs = new SubSink();
+
+  dataSub: Subscription = new Subscription;
+  data:Contact[] = [];
+  dataSaved:Contact[] = []; 
+
+  columns:string[] = [
+    'action',
+    'name',
+    'email',
+    'phone',
+    'contactType', //choices
+    'priority', //choices
+    'energyLevel', //choices
+    'notes',
+    'context', //choices
+    'age',
+    'birthDate',
+    'otherDate',
+    'known',
+    'description'
+  ];
+  displayNames:string[] = [
+    'Action',
+    'Name',
+    'Email',
+    'Phone',
+    'Contact Type', //choices
+    'Priority', //choices
+    'Energy Level', //choices
+    'Notes',
+    'Known From', //choices
+    'Age',
+    'Birth Date',
+    'Other Date',
+    'Description'
+  ];
+ 
+  contactTypes:string[] = [
+    ContactType[0],
+    ContactType[1],
+    ContactType[2],
+    ContactType[3],
+    ContactType[4],
+    ContactType[5],
+    ContactType[6],
+    ContactType[7],
+    ContactType[8],
+    ContactType[9],
+    ContactType[10],
+    ContactType[11],
+    ContactType[12],
+    ContactType[13],
+    ContactType[14]
+  ]
+
+  pipeOptions: string[] = [];
+  contactTypeFilter: FormControl = new FormControl;
 
   data$:Observable<fromOperations.Contact[]> | undefined;
 
   constructor(private store:Store) { }
 
   ngOnInit(): void {
+    this.contactTypeFilter = new FormControl(this.contactTypes);
+    this.pipeOptions = [
+      ContactOptions[0],
+      ContactOptions[1],
+      ContactOptions[2],
+      ContactOptions[3],
+      ContactOptions[4]
+    ]
+
     this.store.dispatch(fromContactState.contactActions.loadContacts());
     this.data$ = this.store.select(fromContactState.selectContacts);
     // this.store.pipe(select(fromContactState.selectContacts))
+
+    this.subs.sink = this.data$.subscribe(data => {
+      this.data = data;
+    });
+    this.subs.sink = this.contactTypeFilter.valueChanges.subscribe(() => this.contactFilter());
+
   }
+
+  contactFilter() {
+    this.data = this.dataSaved.filter(d => this.contactTypeFilter.value.includes(d.contactType));
+  }
+
+  detailContact(event:any) {}
+
+  deleteContact(event:fromOperations.Contact) {
+    console.log("Need to implement");
+  }
+
 
 }

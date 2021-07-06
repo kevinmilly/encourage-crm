@@ -1,0 +1,76 @@
+<div class="main-container">
+
+
+   <mat-form-field class="semi-width-field">
+    <mat-label>Search...</mat-label>
+    <input matInput (keyup)="applySearchFilter($event)" placeholder="Ex. Jamika" #input>
+  </mat-form-field>
+  <div class="mat-elevation-z8 table-container">
+        <table 
+            mat-table 
+            [dataSource]="dataSource" 
+            matSort 
+            cdkDropList
+            cdkDropListOrientation="horizontal"
+            (cdkDropListDropped)="drop($event)"
+            *ngIf="data.length > 0; else noData">
+            <ng-container matColumnDef="action">
+                <th mat-header-cell cdkDrag *matHeaderCellDef mat-sort-header> Action </th>
+                <td mat-cell *matCellDef="let row"> 
+                    <enccrm-button
+                        [type]="'icon'" 
+                        [content]="actionButtonIcon"
+                        (clicked)="onClicked('zoom', row)"
+                    >
+                    </enccrm-button>
+                    <enccrm-button
+                        *ngIf="deleteable"
+                        [type]="'icon'" 
+                        [content]="secondaryButtonIcon"
+                        (clicked)="onClicked('delete', row)"
+                >
+                </enccrm-button>
+                </td>
+            </ng-container>
+        
+                    <ng-container *ngFor="let c of columns; let i = index">
+                        <ng-container *ngIf="i !== 0">
+                            <ng-container *ngIf="pipesNeeded.includes(c); else noPipeNeeded">
+                                <ng-container matColumnDef="{{c}}">
+                                    <th mat-header-cell cdkDrag *matHeaderCellDef mat-sort-header> {{displayedColumns[i]}} </th>
+                                    <td mat-cell *matCellDef="let row">
+                                        {{row[c] | display_translator:c}}
+                                </td>
+                                </ng-container>
+                            </ng-container>
+                       
+                            <ng-template #noPipeNeeded>
+                                    <ng-container matColumnDef="{{c}}">
+                                        <th mat-header-cell  *matHeaderCellDef mat-sort-header> {{displayedColumns[i]}} </th>
+                                        <td mat-cell *matCellDef="let row">
+                                            {{row[c]}}
+                                    </td>
+                                    </ng-container>
+                            </ng-template>
+                        </ng-container>
+                    </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="columns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+    
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching available "{{input.value}}"</td>
+        </tr>
+     </table>
+     <mat-paginator class="paginator-centered" [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
+     <ng-template #noData>
+         <div class="noDataFilter">
+            <h1>No Data for this Filter.</h1>
+         </div>
+     </ng-template>
+  </div>
+
+
+
+</div>

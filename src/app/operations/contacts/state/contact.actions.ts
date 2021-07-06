@@ -51,14 +51,18 @@ export const contactActions = {
         ContactActionTypes.UPDATE_CONTACT_SUCCESS,
         props<{contact:fromOperations.Contact}>()
     ),
+   deleteContact: createAction(
+        ContactActionTypes.DELETE_CONTACT,
+        props<{contact:fromOperations.Contact}>()
+    ),
     deleteContactFail: createAction(
         ContactActionTypes.DELETE_CONTACT_FAIL,
         props<{error:any}>()
     ),
     deleteContactSuccess: createAction(
-        ContactActionTypes.DELETE_CONTACT_SUCCESS
-    ),
-
+        ContactActionTypes.DELETE_CONTACT_SUCCESS,
+        props<{contact:fromOperations.Contact}>()
+    )
 }
 
        

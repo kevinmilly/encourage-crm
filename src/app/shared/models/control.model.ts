@@ -1,7 +1,8 @@
 import { Observable } from "rxjs";
 
 export interface IControlModel {
-    name: string;
+    displayName: string;
+    controlName:string;
     type: string;
     required: boolean;
     default: any;

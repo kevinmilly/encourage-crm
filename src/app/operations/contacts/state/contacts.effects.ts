@@ -37,29 +37,29 @@ addContacts$ = createEffect(() =>
  )
 );
 
-// updateContacts$ = createEffect(() => 
-//     this.actions$.pipe( 
-//     ofType(fromContactAction.contactActions.updateContacts),
-//     concatMap(() => {
-//       return this.backend.getContacts().pipe(
-//         map((contacts:Contact[]) => fromContactAction.contactActions.loadContactSuccess({contacts}))
-//       )
-//     }),
-//     catchError(() => EMPTY)
-//     )
-// );
+updateContacts$ = createEffect(() => 
+    this.actions$.pipe( 
+    ofType(fromContactAction.contactActions.updateContact),
+    concatMap((action) => {
+      return this.backend.updateContact(action.contact).pipe(
+        map((contact:Contact) => fromContactAction.contactActions.updateContactSuccess({contact}))
+      )
+    }),
+    catchError(error => of(fromContactAction.contactActions.updateContactFail({error})))
+    )
+);
 
-// deleteContacts$ = createEffect(() => 
-//     this.actions$.pipe( 
-//     ofType(fromContactAction.contactActions.deleteContacts),
-//     concatMap(() => {
-//       return this.backend.getContacts().pipe(
-//         map((contacts:Contact[]) => fromContactAction.contactActions.loadContactSuccess({contacts}))
-//       )
-//     }),
-//     catchError(() => EMPTY)
-//     )
-// );
+deleteContacts$ = createEffect(() => 
+    this.actions$.pipe( 
+    ofType(fromContactAction.contactActions.deleteContact),
+    concatMap((action) => {
+      return this.backend.deleteContact(action.contact).pipe(
+        map((contact:Contact) => fromContactAction.contactActions.deleteContactSuccess({contact}))
+      )
+    }),
+    catchError(error => of(fromContactAction.contactActions.deleteContactFail({error})))
+    )
+);
 
 
   constructor(private actions$: Actions, private backend:BackendService) {}

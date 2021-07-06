@@ -76,61 +76,77 @@ export class AddContactComponent implements OnInit {
 
   addConceptControls: IControlModel[] = [
     {
-      name: "Name",
+      displayName: "Name",
+      controlName: "name",
       type: "string",
       required: true,
       default: '',
     },
     {
-      name: "Contact Type",
+      displayName: "Contact Type",
+      controlName: "contactType",
       type: "stringChoice",
       required: true,
       default: 14,
       stringChoices: this.contactTypeChoices
     },
     {
-      name: "Know From?",
+      displayName: "Know From?",
+      controlName: "known",
       type: "stringChoice",
       required: true,
       default: 1,
       stringChoices: this.contextKnownFrom
     },
     {
-      name: "How Important?",
+      displayName: "How Important?",
+      controlName: "priority",
       type: "stringChoiceSet",
       required: true,
       default: 1,
       stringChoices: this.priorities
     },
     {
-      name: "Energy Level",
+      displayName: "Energy Level",
+      controlName: "energyLevel",
       type: "stringChoiceSet",
       required: true,
       default: 1,
       stringChoices: this.energyLevels
     },
     {
-      name: "Birth Date",
+      displayName: "Birth Date",
+      controlName: "birthDate",
       type: "date",
       required: false,
       default: '',
     },
     {
-      name: "Initial Notes",
-      type: "longString",
-      required: false, 
+      displayName: "Other Date",
+      controlName: "otherDate",
+      type: "date",
+      required: false,
       default: '',
     },
     {
-      name: "Email",
+      displayName: "Email",
+      controlName: "email",
       type: "email",
       required: false,
       default: '',
     },
     {
-      name: "Phone",
+      displayName: "Phone",
+      controlName: "phone",
       type: "string",
       required: true,
+      default: '',
+    },
+    {
+      displayName: "Initial Notes",
+      controlName: "description",
+      type: "longString",
+      required: false, 
       default: '',
     }
   ];

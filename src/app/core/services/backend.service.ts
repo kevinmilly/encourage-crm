@@ -38,8 +38,9 @@ export class BackendService {
   }
 
   updateContact(contact:Contact) {
-    return this.firestore.collection<Contact>(`user/${this.auth.user.uid}/Contacts`)
+    this.firestore.collection<Contact>(`user/${this.auth.user.uid}/Contacts`)
             .doc(contact.id).update(contact);
+            return of({...contact})
   }
 
   updateCommunication(communication:Communication) {
@@ -77,15 +78,15 @@ export class BackendService {
   }
 
   deleteContact(contact:Contact) {
-    return this.firestore.collection<Contact>(`user/${this.auth.user.uid}/Contacts`)
-    .doc(contact.id).delete();
+    this.firestore.collection<Contact>(`user/${this.auth.user.uid}/Contacts`)
+      .doc(contact.id).delete();
+      return of({...contact})
   }
 
   deleteNote(note:Note) {
     return this.firestore.collection<Note>(`user/${this.auth.user.uid}/Notes`)
     .doc(note.id).delete();
   }
-
 
   deleteCommunication(communication:Contact) {
     return this.firestore.collection<Contact>(`user/${this.auth.user.uid}/Contacts`)

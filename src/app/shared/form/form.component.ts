@@ -2,6 +2,8 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { IControlModel } from '@shared/models/control.model';
 
+import * as moment from 'moment';
+
 
 @Component({
   selector: 'enccrm-form',
@@ -113,9 +115,13 @@ export class FormComponent implements OnInit {
 
   submit() {
     this.controlsToCreate.forEach((control, i) => {
-
-      this.submission[control.name.toLowerCase()] = this.controlsCreated[i].value;
-      
+      if(control.type === 'date') {
+        console.log(this.controlsCreated[i].value);
+         this.submission[control.controlName] = moment(new Date(this.controlsCreated[i].value)).format('LLLL');
+      } else {
+         this.submission[control.controlName] = this.controlsCreated[i].value;
+      }
+     
     });
     console.dir(this.submission);
     this.onSubmit.emit(this.submission);

@@ -2,7 +2,7 @@ import { createFeatureSelector, createSelector } from "@ngrx/store";
 import { selectAll, ContactState } from "@operations/contacts/state/contact.reducer";
 
 export const selectContactState = createFeatureSelector<ContactState>(
-    'contacts'
+    'contactsReducer'
 )
 
 export const selectContacts = createSelector(
