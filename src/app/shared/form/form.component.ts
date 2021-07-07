@@ -116,8 +116,7 @@ export class FormComponent implements OnInit {
   submit() {
     this.controlsToCreate.forEach((control, i) => {
       if(control.type === 'date') {
-
-         this.submission[control.controlName] = moment(new Date(this.controlsCreated[i].value)).format('LL');
+         this.submission[control.controlName] = this.controlsCreated[i].value ? moment(new Date(this.controlsCreated[i].value)).format('LL') : '';
       } else {
          this.submission[control.controlName] = this.controlsCreated[i].value;
       }
@@ -129,6 +128,7 @@ export class FormComponent implements OnInit {
     //   control.setValue(this.controlsToCreate[i].default)
     // });
     this.inputForm.reset();
+    this.submission = {};
   }
 
   get controlsCreated() {

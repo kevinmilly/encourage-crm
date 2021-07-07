@@ -77,7 +77,7 @@ export class AddContactComponent implements OnInit {
   addConceptControls: IControlModel[] = [
     {
       displayName: "Name",
-      controlName: "name",
+      controlName: "contactName",
       type: "string",
       required: true,
       default: '',

@@ -48,7 +48,7 @@ export class ContactListComponent implements OnInit {
   dataSaved:Contact[] = []; 
 
   columns:string[] = [
-    'name',
+    'contactName',
     'email',
     'phone',
     'contactType', //choices
