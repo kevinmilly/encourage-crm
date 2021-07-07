@@ -44,7 +44,8 @@ export class TableComponent implements OnInit {
    }
 
   ngOnInit(): void {    
-   
+    console.dir(this.linksNeeded);
+    console.dir(this.pipesNeeded);
     this.displayedColumns = this.displayNames;
     this.columns = this.columns.filter(c => c !== "id");
     this.dataSaved = [...this.data];

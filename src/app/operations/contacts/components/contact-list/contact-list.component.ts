@@ -112,7 +112,7 @@ export class ContactListComponent implements OnInit {
     ]
 
     this.store.dispatch(fromContactState.contactActions.loadContacts());
-    this.data$ = this.store.select(fromContactState.);
+    this.data$ = this.store.select(fromContactState.selectContacts);
     // this.store.pipe(select(fromContactState.selectContacts))
 
     this.subs.sink = this.data$.subscribe(data => {

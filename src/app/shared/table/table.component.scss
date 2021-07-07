@@ -19,7 +19,7 @@
        table {
         width: 100%;
         border-radius: 5%;
-        height: auto;
+        height: 100%;
 
         td,
         th {
@@ -66,6 +66,8 @@
            background-color: var(--primary-darker-color);
            color: white;
         }
+
+   
         
       }
     
@@ -76,7 +78,7 @@
   // }
   
   .table-container {
-    height: 55vh;
+    height: 50vh;
      overflow: auto;
   }
   
