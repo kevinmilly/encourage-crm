@@ -2,7 +2,7 @@ import { Day } from "./day";
 
 export interface Contact { 
     id:string;
-    name: string;
+    contactName: string;
     email: string;
     phone: string;
     contactType: string; //choices

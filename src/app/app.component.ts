@@ -19,6 +19,7 @@ export class AppComponent {
   constructor(private auth: AuthService, private router: Router) {
     this.auth.user$.subscribe(user => {
       this.user = user;
+      console.log({user});
       this.router.navigate(["/contacts"]);
     });
   }
