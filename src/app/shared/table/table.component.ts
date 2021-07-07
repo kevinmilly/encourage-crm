@@ -22,15 +22,11 @@ export class TableComponent implements OnInit {
   @Input() displayNames:string[] = [];
   @Input() action = false; 
   @Input() pipesNeeded:string[] = [];
-  @Input() actionButtonIcon:string = 'zoom_in';
-  @Input() deleteable:boolean = true;
-  @Input() secondaryButtonIcon:string ='delete_forever';
+  @Input() linksNeeded:string[] = [];
 
-  @Output() onDelete = new EventEmitter();
   @Output() onZoom = new EventEmitter();
 
   dataSaved:any[] = [];
-
 
   displayedColumns: string[] = [];
   dataSource: MatTableDataSource<any> = new MatTableDataSource;
@@ -43,7 +39,6 @@ export class TableComponent implements OnInit {
 
 
   constructor(
-    public dialog: MatDialog,
     private store:Store
   ) {
    }
@@ -98,6 +93,10 @@ export class TableComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   } 
+
+  launchModal(propertyClicked:string) {
+    this.onZoom.emit(propertyClicked);
+  }
 
   // rowClick(event:fromContacts.Contact) {
   //   const dialogRef = this.dialog.open(ContactDetailComponent, {

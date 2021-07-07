@@ -38,16 +38,16 @@ export const noteReducer = createReducer(
     }),
 
     //add
-    on(fromNoteAction.noteActions.addNotesSuccess, (state,action) => {
+    on(fromNoteAction.noteActions.addNoteSuccess, (state,action) => {
         return noteAdapter.addOne(action.note,state)
     }),
-    on(fromNoteAction.noteActions.addNotesFail, (state,action) => {
+    on(fromNoteAction.noteActions.addNoteFail, (state,action) => {
         return {...state,error:action.error}
     }),
      
 )
 
-// export const { selectAll } = noteAdapter.getSelectors(); 
+export const { selectAll } = noteAdapter.getSelectors(); 
  
 
     

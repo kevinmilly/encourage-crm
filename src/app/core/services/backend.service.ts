@@ -49,8 +49,9 @@ export class BackendService {
   }
 
   updateNote(note:Note) {
-       return this.firestore.collection<Note>(`user/${this.auth.user.uid}/Notes`)
+         this.firestore.collection<Note>(`user/${this.auth.user.uid}/Notes`)
          .doc(note.id).update(note);
+         return of({...note});
   }
 
   addContact(contact:Contact) {
@@ -66,9 +67,10 @@ export class BackendService {
   }
 
   addNote(note:Note) {
-      return this.firestore.collection<Note>(`user/${this.auth.user.uid}/Notes`)
+       this.firestore.collection<Note>(`user/${this.auth.user.uid}/Notes`)
         .doc(note.id)
         .set(note as Note, { merge: true });
+        return of({...note});
   }
 
   addCommunication(communication:Communication) {
@@ -84,8 +86,9 @@ export class BackendService {
   }
 
   deleteNote(note:Note) {
-    return this.firestore.collection<Note>(`user/${this.auth.user.uid}/Notes`)
+    this.firestore.collection<Note>(`user/${this.auth.user.uid}/Notes`)
     .doc(note.id).delete();
+    return of({...note})
   }
 
   deleteCommunication(communication:Contact) {

@@ -17,7 +17,6 @@ export class EnumUserDisplayTranslatorPipe implements PipeTransform {
       case ContactOptions[2]:
         return Statuses[value];
       case ContactOptions[3]:
-        console.log({valueDisplayType});
         return Priorities[value];
       case ContactOptions[4]:
         return Context[value];

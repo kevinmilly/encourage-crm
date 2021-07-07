@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { select } from '@ngrx/store';
 import { Store } from '@ngrx/store';
 import { Contact, ContactOptions, ContactType } from '@operations/contacts';
@@ -8,6 +9,7 @@ import * as fromOperations from '@operations/index';
 import { Observable, of, Subscription } from 'rxjs';
 import { SubSink } from 'subsink';
 import * as fromContactState from '../../state/index';
+import { ContactDetailComponent } from '../contact-detail/contact-detail.component';
 
 
 @Component({
@@ -27,11 +29,9 @@ import * as fromContactState from '../../state/index';
                 [data]="data"
                 [columns]="columns"
                 [displayNames]="displayNames"
-                [action]="false"
-                [actionButtonIcon]="'zoom_in'"
                 [pipesNeeded]="pipeOptions"
+                [linksNeeded]="['contactName']"
                 (onZoom)="detailContact($event)"
-                (onDelete)="deleteContact($event)"
               ></enccrm-table>
               <ng-template #noData><h1>No Data Yet</h1></ng-template>
             </enccrm-general-card>
@@ -48,7 +48,7 @@ export class ContactListComponent implements OnInit {
   dataSaved:Contact[] = []; 
 
   columns:string[] = [
-    'name',
+    'contactName',
     'email',
     'phone',
     'contactType', //choices
@@ -99,7 +99,7 @@ export class ContactListComponent implements OnInit {
 
   data$:Observable<fromOperations.Contact[]> | undefined;
 
-  constructor(private store:Store) { }
+  constructor(private store:Store, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.contactTypeFilter = new FormControl(this.contactTypes);
@@ -112,7 +112,7 @@ export class ContactListComponent implements OnInit {
     ]
 
     this.store.dispatch(fromContactState.contactActions.loadContacts());
-    this.data$ = this.store.select(fromContactState.selectContacts);
+    this.data$ = this.store.select(fromContactState.);
     // this.store.pipe(select(fromContactState.selectContacts))
 
     this.subs.sink = this.data$.subscribe(data => {
@@ -126,7 +126,26 @@ export class ContactListComponent implements OnInit {
     this.data = this.dataSaved.filter(d => this.contactTypeFilter.value.includes(d.contactType));
   }
 
-  detailContact(event:any) {}
+  detailContact(event:any) {
+      const dialogRef = this.dialog.open(ContactDetailComponent, {
+      width: '90%',
+      height: '45rem',
+      data: {
+        contact:event
+        
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    
+      if(result.action === 'delete') {
+        this.store.dispatch(fromContactState.contactActions.deleteContact(result.contact));
+      } else { //add
+
+      }
+
+    });
+  }
 
   deleteContact(event:fromOperations.Contact) {
     console.log("Need to implement");

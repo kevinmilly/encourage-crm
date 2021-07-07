@@ -19,7 +19,7 @@ export enum NotesActionTypes {
     DELETE_NOTE_FAIL = "[NOTES EFFECT] Delete NOTES Fail",
     DELETE_NOTE_SUCCESS = "[NOTES EFFECT] Delete NOTES Success",
 }
-
+ 
 
 
                                
@@ -33,36 +33,41 @@ export const noteActions = {
         NotesActionTypes.LOAD_NOTES_SUCCESS,
         props<{notes:fromOperations.Note[]}>()
     ),
-    addNotes: createAction(
+    addNote: createAction(
         NotesActionTypes.ADD_NOTE,
         props<{note:fromOperations.Note}>()
     ),
-    addNotesFail:createAction(
+    addNoteFail:createAction(
         NotesActionTypes.ADD_NOTE_FAIL,
         props<{error:any}>()
     ),
-    addNotesSuccess:createAction(
+    addNoteSuccess:createAction(
         NotesActionTypes.ADD_NOTE_SUCCESS, 
         props<{note:fromOperations.Note}>()
     ),
-    updateNotes: createAction(
+    updateNote: createAction(
         NotesActionTypes.UPDATE_NOTE,
         props<{note:fromOperations.Note}>()
     ),
-     updateNotesFail:createAction(
+     updateNoteFail:createAction(
         NotesActionTypes.UPDATE_NOTE_FAIL,
         props<{error:any}>()
     ),
-    updateNotesSuccess:createAction(
+    updateNoteSuccess:createAction(
         NotesActionTypes.UPDATE_NOTE_SUCCESS,
         props<{note:fromOperations.Note}>()
     ),
-    deleteNotesFail: createAction(
+    deleteNote: createAction(
+        NotesActionTypes.DELETE_NOTE,
+        props<{note:fromOperations.Note}>()
+    ),
+    deleteNoteFail: createAction(
         NotesActionTypes.DELETE_NOTE_FAIL,
         props<{error:any}>()
     ),
-    deleteNotesSuccess: createAction(
-        NotesActionTypes.DELETE_NOTE_SUCCESS
+    deleteNoteSuccess: createAction(
+        NotesActionTypes.DELETE_NOTE_SUCCESS,
+        props<{note:fromOperations.Note}>()
     ),
 
 }
