@@ -9,7 +9,6 @@ export enum ContactType {
     Cousin,
     Niece,
     Nephew,
-    Parent,
     GrandParent,
     Aunt,
     Uncle,

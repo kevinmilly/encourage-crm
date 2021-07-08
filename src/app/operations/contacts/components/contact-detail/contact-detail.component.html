@@ -1,5 +1,24 @@
-<enccrm-general-card>
-
-    
-
-</enccrm-general-card>
+<h1>Contact Details</h1>
+<enccrm-tab [labels]="['General Info', 'Notes']">
+  <div id="first" class="main-container__tab-content">
+    <div class="header">
+      <h2>{{ contact.contactName }}</h2>
+      <h3>{{contact.contactType</h3>
+      <h4>{{ contact.description }}</h4>
+    </div>
+    <div class="details">
+      Email: {{ contact.email }} Phone: {{ contact.phone }} Birth Date:
+      {{ contact.birthDate }} Other Date: {{ contact.otherDate }} Context:
+      {{ contact.context }} Priority: {{ contact.priority }} Energy Level:
+      {{ contact.energyLevel }}
+    </div>
+  </div>
+  <div id="second" class="main-container__tab-content">
+    <enccrm-form
+      [controlsToCreate]="addConceptControls"
+      (onSubmit)="submit($event)"
+    >
+      <div horizontal>Edit {{ contact.contactName }}</div>
+    </enccrm-form>
+  </div>
+</enccrm-tab>

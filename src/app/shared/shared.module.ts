@@ -9,6 +9,7 @@ import { MaterialModule } from './material/material.module';
 import { RouterModule } from '@angular/router';
 import { EnumUserDisplayTranslatorPipe } from './pipes/enum-user-display-translator.pipe';
 import { TableComponent } from './table/table.component';
+import { ContactDetailTranslatorPipe } from './pipes/contact-detail-translator.pipe';
 
 
 const modules = [
@@ -27,7 +28,8 @@ const modules = [
     FormComponent,
     ButtonComponent,
     TableComponent,
-    EnumUserDisplayTranslatorPipe
+    EnumUserDisplayTranslatorPipe,
+    ContactDetailTranslatorPipe
 
   ],
   imports: [

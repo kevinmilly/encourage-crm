@@ -5,3 +5,4 @@ export enum EnergyLevel {
     Positive,
     Invigorating
 }
+ 

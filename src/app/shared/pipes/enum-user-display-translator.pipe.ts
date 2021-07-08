@@ -3,7 +3,7 @@ import { ContactType, EnergyLevel, Priorities, Statuses, ContactOptions, Context
 
 
 @Pipe({
-  name: 'display_translator'
+  name: 'display_translator' 
 })
 export class EnumUserDisplayTranslatorPipe implements PipeTransform {
 
@@ -13,7 +13,7 @@ export class EnumUserDisplayTranslatorPipe implements PipeTransform {
       case ContactOptions[0]:
         return ContactType[value];
       case ContactOptions[1]:
-        return EnergyLevel[value];
+        return EnergyLevel[value]; 
       case ContactOptions[2]:
         return Statuses[value];
       case ContactOptions[3]:

@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
       <mat-tab-group>
           <mat-tab label="{{labels[0]}}" > 
               <ng-content select="#first" class="tab-content"></ng-content>
-          </mat-tab>
+          </mat-tab> 
           <mat-tab label="{{labels[1]}}" > 
               <ng-content select="#second" class="tab-content"></ng-content>
           </mat-tab>
@@ -23,7 +23,7 @@ import { Component, OnInit } from '@angular/core';
 export class TabComponent implements OnInit {
 
   @Input() labels: string[] = [];
-  @Input() selectedIndex:number=0;;
+  @Input() selectedIndex: number = 0;;
 
   constructor() { }
 
