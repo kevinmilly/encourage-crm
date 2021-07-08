@@ -23,7 +23,7 @@
                                     <ng-container matColumnDef="{{c}}">
                                         <th mat-header-cell  *matHeaderCellDef mat-sort-header> {{displayedColumns[i]}} </th>
                                         <td mat-cell *matCellDef="let row">
-                                           <a (click)="launchModal(c)"> {{row[c] | display_translator:c}}</a>
+                                           <a (click)="launchModal(c)"><span [innerHTML]="row[c] | contactDetailTranslator:c"></span></a>
                                         </td>
                                     </ng-container>
                                 </ng-container>
@@ -31,7 +31,7 @@
                                     <ng-container matColumnDef="{{c}}">
                                         <th mat-header-cell  *matHeaderCellDef mat-sort-header> {{displayedColumns[i]}} </th>
                                         <td mat-cell *matCellDef="let row">
-                                            {{row[c] | display_translator:c}}
+                                            <span [innerHTML]="row[c] | contactDetailTranslator:c"></span>
                                     </td>
                                     </ng-container>
                                 </ng-template>
@@ -42,7 +42,7 @@
                                         <ng-container matColumnDef="{{c}}">
                                             <th mat-header-cell  *matHeaderCellDef mat-sort-header> {{displayedColumns[i]}} </th>
                                             <td mat-cell *matCellDef="let row">
-                                               <a (click)="launchModal(c)">{{row[c]}}</a>
+                                               <a (click)="launchModal(row)">{{row[c]}}</a>
                                             </td>
                                         </ng-container>
                                     </ng-container>

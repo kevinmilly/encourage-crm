@@ -249,7 +249,18 @@ $altTheme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
 .material-icons {
   font-size: 24px;
   font-family: "Material Icons", "Material Icons";
+  margin-top: 1.3vh;
+
   .mat-badge-content {
     font-family: "Roboto";
   }
+}
+.energy-icon { 
+  color:rgb(255, 167, 66);
+
+}
+
+.priority-icon { 
+  color:rgb(211, 60, 0);
+
 }

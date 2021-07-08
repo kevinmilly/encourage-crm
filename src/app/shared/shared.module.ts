@@ -39,7 +39,9 @@ const modules = [
     modules,
     FormComponent,
     ButtonComponent,
-    TableComponent
+    TableComponent,
+    EnumUserDisplayTranslatorPipe,
+    ContactDetailTranslatorPipe
   ]
 })
 export class SharedModule { }

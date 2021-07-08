@@ -3,19 +3,25 @@
   <div id="first" class="main-container__tab-content">
     <div class="header">
       <h2>{{ contact.contactName }}</h2>
-      <h3>{{contact.contactType</h3>
+      <h3  
+        [innerHTML]="+contact.contactType | 
+         contactDetailTranslator:contactTypeChoices[+contact.contactType].name">
+        </h3>
       <h4>{{ contact.description }}</h4>
     </div>
     <div class="details">
-      Email: {{ contact.email }} Phone: {{ contact.phone }} Birth Date:
-      {{ contact.birthDate }} Other Date: {{ contact.otherDate }} Context:
-      {{ contact.context }} Priority: {{ contact.priority }} Energy Level:
-      {{ contact.energyLevel }}
+      <div> Email: {{ contact.email }} </div>
+      <div>Phone: {{ contact.phone }}</div>
+      <div>Birth Date: {{ contact.birthdate }}</div>
+      <div>Other Date: {{ contact.otherDate }}</div>
+      <div>Context: {{ contact.context }}</div>
+      <div>Priority: {{ contact.priority }}</div>
+      <div>Energy Level: {{ contact.energyLevel }}</div>
     </div>
   </div>
   <div id="second" class="main-container__tab-content">
     <enccrm-form
-      [controlsToCreate]="addConceptControls"
+      [controlsToCreate]="editConceptControls"
       (onSubmit)="submit($event)"
     >
       <div horizontal>Edit {{ contact.contactName }}</div>

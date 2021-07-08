@@ -25,7 +25,7 @@ export class ContactDetailTranslatorPipe implements PipeTransform {
       'person_outline'
     ],
     energyLevel:'bolt',
-    priorities:'priority_high',
+    priority:'priority_high',
     context: [
       'house',
       'business',
@@ -42,15 +42,19 @@ export class ContactDetailTranslatorPipe implements PipeTransform {
     switch (valueDisplayType) {
 
       case ContactOptions[0]:
-        return `<b>${ContactType[value]}</b> <mat-icon>${this.imageOptions.contactType[value]}</mat-icon> `;
+        return `<b>${ContactType[value]}</b> <span class="material-icons">${this.imageOptions.contactType[value]}</span> `;
       case ContactOptions[1]:
-        return `<b>${EnergyLevel[value]}</b> <mat-icon *ngFor="let icon of ${valuesSpread}>${this.imageOptions.energyLevel}</mat-icon>`;
+        let energyHTML = ``;
+        for(let i = 0; i<value; i++) energyHTML += `<span class="material-icons energy-icon">${this.imageOptions.energyLevel}</span>`
+        return energyHTML;
       case ContactOptions[2]:
         return `<b>${Statuses[value]}</b>`;
       case ContactOptions[3]:
-        return `<b>${Priorities[value]}</b> <mat-icon *ngFor="let icon of ${valuesSpread}>${this.imageOptions.priorities}</mat-icon>`;
+        let priorityHTML = ``;
+        for(let i = 0; i<value; i++) priorityHTML += `<span class="material-icons priority-icon">${this.imageOptions.priority}</span>`
+        return priorityHTML;
       case ContactOptions[4]:
-        return `<b>${Context[value]}</b> <mat-icon>${this.imageOptions.context[value]}</mat-icon> `;
+        return `<b>${Context[value]}</b> <span class="material-icons">${this.imageOptions.context[value]}</span> `;
     }
     return '';
   }

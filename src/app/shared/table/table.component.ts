@@ -95,8 +95,8 @@ export class TableComponent implements OnInit {
     this.dataSource.sort = this.sort;
   } 
 
-  launchModal(propertyClicked:string) {
-    this.onZoom.emit(propertyClicked);
+  launchModal(entity:any) {
+      this.onZoom.emit(entity);
   }
 
   // rowClick(event:fromContacts.Contact) {
