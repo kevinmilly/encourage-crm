@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { Contact, ContactOptions, ContactType } from '@operations/contacts';
 
 import * as fromOperations from '@operations/index';
+import { noteActions } from '@operations/notes/state';
 import { Observable, of, Subscription } from 'rxjs';
 import { SubSink } from 'subsink';
 import * as fromContactState from '../../state/index';
@@ -126,12 +127,13 @@ export class ContactListComponent implements OnInit {
     this.data = this.dataSaved.filter(d => this.contactTypeFilter.value.includes(d.contactType));
   }
 
-  detailContact(event:any) {
+  detailContact(event:fromOperations.Contact) {
       const dialogRef = this.dialog.open(ContactDetailComponent, {
       width: '90%',
       height: '45rem',
       data: {
-        contact:event
+        contact:event,
+        notes:this.store.dispatch(noteActions.loadNotes({contactId: event.id}))
         
       }
     });
