@@ -23,7 +23,7 @@
                                     <ng-container matColumnDef="{{c}}">
                                         <th mat-header-cell  *matHeaderCellDef mat-sort-header> {{displayedColumns[i]}} </th>
                                         <td mat-cell *matCellDef="let row">
-                                           <a (click)="launchModal(c)"><span [innerHTML]="row[c] | contactDetailTranslator:c"></span></a>
+                                           <a class="table-link" (click)="launchModal(c)"><span [innerHTML]="row[c] | contactDetailTranslator:c"></span></a>
                                         </td>
                                     </ng-container>
                                 </ng-container>

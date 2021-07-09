@@ -11,15 +11,15 @@ export class EnumUserDisplayTranslatorPipe implements PipeTransform {
     switch (valueDisplayType) {
 
       case ContactOptions[0]:
-        return ContactType[value];
+        return `${ContactType[value]}`;
       case ContactOptions[1]:
-        return EnergyLevel[value]; 
+        return `<b> Energy Level: </b>${EnergyLevel[value]}` ;
       case ContactOptions[2]:
-        return Statuses[value];
+        return `${Statuses[value]}`;
       case ContactOptions[3]:
-        return Priorities[value];
+        return `<b> Priority: </b>${Priorities[value]}`;
       case ContactOptions[4]:
-        return Context[value];
+        return `<b> Know From: </b>${Context[value]}`;
     }
     return '';
   }

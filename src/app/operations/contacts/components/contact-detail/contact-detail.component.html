@@ -1,30 +1,32 @@
 <h1>Contact Details</h1>
-<enccrm-tab [labels]="['General Info', 'Notes']">
-  <div id="first" class="main-container__tab-content">
-    <div class="header">
-      <h2>{{ contact.contactName }}</h2>
-      <h3  
-        [innerHTML]="+contact.contactType | 
-         contactDetailTranslator:contactTypeChoices[+contact.contactType].name">
-        </h3>
-      <h4>{{ contact.description }}</h4>
-    </div>
-    <div class="details">
-      <div> Email: {{ contact.email }} </div>
-      <div>Phone: {{ contact.phone }}</div>
-      <div>Birth Date: {{ contact.birthdate }}</div>
-      <div>Other Date: {{ contact.otherDate }}</div>
-      <div>Context: {{ contact.context }}</div>
-      <div>Priority: {{ contact.priority }}</div>
-      <div>Energy Level: {{ contact.energyLevel }}</div>
-    </div>
-  </div>
-  <div id="second" class="main-container__tab-content">
-    <enccrm-form
-      [controlsToCreate]="editConceptControls"
-      (onSubmit)="submit($event)"
+  <enccrm-modal-card>
+      <div class="header">
+        <h2>{{ contact.contactName }}</h2>
+        <h3  
+          [innerHTML]="+contact.contactType | display_translator:'contactType'">
+          </h3>
+        <h4>{{ contact.description }}</h4>
+      </div>
+      <div class="details">
+        <div> <b>Email:</b>  {{ contact.email }} </div>
+        <div><b>Phone:</b> {{ contact.phone }}</div>
+        <div><b>Birth Date:</b> {{ contact.birthdate }}</div>
+        <div><b>Other Date:</b> {{ contact.otherDate }}</div>
+        <div [innerHTML]="+contact.context | display_translator:'context'"></div>
+        <div [innerHTML]="+contact.priority | display_translator:'priority'"></div>
+        <div [innerHTML]="+contact.energyLevel  | display_translator:'energyLevel'"></div>
+      </div>
+  </enccrm-modal-card>
+
+ 
+  <enccrm-modal-card>
+      <enccrm-form
+        [controlsToCreate]="editConceptControls"
+        (onSubmit)="submit($event)"
     >
-      <div horizontal>Edit {{ contact.contactName }}</div>
+       <div horizontal>Edit {{ contact.contactName }}</div>
     </enccrm-form>
-  </div>
-</enccrm-tab>
+  </enccrm-modal-card>
+   
+  
+

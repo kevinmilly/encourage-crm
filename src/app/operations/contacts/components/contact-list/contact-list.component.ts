@@ -129,7 +129,7 @@ export class ContactListComponent implements OnInit {
 
   detailContact(event:fromOperations.Contact) {
       const dialogRef = this.dialog.open(ContactDetailComponent, {
-      width: '90%',
+      width: '90vw',
       height: '45rem',
       data: {
         contact:event,

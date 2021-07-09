@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { NoteCardComponent } from './note-card/note-card.component';
+import { ModalCardComponent } from './modal-card/modal-card.component';
 import { GeneralCardComponent } from './general-card/general-card.component';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@shared/material/material.module';
@@ -8,7 +8,7 @@ import { MaterialModule } from '@shared/material/material.module';
 
 @NgModule({
   declarations: [
-    NoteCardComponent,
+    ModalCardComponent,
     GeneralCardComponent
   ],
   imports: [
@@ -16,7 +16,7 @@ import { MaterialModule } from '@shared/material/material.module';
     MaterialModule
   ],
   exports: [
-    NoteCardComponent,
+    ModalCardComponent,
     GeneralCardComponent
   ]
 })
