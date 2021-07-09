@@ -26,7 +26,7 @@ export class ContactDetailTranslatorPipe implements PipeTransform {
     ],
     energyLevel:'bolt',
     priority:'priority_high',
-    context: [
+    known: [
       'house',
       'business',
       'attractions',
@@ -38,8 +38,6 @@ export class ContactDetailTranslatorPipe implements PipeTransform {
   
 
   transform(value: number, valueDisplayType: string): string {
-    console.log(arguments);
-    
     switch (valueDisplayType) {
 
       case ContactOptions[0]:
@@ -55,7 +53,7 @@ export class ContactDetailTranslatorPipe implements PipeTransform {
         for(let i = 0; i<value; i++) priorityHTML += `<span class="material-icons priority-icon">${this.imageOptions.priority}</span>`
         return priorityHTML;
       case ContactOptions[4]:
-        return `<b>${Context[value]}</b> <span class="material-icons">${this.imageOptions.context[value]}</span> `;
+        return `<b>${Context[value]}</b> <span class="material-icons">${this.imageOptions.known[value]}</span> `;
     }
     return '';
   }

@@ -1,21 +1,36 @@
 <h1>Contact Details</h1>
-  <enccrm-modal-card>
+  <enccrm-modal-card *ngIf="editConceptControls.length > 0">
       <div class="header">
+        <div class="header__edit-choice">
+          <a [style.color]="'blue'" (click)="editOpen = false" *ngIf="editOpen; else editingHeader">Stop Editing?</a>
+          <ng-template #editingHeader> 
+            <a [style.color]="'blue'" (click)="editOpen = true">Want to Edit?</a>
+          </ng-template>
+        </div>
         <h2>{{ contact.contactName }}</h2>
         <h3  
           [innerHTML]="+contact.contactType | display_translator:'contactType'">
           </h3>
         <h4>{{ contact.description }}</h4>
       </div>
-      <div class="details">
+      <div class="details" *ngIf="!editOpen; else editing">
         <div> <b>Email:</b>  {{ contact.email }} </div>
         <div><b>Phone:</b> {{ contact.phone }}</div>
-        <div><b>Birth Date:</b> {{ contact.birthdate }}</div>
+        <div><b>Birth Date:</b> {{ contact.birthDate }}</div>
         <div><b>Other Date:</b> {{ contact.otherDate }}</div>
-        <div [innerHTML]="+contact.context | display_translator:'context'"></div>
+        <div [innerHTML]="+contact.known | display_translator:'known'"></div>
         <div [innerHTML]="+contact.priority | display_translator:'priority'"></div>
         <div [innerHTML]="+contact.energyLevel  | display_translator:'energyLevel'"></div>
       </div>
+
+      <ng-template #editing>
+            <enccrm-form
+              [controlsToCreate]="editConceptControls"
+              (onSubmit)="submit($event)"
+        >
+          <div horizontal>Edit {{ contact.contactName }}</div>
+        </enccrm-form>
+      </ng-template>
   </enccrm-modal-card>
 
  

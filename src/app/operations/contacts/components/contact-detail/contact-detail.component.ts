@@ -14,6 +14,7 @@ import { take } from 'rxjs/operators';
 })
 export class ContactDetailComponent implements OnInit {
 
+  editOpen=false;
   contact!: Contact;
   notes:Note[] = [];
 
@@ -73,8 +74,6 @@ export class ContactDetailComponent implements OnInit {
   ngOnInit(): void {
     console.dir(this.data)
     this.contact = this.data.contact;
-    this.data.notes.pipe(take(1)).subscribe( notes => this.notes = notes);
-
     this.editConceptControls = [
       {
         displayName: "Name",
@@ -120,7 +119,7 @@ export class ContactDetailComponent implements OnInit {
         controlName: "birthDate",
         type: "date",
         required: false,
-        default: this.contact.birthdate,
+        default: this.contact.birthDate,
       },
       {
         displayName: "Other Date",
@@ -151,6 +150,8 @@ export class ContactDetailComponent implements OnInit {
         default: this.contact.description,
       }
     ];
+    this.data.notes.pipe(take(1)).subscribe( notes => this.notes = notes);
+
   }
 
   submit(event:any) {

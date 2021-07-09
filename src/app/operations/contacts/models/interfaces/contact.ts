@@ -10,7 +10,7 @@ export interface Contact {
     energyLevel: string; //choices
     context: string; //choices
     age: number;
-    birthdate: string;
+    birthDate: string;
     otherDate: string;
     known: number;
     company: string;
