@@ -22,6 +22,7 @@ export const noteReducer = createReducer(
     initialNoteState, 
     //load
     on(fromNoteAction.noteActions.loadNotesSuccess, (state,action) => {
+        console.log({action});
            return noteAdapter.setAll(action.notes,{
                                             ...state,
                                             loaded:true,

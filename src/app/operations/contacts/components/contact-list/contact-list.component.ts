@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 import { Contact, ContactOptions, ContactType } from '@operations/contacts';
 
 import * as fromOperations from '@operations/index';
-import { noteActions } from '@operations/notes/state';
+import { noteActions, selectNotes } from '@operations/notes/state';
 import { Observable, of, Subscription } from 'rxjs';
 import { SubSink } from 'subsink';
 import * as fromContactState from '../../state/index';
@@ -115,7 +115,7 @@ export class ContactListComponent implements OnInit {
     this.store.dispatch(fromContactState.contactActions.loadContacts());
     this.data$ = this.store.select(fromContactState.selectContacts);
     // this.store.pipe(select(fromContactState.selectContacts))
-
+ 
     this.subs.sink = this.data$.subscribe(data => {
       this.data = data;
     });
@@ -128,14 +128,15 @@ export class ContactListComponent implements OnInit {
   }
 
   detailContact(event:fromOperations.Contact) {
+    this.store.dispatch(noteActions.loadNotes({contactId: event.id}));
       const dialogRef = this.dialog.open(ContactDetailComponent, {
       width: '90vw',
       height: '45rem',
       data: {
         contact:event,
-        notes:this.store.dispatch(noteActions.loadNotes({contactId: event.id}))
+        notes:this.store.select(selectNotes)
         
-      }
+      } 
     });
 
     dialogRef.afterClosed().subscribe(result => {

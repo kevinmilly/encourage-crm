@@ -9,12 +9,13 @@ import { Note } from '@operations/notes/models/interfaces/note';
 import { EMPTY, of } from 'rxjs';
 
 
-@Injectable()
+@Injectable() 
 export class NoteEffects {
 
 
-  loadNotes$ = createEffect(() =>
-    this.actions$.pipe(
+  loadNotes$ = createEffect(() => {
+    console.log("Triggered Notes Effect");
+    return this.actions$.pipe(
       ofType(fromNotesAction.noteActions.loadNotes),
       concatMap((action) => {
         return this.backend.getNotesByContact(action.contactId).pipe(
@@ -23,7 +24,7 @@ export class NoteEffects {
       }),
       catchError(error => of(fromNotesAction.noteActions.loadNotesFail({ error })))
     )
-  );
+  });
 
   addNotes$ = createEffect(() =>
     this.actions$.pipe(
