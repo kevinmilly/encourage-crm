@@ -6,7 +6,7 @@ import { NotesRoutingModule } from './notes.routing.module';
 import { StoreModule } from '@ngrx/store';
 
 
-
+ 
 @NgModule({
   declarations: [
     fromNotes.AddNoteComponent,
@@ -16,7 +16,7 @@ import { StoreModule } from '@ngrx/store';
   imports: [
    SharedModule,
    NotesRoutingModule,
-   StoreModule.forFeature("notesReducer", fromNotesStore.noteReducer)
+   StoreModule.forFeature("notesState", fromNotesStore.noteReducer)
   ]
 })
 export class NotesModule { }

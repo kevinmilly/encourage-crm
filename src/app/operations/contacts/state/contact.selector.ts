@@ -9,4 +9,4 @@ export const selectContactState = createFeatureSelector<ContactState>(
 export const selectContacts = createSelector(
     selectContactState, 
     selectAll
-); 
+);  

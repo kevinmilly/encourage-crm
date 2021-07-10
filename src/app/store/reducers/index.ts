@@ -6,10 +6,10 @@ import * as fromOperation from "../../operations/index";
 
 export interface AppState {
     contactState: fromOperation.ContactState,
-    noteState: NoteState
+    notesState: NoteState
 }
 
 export const reducers:ActionReducerMap<AppState> = {
   contactState: fromOperation.contactReducer,
-  noteState: noteReducer
-}
+  notesState: noteReducer
+}  

@@ -32,7 +32,7 @@ export const noteReducer = createReducer(
     on(fromNoteAction.noteActions.loadNotesFail, (state,action) => {
         return {
             ...state,
-            loaded:true,
+            loaded:true, 
             loading:false,
             error: action.error
         }
