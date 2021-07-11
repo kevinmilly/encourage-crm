@@ -30,7 +30,7 @@ import { reducers } from './store/reducers';
       autoPause: true, // Pauses recording actions and state changes when the extension window is not open
     }),
     BrowserAnimationsModule,
-    AngularFirestoreModule,
+    AngularFirestoreModule, 
     AngularFireModule.initializeApp(environment.firebaseConfig),
     
   ],
