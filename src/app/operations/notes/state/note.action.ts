@@ -25,8 +25,8 @@ export enum NotesActionTypes {
 
 export const noteActions = {
     loadNotes: createAction(
-        NotesActionTypes.LOAD_NOTES,
-        props<{ contactId: string }>()
+        NotesActionTypes.LOAD_NOTES
+        // props<{ contactId: string }>()
     ),
     loadNotesFail: createAction(
         NotesActionTypes.LOAD_NOTES_FAIL,

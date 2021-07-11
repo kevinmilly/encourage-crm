@@ -28,10 +28,11 @@ export class BackendService {
       .valueChanges();
   }
 
-  getNotesByContact(contactId: string): Observable<Note[]> {
+  getNotesByContact(): Observable<Note[]> { 
+    console.log(`in notes backend`);
     return this.firestore.collection<Note>(`user/${this.auth.user.uid}/Notes`)
       .valueChanges()
-      .pipe(map(notes => notes.filter(note => note.contact_id === contactId)));
+      // .pipe(map(notes => notes.filter(note => note.contact_id === contactId)));
   }
 
   getCommunications(): Observable<Communication[]> {

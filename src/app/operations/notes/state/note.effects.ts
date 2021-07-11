@@ -9,25 +9,26 @@ import { Note } from '@operations/notes/models/interfaces/note';
 import { EMPTY, of } from 'rxjs';
 
 
-@Injectable() 
+@Injectable()  
 export class NoteEffects {
 
 
-  loadNotes$ = createEffect(() => {
-    console.log("Triggered Notes Effect");
-    return this.actions$.pipe(
+  loadNotes$ = createEffect(() => 
+  
+    this.actions$.pipe(
       ofType(fromNotesAction.noteActions.loadNotes),
-      concatMap((action) => {
-        return this.backend.getNotesByContact(action.contactId).pipe(
+      concatMap(() => {
+        console.log("load Notes");
+        return this.backend.getNotesByContact().pipe(
           map((notes: Note[]) => fromNotesAction.noteActions.loadNotesSuccess({ notes }))
         )
       }),
       catchError(error => of(fromNotesAction.noteActions.loadNotesFail({ error })))
     )
-  });
+  );
 
   addNotes$ = createEffect(() =>
-    this.actions$.pipe(
+    this.actions$.pipe( 
       ofType(fromNotesAction.noteActions.addNote),
       concatMap(action => {
         return this.backend.addNote(action.note).pipe(

@@ -6,8 +6,10 @@ import { Store } from '@ngrx/store';
 import { Contact, ContactOptions, ContactType } from '@operations/contacts';
 
 import * as fromOperations from '@operations/index';
+import { Note } from '@operations/notes';
 import { noteActions, selectNotes } from '@operations/notes/state';
 import { Observable, of, Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { SubSink } from 'subsink';
 import * as fromContactState from '../../state/index';
 import { ContactDetailComponent } from '../contact-detail/contact-detail.component';
@@ -47,6 +49,7 @@ export class ContactListComponent implements OnInit {
   dataSub: Subscription = new Subscription;
   data:Contact[] = [];
   dataSaved:Contact[] = []; 
+  notes:Note[] = [];
 
   columns:string[] = [
     'contactName',
@@ -98,7 +101,8 @@ export class ContactListComponent implements OnInit {
   pipeOptions: string[] = [];
   contactTypeFilter: FormControl = new FormControl;
 
-  data$:Observable<fromOperations.Contact[]> | undefined;
+  contacts$:Observable<fromOperations.Contact[]> | undefined;
+  notes$:Observable<fromOperations.Note[]> | undefined;
 
   constructor(private store:Store, public dialog: MatDialog) { }
 
@@ -113,10 +117,13 @@ export class ContactListComponent implements OnInit {
     ]
 
     this.store.dispatch(fromContactState.contactActions.loadContacts());
-    this.data$ = this.store.select(fromContactState.selectContacts);
-    // this.store.pipe(select(fromContactState.selectContacts))
- 
-    this.subs.sink = this.data$.subscribe(data => {
+    this.store.dispatch(noteActions.loadNotes());
+    this.contacts$ = this.store.select(fromContactState.selectContacts);
+    this.notes$ = this.store.select(selectNotes)
+
+    this.subs.sink = this.notes$.subscribe(n => console.log(n));
+
+    this.subs.sink = this.contacts$.subscribe(data => {
       this.data = data;
     });
     this.subs.sink = this.contactTypeFilter.valueChanges.subscribe(() => this.contactFilter());
@@ -128,13 +135,14 @@ export class ContactListComponent implements OnInit {
   }
 
   detailContact(event:fromOperations.Contact) {
-    this.store.dispatch(noteActions.loadNotes({contactId: event.id}));
+   
       const dialogRef = this.dialog.open(ContactDetailComponent, {
       width: '90vw',
       height: '45rem',
-      data: {
+      data: { 
         contact:event,
-        notes:this.store.select(selectNotes)
+        // notes:this.notes$?.pipe(map(notes => notes.filter(note => note.contact_id === event.id)))
+        notes:this.notes$
         
       } 
     });
@@ -152,6 +160,10 @@ export class ContactListComponent implements OnInit {
 
   deleteContact(event:fromOperations.Contact) {
     console.log("Need to implement");
+  }
+
+  ngOnDestroy() {
+    this.subs.unsubscribe()
   }
 
 

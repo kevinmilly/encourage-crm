@@ -25,7 +25,6 @@ export const contactReducer = createReducer(
     initialContactState, 
     //load
     on(fromContactAction.contactActions.loadContactSuccess, (state,action) => {
-        console.log({action});
            return contactAdapter.setAll(action.contacts,{
                                             ...state,
                                             loaded:true,
