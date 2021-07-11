@@ -3,7 +3,7 @@ import { createReducer, on } from '@ngrx/store';
 import * as fromOperations from '@operations/index';
 import * as fromNoteAction from './note.action';
 
-
+export const notesFeatureKey = 'notesState';
 export interface NoteState extends EntityState<fromOperations.Note> {
     loaded: boolean;
     loading: boolean;

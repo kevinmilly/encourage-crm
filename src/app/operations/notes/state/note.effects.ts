@@ -13,9 +13,9 @@ import { EMPTY, of } from 'rxjs';
 export class NoteEffects {
 
 
-  loadNotes$ = createEffect(() => 
-  
-    this.actions$.pipe(
+  loadNotes$ = createEffect(() => {
+    console.log("in load notes effect");
+   return this.actions$.pipe(
       ofType(fromNotesAction.noteActions.loadNotes),
       concatMap(() => {
         console.log("load Notes");
@@ -25,7 +25,7 @@ export class NoteEffects {
       }),
       catchError(error => of(fromNotesAction.noteActions.loadNotesFail({ error })))
     )
-  );
+  });
 
   addNotes$ = createEffect(() =>
     this.actions$.pipe( 
