@@ -10,7 +10,7 @@ import { SubSink } from 'subsink';
 import * as fromContactState from '../../state/index';
 import { ContactDetailComponent } from '../contact-detail/contact-detail.component';
 
-
+ 
 @Component({
   selector: 'enccrm-contact-list',
   template: `
@@ -34,7 +34,7 @@ import { ContactDetailComponent } from '../contact-detail/contact-detail.compone
               ></enccrm-table>
               <ng-template #noData><h1>No Data Yet</h1></ng-template>
             </enccrm-general-card>
-            </div>
+            </div> 
   `,
   styleUrls: ['./contact-list.component.scss']
 })

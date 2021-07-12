@@ -3,6 +3,7 @@ export interface Task {
     taskName: string;
     taskType: string;
     priority: string;
-    content: string;
+    description: string;
     relatedContactId:string;
 }
+ 

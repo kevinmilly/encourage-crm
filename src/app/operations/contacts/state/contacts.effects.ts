@@ -12,7 +12,7 @@ import { EMPTY, of } from 'rxjs';
 @Injectable()
 export class ContactEffects {
   
- 
+  
 loadContacts$ = createEffect(() => 
 
     this.actions$.pipe( 

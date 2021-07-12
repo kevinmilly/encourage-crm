@@ -36,7 +36,7 @@ export const contactReducer = createReducer(
             ...state,
             loaded:true,
             loading:false,
-            error: action.error
+            error: action.error 
         }
     }),
 

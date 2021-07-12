@@ -3,7 +3,7 @@ export * from './models/enums/context.enum';
 export * from './models/enums/energy-level.enum';
 export * from './models/enums/priorities.enum';
 export * from './models/enums/statuses.enum';
-export * from './models/enums/contact-options.enum';
+export * from './models/enums/contact-options';
 
 export * from './models/interfaces/contact';
 
