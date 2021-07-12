@@ -1,13 +1,9 @@
 import { Inject } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Store } from '@ngrx/store';
 import { ContactType, Context, EnergyLevel, Priorities, Statuses } from '@operations/contacts';
-import { Note, Contact } from '@operations/index';
-import { noteActions, selectNotes } from '@operations/notes/state';
+import { Contact } from '@operations/index';
 import { IControlModel } from '@shared/models/control.model';
-import { Observable } from 'rxjs';
-import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'enccrm-contact-detail',
@@ -18,7 +14,6 @@ export class ContactDetailComponent implements OnInit {
 
   editOpen=false;
   contact!: Contact;
-  notes:Note[] = [];
 
   contactTypeChoices = [
     { name: ContactType[0], value: 0 },
@@ -69,9 +64,8 @@ export class ContactDetailComponent implements OnInit {
   editConceptControls: IControlModel[] = [];
 
   constructor (
-    @Inject(MAT_DIALOG_DATA) public data: { contact:Contact, notes: Observable<Note[]> },
-    private dialogRef: MatDialogRef<ContactDetailComponent>,
-    private store: Store
+    @Inject(MAT_DIALOG_DATA) public data: { contact:Contact},
+    private dialogRef: MatDialogRef<ContactDetailComponent>
   ) { }
 
   ngOnInit(): void {
@@ -154,10 +148,6 @@ export class ContactDetailComponent implements OnInit {
         default: this.contact.description,
       }
     ];
-    this.data.notes.subscribe( notes => {
-      this.notes = notes;
-      console.log({notes});
-    });
 
   }
 

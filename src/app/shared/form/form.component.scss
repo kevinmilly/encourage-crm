@@ -42,6 +42,23 @@
       }
     }
 
+    .big {
+      ::ng-deep .mat-form-field {
+        height: 5vmax;
+        width: 10vmax;
+        font-size: 1vmax;
+      
+        .textarea {
+          width: 10vmax;
+     
+        }
+        .mat-label {
+          font-size: 1.5vmax;
+        }
+  
+      }
+    }
+
   }
 
   &__vert-content {

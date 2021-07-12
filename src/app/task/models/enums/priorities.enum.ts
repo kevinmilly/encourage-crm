@@ -4,5 +4,4 @@ export enum Priorities {
     Medium,
     High,
     Critical
-
 }

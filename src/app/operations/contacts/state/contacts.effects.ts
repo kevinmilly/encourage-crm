@@ -12,13 +12,12 @@ import { EMPTY, of } from 'rxjs';
 @Injectable()
 export class ContactEffects {
   
-
+ 
 loadContacts$ = createEffect(() => 
 
     this.actions$.pipe( 
     ofType(fromContactAction.contactActions.loadContacts),
     concatMap(() => {
-         console.log("load Contacts"); 
       return this.backend.getContacts().pipe(
         map((contacts:Contact[]) => fromContactAction.contactActions.loadContactSuccess({contacts}))
       )
