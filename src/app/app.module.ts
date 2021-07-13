@@ -12,14 +12,13 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers } from './store/reducers';
-import { TaskDetailComponent } from './operations/task/components/task-detail/task-detail.component';
+
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    TaskDetailComponent
+    AppComponent
   ],
   imports: [
     CoreModule,

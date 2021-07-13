@@ -26,8 +26,15 @@ export const reducer = createReducer(
   initialTaskState,
 
   on(TaskActions.taskActions.loadTasks, state => state),
-  on(TaskActions.taskActions.loadTasksSuccess, (state, action) => state),
-  on(TaskActions.taskActions.loadTasksFailure, (state, action) => state),
+  on(TaskActions.taskActions.loadTaskSuccess, (state, action) => state), 
+  on(TaskActions.taskActions.loadTasksFail, (state, action) => state),
+
+  on(TaskActions.taskActions.addTaskSuccess, (state,action) => {
+    return taskAdapter.addOne(action.task,state)
+  }),
+  on(TaskActions.taskActions.addTaskFail, (state,action) => {
+      return {...state,error:action.error}
+  }),
 
 );
 

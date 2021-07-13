@@ -171,9 +171,9 @@
                       let option of controlsToCreate[i].autoCompleteOptions
                         | async
                     "
-                    [value]="option"
+                    [value]="option.value"
                   >
-                    {{ option }}
+                    {{ option.display }}
                   </mat-option>
                 </mat-autocomplete>
                 <mat-error *ngIf="indexedCreatedControls(i).invalid">
@@ -334,10 +334,10 @@
                   *ngFor="
                     let option of controlsToCreate[i].autoCompleteOptions
                       | async
-                  "
-                  [value]="option"
+                  " 
+                  [value]="option.value"
                 >
-                  {{ option }}
+                  {{ option.name }}
                 </mat-option>
               </mat-autocomplete>
               <mat-error *ngIf="indexedCreatedControls(i).invalid">

@@ -9,7 +9,7 @@
         </div>
         <h2>{{ contact.contactName }}</h2>
         <h3  
-          [innerHTML]="+contact.contactType | display_translator:'contactType'">
+          [innerHTML]="+contact.contactType | display_translator:'contactType':'contact'">
           </h3>
         <h4>{{ contact.description }}</h4>
       </div>
@@ -18,9 +18,9 @@
         <div><b>Phone:</b> {{ contact.phone }}</div>
         <div><b>Birth Date:</b> {{ contact.birthDate }}</div>
         <div><b>Other Date:</b> {{ contact.otherDate }}</div>
-        <div [innerHTML]="+contact.known | display_translator:'known'"></div>
-        <div [innerHTML]="+contact.priority | display_translator:'priority'"></div>
-        <div [innerHTML]="+contact.energyLevel  | display_translator:'energyLevel'"></div>
+        <div [innerHTML]="+contact.known | display_translator:'known':'contact'"></div>
+        <div [innerHTML]="+contact.priority | display_translator:'priority':'contact'"></div>
+        <div [innerHTML]="+contact.energyLevel  | display_translator:'energyLevel':'contact'"></div>
       </div>
 
       <ng-template #editing>
@@ -31,6 +31,13 @@
           <div horizontal>Edit {{ contact.contactName }}</div>
         </enccrm-form>
       </ng-template>
+  </enccrm-modal-card>
+
+  <enccrm-modal-card>
+      <div *ngFor="let task of tasks$ | async">
+        <span>{{task.taskName}}</span>
+        <span>{{task.description}}</span>
+      </div>
   </enccrm-modal-card>
 
   

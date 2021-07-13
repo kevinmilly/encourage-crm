@@ -34,7 +34,7 @@ export const contactReducer = createReducer(
     on(fromContactAction.contactActions.loadContactsFail, (state,action) => {
         return {
             ...state,
-            loaded:true,
+            loaded:true, 
             loading:false,
             error: action.error 
         }

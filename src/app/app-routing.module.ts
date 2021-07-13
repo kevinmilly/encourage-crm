@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'login', component:LoginComponent },
   { path: 'analytics', loadChildren: () => import('./analytics/analytics.module').then(m => m.AnalyticsModule), canActivate: [AuthGuard] },
   { path: 'contacts', loadChildren: () => import('./operations/contacts/contacts.module').then(m => m.ContactsModule), canActivate: [AuthGuard] },
+  { path: 'task', loadChildren: () => import('./operations/task/task.module').then(m => m.TaskModule), canActivate: [AuthGuard] },
 ];
 
 @NgModule({

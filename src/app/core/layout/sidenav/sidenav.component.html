@@ -15,7 +15,7 @@
         <mat-nav-list style="margin-left: 1vw">
           <mat-list-item>
             <a
-              [routerLink]="['contact-list']"
+              [routerLink]="['contacts']"
               routerLinkActive="router-link-active"
             >
               <span class="link-text">Contact List</span>
@@ -24,14 +24,38 @@
    
           <mat-list-item>
             <a
-              [routerLink]="['contact-add']"
+              [routerLink]="['contacts/contact-add']"
               routerLinkActive="router-link-active"
             >
               <span class="link-text">Add Contact</span>
             </a>
           </mat-list-item>
         </mat-nav-list>
-        <mat-list-item>
+          <!-----Tasks-->
+          <mat-list-item>
+            <mat-icon>add_task</mat-icon>
+            <span class="links__header"> Tasks </span>
+          </mat-list-item>
+          <mat-nav-list style="margin-left: 1vw">
+            <mat-list-item>
+              <a
+                [routerLink]="['task']"
+                routerLinkActive="router-link-active"
+              >
+                <span class="link-text">Task List</span>
+              </a>
+            </mat-list-item>
+     
+            <mat-list-item>
+              <a
+                [routerLink]="['task/task-add']"
+                routerLinkActive="router-link-active"
+              >
+                <span class="link-text">Add Task</span>
+              </a>
+            </mat-list-item>
+          </mat-nav-list>
+          <mat-list-item>
           <mat-icon>leaderboard</mat-icon>
           <span class="links__header"> Metrics </span>
         </mat-list-item>

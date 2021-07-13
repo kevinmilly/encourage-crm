@@ -5,16 +5,23 @@ import * as fromTask from './state/reducers/task.reducer';
 import { TaskEffects } from './state/effects/task.effects';
 import { TasksComponent } from './components/tasks/tasks.component';
 import { SharedModule } from "@shared/shared.module";
+import { TaskRoutingModule } from "./task.routing.module";
+import { TaskDetailComponent } from "./components/task-detail/task-detail.component";
+import { AddTaskComponent } from "./components/add-task/add-task.component";
 
 @NgModule({
     declarations:[
-    TasksComponent
+    TasksComponent,
+    TaskDetailComponent,
+    AddTaskComponent
   ],
     imports:[
         StoreModule.forFeature(fromTask.taskFeatureKey, fromTask.reducer), EffectsModule.forFeature([TaskEffects]),
-        SharedModule
+        SharedModule,
+        TaskRoutingModule
     ],
-    exports:[]
+    exports:[],
+    entryComponents:[TaskDetailComponent]
 })
 export class TaskModule {
 

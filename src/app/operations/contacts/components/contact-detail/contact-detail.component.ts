@@ -1,9 +1,13 @@
 import { Inject } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
 import { ContactType, Context, EnergyLevel, Priorities, Statuses } from '@operations/contacts';
-import { Contact } from '@operations/index';
+import { Contact, Task } from '@operations/index';
+import { selectTasks } from '@operations/task/state/selectors/task.selectors';
 import { IControlModel } from '@shared/models/control.model';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'enccrm-contact-detail',
@@ -14,6 +18,8 @@ export class ContactDetailComponent implements OnInit {
 
   editOpen=false;
   contact!: Contact;
+  tasks$:Observable<Task[]> | undefined;
+
 
   contactTypeChoices = [
     { name: ContactType[0], value: 0 },
@@ -41,7 +47,7 @@ export class ContactDetailComponent implements OnInit {
     { name: Context[5], value: 5 },
   ]
   energyLevels = [
-    { name: EnergyLevel[0], value: 0 },
+    { name: EnergyLevel[0], value: 0 }, 
     { name: EnergyLevel[1], value: 1 },
     { name: EnergyLevel[2], value: 2 },
     { name: EnergyLevel[3], value: 3 },
@@ -65,15 +71,16 @@ export class ContactDetailComponent implements OnInit {
 
   constructor (
     @Inject(MAT_DIALOG_DATA) public data: { contact:Contact},
-    private dialogRef: MatDialogRef<ContactDetailComponent>
+    private dialogRef: MatDialogRef<ContactDetailComponent>,
+    private store: Store
   ) { }
 
   ngOnInit(): void {
     this.contact = this.data.contact;
-  
-
+    this.tasks$ = this.store.select(selectTasks).pipe(map((tasks:Task[]) => tasks.filter(task => task.relatedContactId === this.contact.id)));
+    
     this.editConceptControls = [
-      {
+      { 
         displayName: "Name",
         controlName: "contactName",
         type: "string",

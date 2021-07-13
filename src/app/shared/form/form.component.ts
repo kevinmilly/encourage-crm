@@ -30,9 +30,9 @@ export class FormComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.dir(this.controlsToCreate);
+    console.dir(this.controlsToCreate);   
     this.generateControls(this.controlsToCreate);
-
+    
 
   }
 

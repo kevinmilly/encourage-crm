@@ -8,6 +8,7 @@ import { Observable, of, Subscription } from 'rxjs';
 import { SubSink } from 'subsink';
 import * as fromTaskState from '../../state/index';
 import { TaskDetailComponent } from '../task-detail/task-detail.component';
+import { selectTasks } from '@operations/task/state/selectors/task.selectors';
 
 @Component({
   selector: 'enccrm-tasks',
@@ -18,8 +19,8 @@ import { TaskDetailComponent } from '../task-detail/task-detail.component';
     <enccrm-general-card> 
     <mat-form-field appearance="fill">
       <mat-label>Task Types</mat-label>
-      <mat-select [formControl]="contactTypeFilter" multiple>
-        <mat-option *ngFor="let type of contactTypes" [value]="type">{{type}}</mat-option>
+      <mat-select [formControl]="taskTypeFilter" multiple>
+        <mat-option *ngFor="let type of taskTypes" [value]="type">{{type}}</mat-option>
       </mat-select>
     </mat-form-field>
       <enccrm-table
@@ -28,7 +29,7 @@ import { TaskDetailComponent } from '../task-detail/task-detail.component';
         [columns]="columns"
         [displayNames]="displayNames"
         [pipesNeeded]="pipeOptions"
-        [linksNeeded]="['contactName']" 
+        [linksNeeded]="['taskName']" 
         (onZoom)="detailTask($event)"
       ></enccrm-table>
       <ng-template #noData><h1>No Data Yet</h1></ng-template>
@@ -84,7 +85,7 @@ export class TasksComponent implements OnInit {
     ]
 
     this.store.dispatch(fromTaskState.taskActions.loadTasks());
-    this.tasks$ = this.store.select(fromTaskState.selectTasks);
+    this.tasks$ = this.store.select(selectTasks);
 
     this.subs.sink = this.tasks$.subscribe(data => {
       this.data = data;
