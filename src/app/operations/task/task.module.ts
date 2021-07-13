@@ -16,7 +16,7 @@ import { AddTaskComponent } from "./components/add-task/add-task.component";
     AddTaskComponent
   ],
     imports:[
-        StoreModule.forFeature(fromTask.taskFeatureKey, fromTask.reducer), EffectsModule.forFeature([TaskEffects]),
+        StoreModule.forFeature(fromTask.taskFeatureKey, fromTask.taskReducer), EffectsModule.forFeature([TaskEffects]),
         SharedModule,
         TaskRoutingModule
     ],

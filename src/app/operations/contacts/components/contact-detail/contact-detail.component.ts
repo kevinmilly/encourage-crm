@@ -70,14 +70,14 @@ export class ContactDetailComponent implements OnInit {
   editConceptControls: IControlModel[] = [];
 
   constructor (
-    @Inject(MAT_DIALOG_DATA) public data: { contact:Contact},
+    @Inject(MAT_DIALOG_DATA) public data: { contact:Contact, tasks:Observable<Task[]>},
     private dialogRef: MatDialogRef<ContactDetailComponent>,
     private store: Store
   ) { }
 
   ngOnInit(): void {
     this.contact = this.data.contact;
-    this.tasks$ = this.store.select(selectTasks).pipe(map((tasks:Task[]) => tasks.filter(task => task.relatedContactId === this.contact.id)));
+    this.tasks$ = this.data.tasks
     
     this.editConceptControls = [
       { 

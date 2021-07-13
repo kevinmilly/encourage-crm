@@ -5,7 +5,11 @@ import { Store } from '@ngrx/store';
 import { Contact, ContactOptions, ContactType } from '@operations/contacts';
 
 import * as fromOperations from '@operations/index';
+import { Task } from '@operations/index';
+import { taskActions } from '@operations/task/state';
+import { selectTasks } from '@operations/task/state/selectors/task.selectors';
 import { Observable, of, Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { SubSink } from 'subsink';
 import * as fromContactState from '../../state/index';
 import { ContactDetailComponent } from '../contact-detail/contact-detail.component';
@@ -112,6 +116,8 @@ export class ContactListComponent implements OnInit {
     ]
 
     this.store.dispatch(fromContactState.contactActions.loadContacts());
+    this.store.dispatch(taskActions.loadTasks());
+    
     this.contacts$ = this.store.select(fromContactState.selectContacts);
 
     this.subs.sink = this.contacts$.subscribe(data => {
@@ -126,12 +132,14 @@ export class ContactListComponent implements OnInit {
   }
 
   detailContact(event:fromOperations.Contact) {
-   
+     
+
       const dialogRef = this.dialog.open(ContactDetailComponent, {
       width: '90vw',
       height: '45rem',
       data: { 
-        contact:event
+        contact:event,
+        tasks: this.store.select(selectTasks).pipe(map((tasks:Task[]) => tasks.filter(task => task.contact.value === event.id)))
         
       } 
     });

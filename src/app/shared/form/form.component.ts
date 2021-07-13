@@ -122,7 +122,7 @@ export class FormComponent implements OnInit {
       }
      
     });
-    console.dir(this.submission);
+
     this.onSubmit.emit(this.submission);
     // this.controlsCreated.forEach((control, i) => {
     //   control.setValue(this.controlsToCreate[i].default)

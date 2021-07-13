@@ -160,7 +160,6 @@
                 <mat-label>{{ controlsToCreate[i].displayName }}</mat-label>
                 <input
                   type="text"
-                  aria-label="Resource"
                   matInput
                   [formControl]="indexedCreatedControls(i)"
                   [matAutocomplete]="auto"
@@ -171,7 +170,7 @@
                       let option of controlsToCreate[i].autoCompleteOptions
                         | async
                     "
-                    [value]="option.value"
+                    [value]="option"
                   >
                     {{ option.display }}
                   </mat-option>

@@ -89,7 +89,7 @@ export class AddTaskComponent {
                 controlName: "contact",
                 type: "autocomplete-select",
                 required: true, 
-                default: '',
+                default: '', 
                 autoCompleteOptions:this.contacts$.pipe(map(contacts => contacts.map(contact => ({value:contact.id, display:contact.contactName}))))
             }
           ];

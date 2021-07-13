@@ -4,6 +4,7 @@ export interface Task {
     taskType: string;
     priority: string;
     description: string;
-    relatedContactId:string;
+    // contact: {id:string, name:string}
+    contact:any
 }
  

@@ -43,8 +43,8 @@ export class TasksComponent implements OnInit {
   private subs = new SubSink();
 
   dataSub: Subscription = new Subscription;
-  data:Task[] = [];
-  dataSaved:Task[] = []; 
+  data:any[] = [];
+  dataSaved:any[] = []; 
 
 
   columns:string[] = [
@@ -83,12 +83,15 @@ export class TasksComponent implements OnInit {
       TaskOptions[1],
       TaskOptions[2]
     ]
-
+    
     this.store.dispatch(fromTaskState.taskActions.loadTasks());
     this.tasks$ = this.store.select(selectTasks);
+    
 
     this.subs.sink = this.tasks$.subscribe(data => {
-      this.data = data;
+      console.dir(data);
+      this.data = data.map(d => ({...d, contact: d.contact.display}));
+      console.dir(this.data);
     });
     this.subs.sink = this.taskTypeFilter.valueChanges.subscribe(() => this.taskFilter());
 

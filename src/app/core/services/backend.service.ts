@@ -55,6 +55,7 @@ export class BackendService {
 
 
   getTasks(): Observable<Task[]> {
+   
     return this.firestore.collection<Task>(`user/${this.auth.user.uid}/Tasks`)
       .valueChanges();
   }

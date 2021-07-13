@@ -22,12 +22,24 @@ const initialTaskState = taskAdapter.getInitialState({
 })
 
 
-export const reducer = createReducer(
+export const taskReducer = createReducer(
   initialTaskState,
 
-  on(TaskActions.taskActions.loadTasks, state => state),
-  on(TaskActions.taskActions.loadTaskSuccess, (state, action) => state), 
-  on(TaskActions.taskActions.loadTasksFail, (state, action) => state),
+  on(TaskActions.taskActions.loadTaskSuccess,  (state,action) => {
+    return taskAdapter.setAll(action.tasks,{
+                                     ...state,
+                                     loaded:true,
+                                     loading:false
+                                     });
+}), 
+  on(TaskActions.taskActions.loadTasksFail, (state,action) => {
+    return {
+        ...state,
+        loaded:true, 
+        loading:false,
+        error: action.error 
+    }
+}),
 
   on(TaskActions.taskActions.addTaskSuccess, (state,action) => {
     return taskAdapter.addOne(action.task,state)
