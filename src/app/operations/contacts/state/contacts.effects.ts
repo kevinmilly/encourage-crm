@@ -8,7 +8,7 @@ import { BackendService } from '@core/services/backend.service';
 import { Contact } from '@operations/contacts/models/interfaces/contact';
 import { EMPTY, of } from 'rxjs';
 
-
+ 
 @Injectable()
 export class ContactEffects {
   

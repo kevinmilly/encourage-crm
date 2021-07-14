@@ -2,7 +2,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from '@core/auth/services/auth.service';
 
-import { Contact, Task} from '@operations/index';
+import { Contact, Note, Task} from '@operations/index';
 import { Observable, of } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
@@ -82,6 +82,35 @@ export class BackendService {
   }
 
 
+
+
+
+  getNotes(): Observable<Note[]> {
+   
+    return this.firestore.collection<Note>(`user/${this.auth.user.uid}/Notes`)
+      .valueChanges();
+  }
+  updateNote(task: Note) {
+    this.firestore.collection<Note>(`user/${this.auth.user.uid}/Notes`)
+      .doc(task.id).update(task);
+    return of({ ...task })
+  }
+  addNote(task: Note) {
+    const taskToSubmit = { ...task };
+    taskToSubmit['id'] = this.idGenerator();
+    console.dir(taskToSubmit);
+
+    this.firestore.collection<Note>(`user/${this.auth.user.uid}/Notes`)
+      .doc(taskToSubmit.id)
+      .set(taskToSubmit as Note, { merge: true });
+    return of(taskToSubmit);
+
+  }
+  deleteNote(task: Note) {
+    this.firestore.collection<Note>(`user/${this.auth.user.uid}/Tasks`)
+      .doc(task.id).delete();
+    return of({ ...task })
+  }
 
 
   idGenerator() {

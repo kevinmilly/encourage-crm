@@ -15,7 +15,7 @@ export const initialState: State = {
 export const reducer = createReducer(
   initialState,
 
-  on(NotesActions.loadNotess, state => state),
+  on(NotesActions.loadNotes, state => state),
   on(NotesActions.loadNotessSuccess, (state, action) => state),
   on(NotesActions.loadNotessFailure, (state, action) => state),
 

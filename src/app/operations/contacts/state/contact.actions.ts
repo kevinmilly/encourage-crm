@@ -16,7 +16,7 @@ export enum ContactActionTypes {
     DELETE_CONTACT_FAIL = "[CONTACTS EFFECT] Delete CONTACTS Fail",
     DELETE_CONTACT_SUCCESS = "[CONTACTS EFFECT] Delete CONTACTS Success",
 } 
-
+ 
 export const contactActions = {
     loadContacts: createAction(ContactActionTypes.LOAD_CONTACTS),
     loadContactsFail: createAction(
