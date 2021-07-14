@@ -1,6 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { SidenavComponent } from '@core/layout/sidenav/sidenav.component';
+import { Store } from '@ngrx/store';
 import { AuthService } from './core/auth/services/auth.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { AuthService } from './core/auth/services/auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent  {
   title = 'encouragement-crm';
 
   user: any;
@@ -16,7 +17,9 @@ export class AppComponent {
   @ViewChild(SidenavComponent)
   sidenavComponent: any;
 
-  constructor(private auth: AuthService, private router: Router) {
+  constructor(private auth: AuthService, private router: Router, private store:Store) {
+
+
     this.auth.user$.subscribe(user => {
       this.user = user;
       console.log({user});

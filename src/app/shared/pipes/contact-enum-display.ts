@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { ContactType, EnergyLevel, Priorities, Statuses, ContactOptions, Context } from '@operations/contacts';
-import { TaskType } from '@operations/task';
+import { TaskOptions, TaskType } from '@operations/task';
 
 
 @Pipe({
@@ -27,11 +27,11 @@ export class EnumUserDisplayTranslatorPipe implements PipeTransform {
     } else if('task') {
         switch (valueDisplayType) {
 
-          case ContactOptions[0]:
+          case TaskOptions[0]:
             return `${TaskType[value]}`;
-          case ContactOptions[1]:
+          case TaskOptions[1]:
             return `<b> Status: </b>${Statuses[value]}`;
-          case ContactOptions[2]:
+          case TaskOptions[2]:
             return `<b> Priority: </b>${Priorities[value]}`;
         }
       

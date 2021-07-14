@@ -80,18 +80,17 @@ export class TasksComponent implements OnInit {
     this.taskTypeFilter = new FormControl(this.taskTypes);
     this.pipeOptions = [
       TaskOptions[0],
-      TaskOptions[1],
+      TaskOptions[1], 
       TaskOptions[2]
     ]
     
-    this.store.dispatch(fromTaskState.taskActions.loadTasks());
     this.tasks$ = this.store.select(selectTasks);
     
 
     this.subs.sink = this.tasks$.subscribe(data => {
-      console.dir(data);
+
       this.data = data.map(d => ({...d, contact: d.contact.display}));
-      console.dir(this.data);
+
     });
     this.subs.sink = this.taskTypeFilter.valueChanges.subscribe(() => this.taskFilter());
 

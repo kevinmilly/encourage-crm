@@ -19,7 +19,6 @@ import * as fromConceptReducer from './state/index';
   imports: [
     SharedModule,
     ContactRoutingModule,
-    StoreModule.forFeature("contactsReducer", fromConceptReducer.contactReducer),
     EffectsModule.forFeature([fromConceptReducer.ContactEffects]),
   ],
   entryComponents:[

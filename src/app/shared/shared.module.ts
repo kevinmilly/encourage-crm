@@ -7,10 +7,14 @@ import { ButtonComponent } from './button/button.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 import { RouterModule } from '@angular/router';
-import { EnumUserDisplayTranslatorPipe } from './pipes/enum-user-display-translator.pipe';
+import { EnumUserDisplayTranslatorPipe } from './pipes/contact-enum-display';
 import { TableComponent } from './table/table.component';
 import { ContactDetailTranslatorPipe } from './pipes/contact-detail-translator.pipe';
-
+import { StoreModule } from '@ngrx/store';
+import * as fromTask from '../operations/task/state/reducers/task.reducer';
+import * as fromContactReducer from '@operations/contacts/state';
+import { EffectsModule } from '@ngrx/effects';
+import { TaskEffects } from '@operations/task/state';
 
 const modules = [
   CardsModule,
@@ -19,7 +23,9 @@ const modules = [
   ReactiveFormsModule,
   FormsModule,
   MaterialModule,
-  RouterModule
+  RouterModule,
+  StoreModule.forFeature(fromTask.taskFeatureKey, fromTask.taskReducer), EffectsModule.forFeature([TaskEffects]),
+  StoreModule.forFeature("contactsReducer", fromContactReducer.contactReducer),
 ]
 
 
