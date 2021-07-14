@@ -1,7 +1,7 @@
 import { Action, createAction, props, union } from "@ngrx/store";
 
 import * as fromOperations from '@operations/index';
-
+ 
 export enum ContactActionTypes {
     LOAD_CONTACTS = "[CONTACTS LIST COMPONENT] Load CONTACTS",
     LOAD_CONTACTS_FAIL = "[CONTACTS EFFECT] Load CONTACTS Fail",

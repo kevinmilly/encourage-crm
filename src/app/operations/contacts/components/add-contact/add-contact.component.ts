@@ -9,7 +9,7 @@ import { EnergyLevel } from '@operations/contacts/models/enums/energy-level.enum
 import { Statuses } from '@operations/contacts/models/enums/statuses.enum';
 import { IControlModel } from '@shared/models/control.model';
 
-@Component({
+@Component({ 
   selector: 'enccrm-add-contact',
   template: `
   <enccrm-general-card>
