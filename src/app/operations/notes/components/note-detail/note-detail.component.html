@@ -1,5 +1,5 @@
 <h1>Contact Details</h1>
-  <enccrm-modal-card *ngIf="editConceptControls.length > 0">
+  <enccrm-modal-card *ngIf="editNoteControls.length > 0">
       <div class="header">
         <div class="header__edit-choice">
           <a [style.color]="'blue'" (click)="editOpen = false" *ngIf="editOpen; else editingHeader">Stop Editing?</a>
@@ -7,38 +7,28 @@
             <a [style.color]="'blue'" (click)="editOpen = true">Want to Edit?</a>
           </ng-template>
         </div>
-        <h2>{{ contact.contactName }}</h2>
-        <h3  
-          [innerHTML]="+contact.contactType | display_translator:'contactType':'contact'">
-          </h3>
-        <h4>{{ contact.description }}</h4>
+        <h2>{{ note.title }}</h2>
+        <h2>{{ note.contact }}</h2>
+        <h3 [innerHTML]="+note.priority | display_translator:'priority':'note'"> </h3>
+        <h4  
+        [innerHTML]="+note.noteType | display_translator:'noteType':'note'">
+        </h4>
       </div>
       <div class="details" *ngIf="!editOpen; else editing">
-        <div> <b>Email:</b>  {{ contact.email }} </div>
-        <div><b>Phone:</b> {{ contact.phone }}</div>
-        <div><b>Birth Date:</b> {{ contact.birthDate }}</div>
-        <div><b>Other Date:</b> {{ contact.otherDate }}</div>
-        <div [innerHTML]="+contact.known | display_translator:'known':'contact'"></div>
-        <div [innerHTML]="+contact.priority | display_translator:'priority':'contact'"></div>
-        <div [innerHTML]="+contact.energyLevel  | display_translator:'energyLevel':'contact'"></div>
+        <div><b>Body:</b> {{ note.body }}</div>
+      
       </div>
 
       <ng-template #editing>
             <enccrm-form
-              [controlsToCreate]="editConceptControls"
+              [controlsToCreate]="editNoteControls"
               (onSubmit)="submit($event)"
         >
-          <div horizontal>Edit {{ contact.contactName }}</div>
+          <div horizontal>Edit {{ note.title }}</div>
         </enccrm-form>
       </ng-template>
   </enccrm-modal-card>
 
-  <enccrm-modal-card>
-      <div *ngFor="let task of tasks$ | async">
-        <span>{{task.taskName}}</span>
-        <span>{{task.description}}</span>
-      </div>
-  </enccrm-modal-card>
 
   
 

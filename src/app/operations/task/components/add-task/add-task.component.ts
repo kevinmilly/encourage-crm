@@ -18,7 +18,7 @@ import { map } from "rxjs/operators";
       <div 
       horizontal
       > 
-       Add a new Task
+       Add a new Task 
     </div>
     </enccrm-form>
   </enccrm-general-card>

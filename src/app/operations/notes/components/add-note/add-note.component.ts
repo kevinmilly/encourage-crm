@@ -7,6 +7,10 @@ import { Note } from "@operations/notes/index";
 import { NoteType, Priorities } from '@operations/notes';
 import { Statuses } from '@operations/notes/models/enums/statuses.enum';
 import { IControlModel } from '@shared/models/control.model';
+import { selectContacts } from '@operations/contacts/state';
+import { Contact } from '@operations/contacts';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'enccrm-add-note',
@@ -17,7 +21,7 @@ import { IControlModel } from '@shared/models/control.model';
       (onSubmit)="submit($event)"
     >
       <div 
-      horizontal
+      horizontal 
       > 
        Add a new Note
     </div> 
@@ -46,43 +50,55 @@ export class AddNoteComponent implements OnInit {
     { name: Statuses[1], value: 1 },
   ]
 
-  addNoteControls: IControlModel[] = [
-    {
-      displayName: "Name",
-      controlName: "title",
-      type: "string",
-      required: true,
-      default: '',
-    },
-    {
-      displayName: "Note Type",
-      controlName: "noteType",
-      type: "stringChoice",
-      required: true,
-      default: 0,
-      stringChoices: this.noteTypeChoices
-    },
-    {
-      displayName: "How Important?",
-      controlName: "priority",
-      type: "stringChoiceSet",
-      required: true,
-      default: 1,
-      stringChoices: this.priorities
-    },
-    {
-      displayName: "Body",
-      controlName: "body",
-      type: "longString",
-      required: true,
-      default: ''
-    }
-  ];
+  addNoteControls: IControlModel[] = [];
+
+
+  contacts$:Observable<Contact[]> | undefined;
 
   constructor(private store: Store) { };
 
   ngOnInit(): void {
-   
+    this.contacts$ = this.store.select(selectContacts);
+    this.addNoteControls = [
+      {
+        displayName: "Name",
+        controlName: "title",
+        type: "string",
+        required: true,
+        default: '',
+      },
+      {
+        displayName: "Note Type",
+        controlName: "noteType",
+        type: "stringChoice",
+        required: true,
+        default: 0,
+        stringChoices: this.noteTypeChoices
+      },
+      {
+        displayName: "How Important?",
+        controlName: "priority",
+        type: "stringChoiceSet",
+        required: true,
+        default: 1,
+        stringChoices: this.priorities
+      },
+      {
+        displayName: "Body",
+        controlName: "body",
+        type: "longString",
+        required: true,
+        default: ''
+      },
+      {
+        displayName: "Related Contact",
+        controlName: "contact",
+        type: "autocomplete-select",
+        required: true, 
+        default: '', 
+        autoCompleteOptions:this.contacts$.pipe(map(contacts => contacts.map(contact => ({value:contact.id, display:contact.contactName}))))
+    }
+    ];
   }
 
   submit(note:Note) {

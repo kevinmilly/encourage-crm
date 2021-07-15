@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { ContactType, EnergyLevel, Priorities, Statuses, ContactOptions, Context } from '@operations/contacts';
+import { NoteOptions, NoteType } from '@operations/notes';
 import { TaskOptions, TaskType } from '@operations/task';
 
 
@@ -35,6 +36,16 @@ export class EnumUserDisplayTranslatorPipe implements PipeTransform {
             return `<b> Priority: </b>${Priorities[value]}`;
         }
       
+    } else {
+        switch (valueDisplayType) {
+
+          case NoteOptions[0]:
+            return `${NoteType[value]}`;
+          case NoteOptions[1]:
+            return `<b> Status: </b>${Statuses[value]}`;
+          case NoteOptions[2]:
+            return `<b> Priority: </b>${Priorities[value]}`;
+        }
     }
     return '';
 
