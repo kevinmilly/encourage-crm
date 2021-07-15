@@ -86,7 +86,7 @@ export class AddNoteComponent implements OnInit {
   }
 
   submit(note:Note) {
-    this.store.dispatch(fromNoteState.noteActions.addContact({note}));
+    this.store.dispatch(fromNoteState.noteActions.addNote({note}));
   }
 
 }

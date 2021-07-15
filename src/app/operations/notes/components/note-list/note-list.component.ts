@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { Note, NoteOptions, NoteType } from '@operations/contacts';
+import { Note, NoteOptions, NoteType } from '@operations/notes';
 
 import * as fromOperations from '@operations/index';
 import { Task } from '@operations/index';
@@ -16,15 +16,15 @@ import { NoteDetailComponent } from '../note-detail/note-detail.component';
 
  
 @Component({
-  selector: 'enccrm-contact-list',
+  selector: 'enccrm-note-list',
   template: `
           <h1>Note List</h1>
           <div class="container">
             <enccrm-general-card> 
             <mat-form-field appearance="fill">
               <mat-label>Note Types</mat-label>
-              <mat-select [formControl]="contactTypeFilter" multiple>
-                <mat-option *ngFor="let type of contactTypes" [value]="type">{{type}}</mat-option>
+              <mat-select [formControl]="noteTypeFilter" multiple>
+                <mat-option *ngFor="let type of noteTypes" [value]="type">{{type}}</mat-option>
               </mat-select>
             </mat-form-field>
               <enccrm-table
@@ -33,14 +33,14 @@ import { NoteDetailComponent } from '../note-detail/note-detail.component';
                 [columns]="columns"
                 [displayNames]="displayNames"
                 [pipesNeeded]="pipeOptions"
-                [linksNeeded]="['contactName']"
+                [linksNeeded]="['title']"
                 (onZoom)="detailNote($event)"
               ></enccrm-table>
               <ng-template #noData><h1>No Data Yet</h1></ng-template>
             </enccrm-general-card>
             </div> 
   `,
-  styleUrls: ['./contact-list.component.scss']
+  styleUrls: ['./note-list.component.scss']
 })
 export class NoteListComponent implements OnInit {
   
@@ -52,83 +52,57 @@ export class NoteListComponent implements OnInit {
 
 
   columns:string[] = [
-    'contactName',
-    'email',
-    'phone',
-    'contactType', //choices
-    'priority', //choices
-    'energyLevel', //choices
-    'notes',
-    'age',
-    'birthDate',
-    'otherDate',
-    'known',//choices
-    'description'
+    'note',
+    'title', //choices
+    'taskType', //choices
+    'priority',
+    'body'
   ];
   displayNames:string[] = [
-    'Name', 
-    'Email',
-    'Phone',
-    'Note Type', //choices
+    'Contact', 
+    'Title',
+    'Task Type',
     'Priority', //choices
-    'Energy Level', //choices
-    'Notes',
-    'Age',
-    'Birth Date',
-    'Other Date',
-    'Known From', //choices
-    'Description'
+    'Body' //choices
   ];
  
-  contactTypes:string[] = [
+  noteTypes:string[] = [
     NoteType[0],
     NoteType[1],
     NoteType[2],
-    NoteType[3],
-    NoteType[4],
-    NoteType[5],
-    NoteType[6],
-    NoteType[7],
-    NoteType[8],
-    NoteType[9],
-    NoteType[10],
-    NoteType[11],
-    NoteType[12],
-    NoteType[13],
-    NoteType[14]
+    NoteType[3]
   ]
 
   pipeOptions: string[] = [];
-  contactTypeFilter: FormControl = new FormControl;
+  noteTypeFilter: FormControl = new FormControl;
 
-  contacts$:Observable<fromOperations.Note[]> | undefined;
+  notes$:Observable<fromOperations.Note[]> | undefined;
 
   constructor(private store:Store, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.contactTypeFilter = new FormControl(this.contactTypes);
+    this.noteTypeFilter = new FormControl(this.noteTypes);
     this.pipeOptions = [
       NoteOptions[0],
       NoteOptions[1],
       NoteOptions[2],
-      NoteOptions[3],
-      NoteOptions[4]
+      NoteOptions[3]
     ]
 
-    this.store.dispatch(fromNoteState.contactActions.loadNotes());
+    this.store.dispatch(fromNoteState.noteActions.loadNotes());
     this.store.dispatch(taskActions.loadTasks());
     
-    this.contacts$ = this.store.select(fromNoteState.selectNotes);
+    this.notes$ = this.store.select(fromNoteState.selectNotes);
 
-    this.subs.sink = this.contacts$.subscribe(data => {
+    this.subs.sink = this.notes$.subscribe(data => {
       this.data = data;
     });
-    this.subs.sink = this.contactTypeFilter.valueChanges.subscribe(() => this.contactFilter());
+    this.subs.sink = this.noteTypeFilter.valueChanges.subscribe(() => this.noteFilter());
 
   }
 
-  contactFilter() {
-    this.data = this.dataSaved.filter(d => this.contactTypeFilter.value.includes(d.contactType));
+  noteFilter() {
+    this.data = this.dataSaved.filter(d => this.noteTypeFilter.value.includes(d.noteType));
   }
 
   detailNote(event:fromOperations.Note) {
@@ -136,16 +110,14 @@ export class NoteListComponent implements OnInit {
       width: '90vw',
       height: '45rem',
       data: { 
-        contact:event,
-        tasks: this.store.select(selectTasks).pipe(map((tasks:Task[]) => tasks.filter(task => task.contact.value === event.id)))
-        
+        note:event
       } 
     });
 
     dialogRef.afterClosed().subscribe(result => {
     
       if(result.action === 'delete') {
-        this.store.dispatch(fromNoteState.contactActions.deleteNote(result.contact));
+        this.store.dispatch(fromNoteState.noteActions.deleteNote(result.note));
       } else { //add
 
       }

@@ -2,57 +2,28 @@ import { Inject } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { NoteType, Context, EnergyLevel, Priorities, Statuses } from '@operations/contacts';
-import { Note, Task } from '@operations/index';
-import { selectTasks } from '@operations/task/state/selectors/task.selectors';
+import { NoteType, Priorities, Statuses } from '@operations/notes';
+import { Note } from '@operations/index';
 import { IControlModel } from '@shared/models/control.model';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+
 
 @Component({
-  selector: 'enccrm-contact-detail',
-  templateUrl: './contact-detail.component.html',
-  styleUrls: ['./contact-detail.component.scss']
+  selector: 'enccrm-note-detail',
+  templateUrl: './note-detail.component.html',
+  styleUrls: ['./note-detail.component.scss']
 })
 export class NoteDetailComponent implements OnInit {
 
   editOpen=false;
-  contact!: Note;
-  tasks$:Observable<Task[]> | undefined;
+  note!: Note;
+  notes$:Observable<Note[]> | undefined;
 
-
-  contactTypeChoices = [
+  noteTypeChoices = [ 
     { name: NoteType[0], value: 0 },
     { name: NoteType[1], value: 1 },
     { name: NoteType[2], value: 2 },
-    { name: NoteType[3], value: 3 },
-    { name: NoteType[4], value: 4 },
-    { name: NoteType[5], value: 5 },
-    { name: NoteType[6], value: 6 },
-    { name: NoteType[7], value: 7 },
-    { name: NoteType[8], value: 8 },
-    { name: NoteType[9], value: 9 },
-    { name: NoteType[10], value: 10 },
-    { name: NoteType[11], value: 11 },
-    { name: NoteType[12], value: 12 },
-    { name: NoteType[13], value: 13 },
-    { name: NoteType[14], value: 14 },
-  ]
-  contextKnownFrom = [
-    { name: Context[0], value: 0 },
-    { name: Context[1], value: 1 },
-    { name: Context[2], value: 2 },
-    { name: Context[3], value: 3 },
-    { name: Context[4], value: 4 },
-    { name: Context[5], value: 5 },
-  ]
-  energyLevels = [
-    { name: EnergyLevel[0], value: 0 }, 
-    { name: EnergyLevel[1], value: 1 },
-    { name: EnergyLevel[2], value: 2 },
-    { name: EnergyLevel[3], value: 3 },
-    { name: EnergyLevel[4], value: 4 },
-    { name: EnergyLevel[5], value: 5 },
+    { name: NoteType[3], value: 3 }
   ]
   priorities = [
     { name: Priorities[0], value: 0 },
@@ -66,93 +37,48 @@ export class NoteDetailComponent implements OnInit {
     { name: Statuses[1], value: 1 },
   ]
 
-
-  editConceptControls: IControlModel[] = [];
+  editNoteControls: IControlModel[] = [];
 
   constructor (
-    @Inject(MAT_DIALOG_DATA) public data: { contact:Note, tasks:Observable<Task[]>},
+    @Inject(MAT_DIALOG_DATA) public data: { note:Note, notes:Observable<Note[]>},
     private dialogRef: MatDialogRef<NoteDetailComponent>,
     private store: Store
   ) { }
 
   ngOnInit(): void {
-    this.contact = this.data.contact;
-    this.tasks$ = this.data.tasks
+    this.note = this.data.note;
+    this.notes$ = this.data.notes
     
-    this.editConceptControls = [
-      { 
+    this.editNoteControls = [
+      {
         displayName: "Name",
-        controlName: "contactName",
+        controlName: "title",
         type: "string",
         required: true,
-        default: this.contact.contactName,
+        default: '',
       },
       {
         displayName: "Note Type",
-        controlName: "contactType",
+        controlName: "noteType",
         type: "stringChoice",
         required: true,
-        default: this.contact.contactType,
-        stringChoices: this.contactTypeChoices
-      },
-      {
-        displayName: "Know From?",
-        controlName: "known",
-        type: "stringChoice",
-        required: true,
-        default: this.contact.known,
-        stringChoices: this.contextKnownFrom
+        default: 0,
+        stringChoices: this.noteTypeChoices
       },
       {
         displayName: "How Important?",
         controlName: "priority",
         type: "stringChoiceSet",
         required: true,
-        default: this.contact.priority,
+        default: 1,
         stringChoices: this.priorities
       },
       {
-        displayName: "Energy Level",
-        controlName: "energyLevel",
-        type: "stringChoiceSet",
-        required: true,
-        default: this.contact.energyLevel,
-        stringChoices: this.energyLevels
-      },
-      {
-        displayName: "Birth Date",
-        controlName: "birthDate",
-        type: "date",
-        required: false,
-        default: this.contact.birthDate,
-      },
-      {
-        displayName: "Other Date",
-        controlName: "otherDate",
-        type: "date",
-        required: false,
-        default: this.contact.otherDate,
-      },
-      {
-        displayName: "Email",
-        controlName: "email",
-        type: "email",
-        required: false,
-        default: this.contact.email,
-      },
-      {
-        displayName: "Phone",
-        controlName: "phone",
-        type: "string",
-        required: true,
-        default: this.contact.phone,
-      },
-      {
-        displayName: "Initial Notes",
-        controlName: "description",
+        displayName: "Body",
+        controlName: "body",
         type: "longString",
-        required: false, 
-        default: this.contact.description,
+        required: true,
+        default: ''
       }
     ];
 

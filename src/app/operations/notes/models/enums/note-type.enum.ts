@@ -3,4 +3,4 @@ export enum NoteType {
    Meeting,
    Call,
    Question 
-}
+} 

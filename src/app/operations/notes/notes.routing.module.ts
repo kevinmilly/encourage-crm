@@ -1,6 +1,8 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { NoteList}
+import { AddNoteComponent } from "./components/add-note/add-note.component";
+import { NoteListComponent } from "./components/note-list/note-list.component";
+
 
 const routes:Routes = [
     {path:'', component: NoteListComponent},
@@ -8,7 +10,7 @@ const routes:Routes = [
     {path:'note-add', component: AddNoteComponent}
 
 ]
-
+ 
 @NgModule({
  imports:[RouterModule.forChild(routes)], 
  exports:[RouterModule],  

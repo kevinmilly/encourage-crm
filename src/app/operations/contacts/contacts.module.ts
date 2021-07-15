@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreModule } from '@ngrx/store';
 import { SharedModule } from '@shared/shared.module';
 import { AddContactComponent } from './components/add-contact/add-contact.component';
 import { ContactDetailComponent } from './components/contact-detail/contact-detail.component';
