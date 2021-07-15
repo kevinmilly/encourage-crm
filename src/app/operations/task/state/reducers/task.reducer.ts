@@ -30,7 +30,7 @@ export const taskReducer = createReducer(
                                      ...state,
                                      loaded:true,
                                      loading:false
-                                     });
+                                     }); 
 }), 
   on(TaskActions.taskActions.loadTasksFail, (state,action) => {
     return {

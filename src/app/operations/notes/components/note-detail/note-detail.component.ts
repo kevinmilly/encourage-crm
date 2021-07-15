@@ -2,8 +2,8 @@ import { Inject } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { ContactType, Context, EnergyLevel, Priorities, Statuses } from '@operations/contacts';
-import { Contact, Task } from '@operations/index';
+import { NoteType, Context, EnergyLevel, Priorities, Statuses } from '@operations/contacts';
+import { Note, Task } from '@operations/index';
 import { selectTasks } from '@operations/task/state/selectors/task.selectors';
 import { IControlModel } from '@shared/models/control.model';
 import { Observable } from 'rxjs';
@@ -14,29 +14,29 @@ import { map } from 'rxjs/operators';
   templateUrl: './contact-detail.component.html',
   styleUrls: ['./contact-detail.component.scss']
 })
-export class ContactDetailComponent implements OnInit {
+export class NoteDetailComponent implements OnInit {
 
   editOpen=false;
-  contact!: Contact;
+  contact!: Note;
   tasks$:Observable<Task[]> | undefined;
 
 
   contactTypeChoices = [
-    { name: ContactType[0], value: 0 },
-    { name: ContactType[1], value: 1 },
-    { name: ContactType[2], value: 2 },
-    { name: ContactType[3], value: 3 },
-    { name: ContactType[4], value: 4 },
-    { name: ContactType[5], value: 5 },
-    { name: ContactType[6], value: 6 },
-    { name: ContactType[7], value: 7 },
-    { name: ContactType[8], value: 8 },
-    { name: ContactType[9], value: 9 },
-    { name: ContactType[10], value: 10 },
-    { name: ContactType[11], value: 11 },
-    { name: ContactType[12], value: 12 },
-    { name: ContactType[13], value: 13 },
-    { name: ContactType[14], value: 14 },
+    { name: NoteType[0], value: 0 },
+    { name: NoteType[1], value: 1 },
+    { name: NoteType[2], value: 2 },
+    { name: NoteType[3], value: 3 },
+    { name: NoteType[4], value: 4 },
+    { name: NoteType[5], value: 5 },
+    { name: NoteType[6], value: 6 },
+    { name: NoteType[7], value: 7 },
+    { name: NoteType[8], value: 8 },
+    { name: NoteType[9], value: 9 },
+    { name: NoteType[10], value: 10 },
+    { name: NoteType[11], value: 11 },
+    { name: NoteType[12], value: 12 },
+    { name: NoteType[13], value: 13 },
+    { name: NoteType[14], value: 14 },
   ]
   contextKnownFrom = [
     { name: Context[0], value: 0 },
@@ -70,8 +70,8 @@ export class ContactDetailComponent implements OnInit {
   editConceptControls: IControlModel[] = [];
 
   constructor (
-    @Inject(MAT_DIALOG_DATA) public data: { contact:Contact, tasks:Observable<Task[]>},
-    private dialogRef: MatDialogRef<ContactDetailComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { contact:Note, tasks:Observable<Task[]>},
+    private dialogRef: MatDialogRef<NoteDetailComponent>,
     private store: Store
   ) { }
 
@@ -88,7 +88,7 @@ export class ContactDetailComponent implements OnInit {
         default: this.contact.contactName,
       },
       {
-        displayName: "Contact Type",
+        displayName: "Note Type",
         controlName: "contactType",
         type: "stringChoice",
         required: true,

@@ -26,7 +26,7 @@ import { IControlModel } from '@shared/models/control.model';
   `,
   styleUrls: ['./add-note.component.scss']
 })
-export class AddContactComponent implements OnInit {
+export class AddNoteComponent implements OnInit {
 
   noteTypeChoices = [ 
     { name: NoteType[0], value: 0 },

@@ -3,13 +3,14 @@ import { createReducer, on } from '@ngrx/store';
 import * as fromOperations from '@operations/index';
 import * as fromContactAction from './contact.actions';
 
+export const contactFeatureKey = 'contact';
 
 export interface ContactState extends EntityState<fromOperations.Contact> {
     loaded: boolean;
     loading: boolean;
     error:any;
 }
-
+ 
 export const contactAdapter = createEntityAdapter<fromOperations.Contact>();
 
 const initialContactState = contactAdapter.getInitialState({

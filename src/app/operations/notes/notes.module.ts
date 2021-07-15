@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 import * as fromNotes from './state/reducers/notes.reducer';
 import { EffectsModule } from '@ngrx/effects';
-import { NotesEffects } from './state/effects/notes.effects';
+import { NoteEffects } from './state/effects/notes.effects';
 
 
 
@@ -11,8 +11,8 @@ import { NotesEffects } from './state/effects/notes.effects';
   declarations: [],
   imports: [
     CommonModule,
-    StoreModule.forFeature(fromNotes.notesFeatureKey, fromNotes.reducer),
-    EffectsModule.forFeature([NotesEffects])
+    StoreModule.forFeature(fromNotes.noteFeatureKey, fromNotes.noteReducer),
+    EffectsModule.forFeature([NoteEffects])
   ]
 })
 export class NotesModule { }

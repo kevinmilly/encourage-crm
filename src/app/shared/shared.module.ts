@@ -12,6 +12,7 @@ import { TableComponent } from './table/table.component';
 import { ContactDetailTranslatorPipe } from './pipes/contact-detail-translator.pipe';
 import { StoreModule } from '@ngrx/store';
 import * as fromTask from '../operations/task/state/reducers/task.reducer';
+import * as fromNote from '../operations/notes/state/reducers/notes.reducer';
 import * as fromContactReducer from '@operations/contacts/state';
 import { EffectsModule } from '@ngrx/effects';
 import { TaskEffects } from '@operations/task/state';
@@ -25,7 +26,8 @@ const modules = [
   MaterialModule,
   RouterModule,
   StoreModule.forFeature(fromTask.taskFeatureKey, fromTask.taskReducer), EffectsModule.forFeature([TaskEffects]),
-  StoreModule.forFeature("contactsReducer", fromContactReducer.contactReducer),
+  StoreModule.forFeature(fromContactReducer.contactFeatureKey, fromContactReducer.contactReducer),
+  StoreModule.forFeature(fromNote.noteFeatureKey, fromNote.noteReducer),
 ]
 
 

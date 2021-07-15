@@ -12,7 +12,7 @@
           <mat-icon>contacts</mat-icon>
           <span class="links__header"> Contacts </span>
         </mat-list-item>
-        <mat-nav-list style="margin-left: 1vw">
+        <mat-nav-list style="margin-left: 3vw; margin-top:-1vh; ">
           <mat-list-item>
             <a
               [routerLink]="['contacts']"
@@ -36,7 +36,7 @@
             <mat-icon>add_task</mat-icon>
             <span class="links__header"> Tasks </span>
           </mat-list-item>
-          <mat-nav-list style="margin-left: 1vw">
+          <mat-nav-list style="margin-left: 3vw; margin-top:-1vh; ">
             <mat-list-item>
               <a
                 [routerLink]="['task']"
@@ -55,11 +55,36 @@
               </a>
             </mat-list-item>
           </mat-nav-list>
-          <mat-list-item>
+        
+            <!----Notes-->
+            <mat-list-item>
+              <mat-icon>text_snippet</mat-icon>
+              <span class="links__header"> Notes </span>
+            </mat-list-item>
+            <mat-nav-list style="margin-left: 3vw; margin-top:-1vh; ">
+              <mat-list-item>
+                <a
+                  [routerLink]="['note']"
+                  routerLinkActive="router-link-active"
+                >
+                  <span class="link-text">Note List</span>
+                </a>
+              </mat-list-item>
+       
+              <mat-list-item>
+                <a
+                  [routerLink]="['note/note-add']"
+                  routerLinkActive="router-link-active"
+                >
+                  <span class="link-text">Add Note</span>
+                </a>
+              </mat-list-item>
+            </mat-nav-list>
+        <mat-list-item>
           <mat-icon>leaderboard</mat-icon>
           <span class="links__header"> Metrics </span>
         </mat-list-item>
-        <mat-nav-list style="margin-left: 1vw">
+        <mat-nav-list style="margin-left: 3vw; margin-top:-1vh; ">
           <mat-list-item>
             <a
               [routerLink]="['analytics/dashboard']"
