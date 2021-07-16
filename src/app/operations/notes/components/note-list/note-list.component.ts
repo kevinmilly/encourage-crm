@@ -54,7 +54,7 @@ export class NoteListComponent implements OnInit {
 
   columns:string[] = [
     'title', //choices
-    'noteType', //choices
+    'noteType', //choices 
     'priority',
     'contact',
     'body',

@@ -59,7 +59,6 @@ export class ContactListComponent implements OnInit {
     'contactType', //choices
     'priority', //choices
     'energyLevel', //choices
-    'notes',
     'age',
     'birthDate',
     'otherDate',
@@ -73,7 +72,6 @@ export class ContactListComponent implements OnInit {
     'Contact Type', //choices
     'Priority', //choices
     'Energy Level', //choices
-    'Notes',
     'Age',
     'Birth Date',
     'Other Date',

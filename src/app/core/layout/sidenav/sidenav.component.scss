@@ -45,6 +45,8 @@ mat-sidenav-container {
     }
   }
   .links {
+    height: 100%;
+    overflow-y: auto;
     &__header {
       font-size: .9vmax;
       font-weight: 500;

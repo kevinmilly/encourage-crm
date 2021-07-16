@@ -51,15 +51,15 @@ export class TasksComponent implements OnInit {
   columns:string[] = [
     'taskName',
     'taskType', //choices
-    'contact',
     'priority', //choices 
+    'contact',
     'description' 
   ];
   displayNames:string[] = [
     'Name', 
     'Task Type', //choices
-    'Contact',
     'Priority', //choices
+    'Contact',
     'Description'
   ];
  
@@ -90,7 +90,7 @@ export class TasksComponent implements OnInit {
 
     this.subs.sink = this.tasks$.subscribe(data => {
 
-      this.data = data.map(d => ({...d, contact: d.contact.display}));
+      this.data = data;
 
     });
     this.subs.sink = this.taskTypeFilter.valueChanges.subscribe(() => this.taskFilter());
@@ -110,7 +110,7 @@ export class TasksComponent implements OnInit {
         task:event
         
       } 
-    });
+    }); 
 
     dialogRef.afterClosed().subscribe(result => {
     
