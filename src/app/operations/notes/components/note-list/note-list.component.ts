@@ -33,6 +33,7 @@ import { NoteDetailComponent } from '../note-detail/note-detail.component';
                 [columns]="columns"
                 [displayNames]="displayNames"
                 [pipesNeeded]="pipeOptions"
+                [pipeType]="'note'"
                 [linksNeeded]="['title']"
                 (onZoom)="detailNote($event)"
               ></enccrm-table>
@@ -52,17 +53,17 @@ export class NoteListComponent implements OnInit {
 
 
   columns:string[] = [
-    'note',
     'title', //choices
-    'taskType', //choices
+    'noteType', //choices
     'priority',
-    'body'
+    'contact',
+    'body',
   ];
   displayNames:string[] = [
-    'Contact', 
     'Title',
-    'Task Type',
+    'Note Type',
     'Priority', //choices
+    'Contact', 
     'Body' //choices
   ];
  

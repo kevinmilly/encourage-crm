@@ -33,6 +33,7 @@ import { ContactDetailComponent } from '../contact-detail/contact-detail.compone
                 [columns]="columns"
                 [displayNames]="displayNames"
                 [pipesNeeded]="pipeOptions"
+                [pipeType]="'contact'"
                 [linksNeeded]="['contactName']"
                 (onZoom)="detailContact($event)"
               ></enccrm-table>

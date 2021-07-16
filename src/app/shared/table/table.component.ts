@@ -22,6 +22,7 @@ export class TableComponent implements OnInit {
   @Input() displayNames:string[] = [];
   @Input() action = false; 
   @Input() pipesNeeded:string[] = [];
+  @Input() pipeType:string = ''
   @Input() linksNeeded:string[] = [];
 
   @Output() onZoom = new EventEmitter();

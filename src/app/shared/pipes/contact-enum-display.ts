@@ -9,9 +9,9 @@ import { TaskOptions, TaskType } from '@operations/task';
 })
 export class EnumUserDisplayTranslatorPipe implements PipeTransform {
 
-  transform(value: number, valueDisplayType:string,pipeType:string): string {
-    if('contact') { 
-      switch (valueDisplayType) {
+  transform(value: number, valueOption:string,pipeType:string): string {
+    if(pipeType === 'contact') { 
+      switch (valueOption) {
 
         case ContactOptions[0]:
           return `${ContactType[value]}`;
@@ -24,9 +24,9 @@ export class EnumUserDisplayTranslatorPipe implements PipeTransform {
         case ContactOptions[4]:
           return `<b> Know From: </b>${Context[value]}`;
       }
-    
-    } else if('task') {
-        switch (valueDisplayType) {
+     
+    } else if(pipeType === 'task') {
+        switch (valueOption) {
 
           case TaskOptions[0]:
             return `${TaskType[value]}`;
@@ -37,7 +37,7 @@ export class EnumUserDisplayTranslatorPipe implements PipeTransform {
         }
       
     } else {
-        switch (valueDisplayType) {
+        switch (valueOption) {
 
           case NoteOptions[0]:
             return `${NoteType[value]}`;

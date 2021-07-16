@@ -29,6 +29,7 @@ import { selectTasks } from '@operations/task/state/selectors/task.selectors';
         [columns]="columns"
         [displayNames]="displayNames"
         [pipesNeeded]="pipeOptions"
+        [pipeType]="'task'"
         [linksNeeded]="['taskName']" 
         (onZoom)="detailTask($event)"
       ></enccrm-table>
