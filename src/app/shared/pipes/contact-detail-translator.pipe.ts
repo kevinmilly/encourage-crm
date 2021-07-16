@@ -88,11 +88,11 @@ export class ContactDetailTranslatorPipe implements PipeTransform {
         case NoteOptions[0]:
           return `<b>${NoteType[value]}</b> <span class="material-icons">${this.imageOptions.noteType[value]}</span> `;
         case NoteOptions[1]:
-          let energyHTML = `<h5>${EnergyLevel[value]}</h5>`;
-          for(let i = 0; i<value; i++) energyHTML += `<span class="material-icons energy-icon">${this.imageOptions.energyLevel}</span>`
-          return energyHTML;
-        case NoteOptions[2]:
           return `<b>${Statuses[value]}</b>`;
+        case NoteOptions[2]:
+          let priorityHTML = `<h5>${Priorities[value]}</h5>`;
+          for(let i = 0; i<value; i++) priorityHTML += `<span class="material-icons priority-icon">${this.imageOptions.priority}</span>`
+          return priorityHTML;
       }
   }
     return '';

@@ -27,7 +27,7 @@ import { NoteDetailComponent } from '../note-detail/note-detail.component';
                 <mat-option *ngFor="let type of noteTypes" [value]="type">{{type}}</mat-option>
               </mat-select>
             </mat-form-field>
-              <enccrm-table
+              <enccrm-table 
                 *ngIf="data.length > 0; else noData"
                 [data]="data"
                 [columns]="columns"

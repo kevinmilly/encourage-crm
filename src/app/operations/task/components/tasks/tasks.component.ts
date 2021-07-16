@@ -49,16 +49,16 @@ export class TasksComponent implements OnInit {
 
 
   columns:string[] = [
-    'contact',
     'taskName',
     'taskType', //choices
+    'contact',
     'priority', //choices 
-    'description'
+    'description' 
   ];
   displayNames:string[] = [
-    'Contact',
     'Name', 
     'Task Type', //choices
+    'Contact',
     'Priority', //choices
     'Description'
   ];

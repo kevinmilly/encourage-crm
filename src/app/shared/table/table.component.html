@@ -47,12 +47,22 @@
                                         </ng-container>
                                     </ng-container>
                                     <ng-template #nolinkNeeded2>
-                                        <ng-container matColumnDef="{{c}}">
-                                            <th mat-header-cell  *matHeaderCellDef mat-sort-header> {{displayedColumns[i]}} </th>
-                                            <td mat-cell *matCellDef="let row">
-                                                {{row[c]}}
-                                        </td>
+                                        <ng-container *ngIf="c === 'contact'; else nonContact">
+                                            <ng-container matColumnDef="{{c}}">
+                                                <th mat-header-cell  *matHeaderCellDef mat-sort-header> {{displayedColumns[i]}} </th>
+                                                <td mat-cell *matCellDef="let row">
+                                                    {{row[c].display}}
+                                            </td>
+                                            </ng-container>
                                         </ng-container>
+                                        <ng-template #nonContact>
+                                            <ng-container matColumnDef="{{c}}">
+                                                <th mat-header-cell  *matHeaderCellDef mat-sort-header> {{displayedColumns[i]}} </th>
+                                                <td mat-cell *matCellDef="let row">
+                                                    {{row[c]}}
+                                            </td>
+                                            </ng-container>
+                                        </ng-template>
                                     </ng-template>
                             </ng-template>
                    
