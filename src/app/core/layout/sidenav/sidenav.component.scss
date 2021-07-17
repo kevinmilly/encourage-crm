@@ -45,25 +45,25 @@ mat-sidenav-container {
     }
   }
   .links {
-    height: 100%;
-    overflow-y: auto;
+    height: auto;
+    overflow-y: hidden;
     &__header {
       font-size: .9vmax;
       font-weight: 500;
-      margin: 1vmax 0.1vmax .2vmax 1;
+      margin: 1vmax 0.1vmax -5vmax 1;
       text-transform: uppercase;
     }
 
   
     mat-nav-list {
-      // margin-top: 0.2vh;
+      margin-top: -2vh;
       mat-icon {
         font-weight: 500;
         margin-right: 0.2vmax;
       }
 
-      .logout {
-        margin-top: 90%;
+      #logout {
+        margin-top: 5vh;
       }
     }
   }
@@ -78,7 +78,7 @@ mat-sidenav-container {
 }
 
 .link-text {
-  margin: 0.5vh 0;
+  // margin: 0.5vh 0;
   font-size: .8vmax;
   color: rgb(43, 39, 68);
   font-weight: 500;

@@ -1,4 +1,4 @@
-import { Input, ViewChild } from '@angular/core';
+import { EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { User } from '@core/auth/models/users';

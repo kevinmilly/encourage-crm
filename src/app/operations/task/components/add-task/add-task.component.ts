@@ -82,7 +82,7 @@ export class AddTaskComponent {
               controlName: "description",
               type: "longString",
               required: false, 
-              default: '',
+              default: 'No Description Yet',
             },
             {
                 displayName: "Related Contact",

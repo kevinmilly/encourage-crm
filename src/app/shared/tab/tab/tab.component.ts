@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'enccrm-tab',
   template: `
-  <enccrm-general-card>
+  <enccrm-modal-card>
       <mat-tab-group>
           <mat-tab label="{{labels[0]}}" > 
               <ng-content select="#first" class="tab-content"></ng-content>
@@ -16,7 +16,7 @@ import { Component, OnInit } from '@angular/core';
               <ng-content select="#third" class="tab-content"></ng-content>
           </mat-tab>
         </mat-tab-group>
-</enccrm-general-card>
+</enccrm-modal-card>
             `,
   styleUrls: ['./tab.component.scss']
 })

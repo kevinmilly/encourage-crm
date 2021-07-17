@@ -5,7 +5,8 @@ import { Store } from '@ngrx/store';
 import { Contact, ContactOptions, ContactType } from '@operations/contacts';
 
 import * as fromOperations from '@operations/index';
-import { Task } from '@operations/index';
+import { Note, Task } from '@operations/index';
+import { selectNotes } from '@operations/notes/state';
 import { taskActions } from '@operations/task/state';
 import { selectTasks } from '@operations/task/state/selectors/task.selectors';
 import { Observable, of, Subscription } from 'rxjs';
@@ -121,22 +122,24 @@ export class ContactListComponent implements OnInit {
 
     this.subs.sink = this.contacts$.subscribe(data => {
       this.data = data;
+      this.dataSaved = [...data];
     });
     this.subs.sink = this.contactTypeFilter.valueChanges.subscribe(() => this.contactFilter());
 
   }
 
   contactFilter() {
-    this.data = this.dataSaved.filter(d => this.contactTypeFilter.value.includes(d.contactType));
+    this.data = this.dataSaved.filter(d => this.contactTypeFilter.value.includes(ContactType[+d.contactType]));
+
   }
 
   detailContact(event:fromOperations.Contact) {
       const dialogRef = this.dialog.open(ContactDetailComponent, {
-      width: '90vw',
-      height: '45rem',
+      panelClass:'detail-modal',
       data: { 
         contact:event,
-        tasks: this.store.select(selectTasks).pipe(map((tasks:Task[]) => tasks.filter(task => task.contact.value === event.id)))
+        tasks: this.store.select(selectTasks).pipe(map((tasks:Task[]) => tasks.filter(task => task.contact.value === event.id))),
+        notes: this.store.select(selectNotes).pipe(map((notes:Note[]) => notes.filter(note => note.contact.value === event.id))),
         
       } 
     });

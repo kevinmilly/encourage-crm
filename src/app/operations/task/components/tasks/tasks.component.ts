@@ -91,14 +91,14 @@ export class TasksComponent implements OnInit {
     this.subs.sink = this.tasks$.subscribe(data => {
 
       this.data = data;
-
+      this.dataSaved = [...data];
     });
     this.subs.sink = this.taskTypeFilter.valueChanges.subscribe(() => this.taskFilter());
 
   }
 
   taskFilter() {
-    this.data = this.dataSaved.filter(d => this.taskTypeFilter.value.includes(d.taskType));
+    this.data = this.dataSaved.filter(d => this.taskTypeFilter.value.includes(TaskType[+d.taskType]));
   }
 
   detailTask(event:fromOperations.Task) {

@@ -97,13 +97,14 @@ export class NoteListComponent implements OnInit {
 
     this.subs.sink = this.notes$.subscribe(data => {
       this.data = data;
+      this.dataSaved = [...data];
     });
     this.subs.sink = this.noteTypeFilter.valueChanges.subscribe(() => this.noteFilter());
 
   }
 
   noteFilter() {
-    this.data = this.dataSaved.filter(d => this.noteTypeFilter.value.includes(d.noteType));
+    this.data = this.dataSaved.filter(d => this.noteTypeFilter.value.includes(NoteType[+d.noteType]));
   }
 
   detailNote(event:fromOperations.Note) {

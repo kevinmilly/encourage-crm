@@ -6,4 +6,4 @@ export interface Note {
     body: string; //choices
     contact:any;
 }
- 
+  

@@ -1,7 +1,7 @@
 <ng-container *ngIf="user; else loggedOut" (onLoggedOut)="user = null">
   <div class="main-container">
-    <enccrm-header (clicked)="toggleSideNav()" [user]="user"> </enccrm-header>
-    <enccrm-sidenav [user]="user">
+    <enccrm-header (clicked)="toggleSideNav()" (onToolbarLogout)="logout()" [user]="user"> </enccrm-header>
+    <enccrm-sidenav [user]="user" (onNavLogout)="logout()">
       <div class="nav-content">
         <router-outlet></router-outlet>
       </div>
