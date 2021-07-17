@@ -25,6 +25,17 @@
       .username {
         font-family: 'Mate SC', serif;
       }
+
+      #logout-toolbar {
+        margin-left: 75vw;
+        font-size: 1vmax;
+     
+        mat-icon {
+          font-size: .9vmax;
+          margin: 0;
+         
+        }
+      }
     }
   
   

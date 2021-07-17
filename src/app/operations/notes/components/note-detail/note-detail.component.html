@@ -1,4 +1,4 @@
-<h1>Contact Details</h1>
+<h1>Note Details</h1>
   <enccrm-modal-card *ngIf="editNoteControls.length > 0">
       <div class="header">
         <div class="header__edit-choice">
@@ -8,7 +8,7 @@
           </ng-template>
         </div>
         <h2>{{ note.title }}</h2>
-        <h2>{{ note.contact }}</h2>
+        <h2>{{ note.contact.display }}</h2>
         <h3 [innerHTML]="+note.priority | display_translator:'priority':'note'"> </h3>
         <h4  
         [innerHTML]="+note.noteType | display_translator:'noteType':'note'">
@@ -27,7 +27,7 @@
           <div horizontal>Edit {{ note.title }}</div>
         </enccrm-form>
       </ng-template>
-  </enccrm-modal-card>
+  </enccrm-modal-card> 
 
 
   

@@ -12,6 +12,10 @@ import { User } from '@core/auth/models/users';
                     <button mat-icon-button (click)="onToggle()">
                       <mat-icon>menu</mat-icon>
                     </button>
+                    <button id="logout-toolbar" mat-icon-button (click)="logout()">
+                    Goodbye
+                    <mat-icon>logout</mat-icon>
+                    </button>
                   </div>
                   <div *ngIf="user.name" class="username">
                     Welcome {{user.name}}!
@@ -29,6 +33,7 @@ import { User } from '@core/auth/models/users';
 export class HeaderComponent implements OnInit {
 
   @Output() clicked = new EventEmitter();
+  @Output() onToolbarLogout = new EventEmitter();
   @Input() user: any;
 
 
@@ -41,6 +46,9 @@ export class HeaderComponent implements OnInit {
 
   onToggle() {
     this.clicked.emit("sidenav toggled from toolbar");
+  }
+  logout() {
+    this.onToolbarLogout.emit();
   }
 
 }

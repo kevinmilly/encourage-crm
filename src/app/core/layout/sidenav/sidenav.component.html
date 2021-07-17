@@ -8,16 +8,16 @@
     </div>
     <div class="links">
       <mat-nav-list>
-        <mat-list-item>
+        <mat-list-item style="margin-bottom: -2.5vmax;">
           <mat-icon>contacts</mat-icon>
           <span class="links__header"> Contacts </span>
         </mat-list-item>
-        <mat-nav-list style="margin-left: 3vw; margin-top:-2.5vh; ">
+        <mat-nav-list style="margin-left: 3vw;  ">
           <mat-list-item>
             <a
               [routerLink]="['contacts']"
               routerLinkActive="router-link-active"
-              style="margin-bottom:-2vh;"
+              style="margin-bottom:-4vh;"
             >
               <span class="link-text">Contact List</span>
             </a>
@@ -33,16 +33,16 @@
           </mat-list-item>
         </mat-nav-list>
           <!-----Tasks-->
-          <mat-list-item>
+          <mat-list-item style="margin-bottom: -2.5vmax;">
             <mat-icon>add_task</mat-icon>
             <span class="links__header"> Tasks </span>
           </mat-list-item>
-          <mat-nav-list style="margin-left: 3vw; margin-top:-2.5vh; ">
+          <mat-nav-list style="margin-left: 3vw;  ">
             <mat-list-item>
               <a
                 [routerLink]="['task']"
                 routerLinkActive="router-link-active"
-                style="margin-bottom:-2vh;"
+                style="margin-bottom:-4vh;"
               >
                 <span class="link-text">Task List</span>
               </a>
@@ -59,16 +59,16 @@
           </mat-nav-list>
         
             <!----Notes-->
-            <mat-list-item>
+            <mat-list-item style="margin-bottom: -2.5vmax;">
               <mat-icon>text_snippet</mat-icon>
               <span class="links__header"> Notes </span>
             </mat-list-item>
-            <mat-nav-list style="margin-left: 3vw; margin-top:-2.5vh; ">
+            <mat-nav-list style="margin-left: 3vw;  ">
               <mat-list-item>
                 <a
                   [routerLink]="['notes']"
                   routerLinkActive="router-link-active"
-                  style="margin-bottom:-2vh;"
+                  style="margin-bottom:-4vh;"
                 >
                   <span class="link-text">Note List</span>
                 </a>
@@ -87,7 +87,7 @@
           <mat-icon>leaderboard</mat-icon>
           <span class="links__header"> Metrics </span>
         </mat-list-item>
-        <mat-nav-list style="margin-left: 3vw; margin-top:-2.5vh; ">
+        <mat-nav-list style="margin-left: 3vw;  ">
           <mat-list-item>
             <a
               [routerLink]="['analytics/dashboard']"
@@ -95,7 +95,8 @@
             >
               <span class="link-text"> Dashboard </span>
             </a>
-          </mat-list-item>
+          </mat-list-item> 
+  
         </mat-nav-list>
       </mat-nav-list>
     </div>

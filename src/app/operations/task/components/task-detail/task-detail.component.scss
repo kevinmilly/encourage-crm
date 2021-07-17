@@ -1,0 +1,20 @@
+.header {
+    text-align: center;
+    margin-bottom: 2vmax;
+  
+    &__edit-choice {
+      display: grid;
+      justify-content: end;
+  
+      a {
+        color: blue;
+        text-decoration: underline;
+      }
+    }
+  }
+  .details {
+    width: 70vw;
+    margin: auto;
+    text-align: center;
+  }
+   

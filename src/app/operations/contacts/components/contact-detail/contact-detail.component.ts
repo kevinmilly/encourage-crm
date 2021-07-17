@@ -4,6 +4,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { ContactType, Context, EnergyLevel, Priorities, Statuses } from '@operations/contacts';
 import { Contact, Task } from '@operations/index';
+import { Note, NoteOptions } from '@operations/notes';
+import { TaskOptions } from '@operations/task';
 import { selectTasks } from '@operations/task/state/selectors/task.selectors';
 import { IControlModel } from '@shared/models/control.model';
 import { Observable } from 'rxjs';
@@ -19,6 +21,7 @@ export class ContactDetailComponent implements OnInit {
   editOpen=false;
   contact!: Contact;
   tasks$:Observable<Task[]> | undefined;
+  notes$:Observable<Note[]> | undefined;
 
 
   contactTypeChoices = [
@@ -66,18 +69,26 @@ export class ContactDetailComponent implements OnInit {
     { name: Statuses[1], value: 1 },
   ]
 
+  taskPipeOptions:any;
+  notePipeOptions:any;
+
 
   editConceptControls: IControlModel[] = [];
 
   constructor (
-    @Inject(MAT_DIALOG_DATA) public data: { contact:Contact, tasks:Observable<Task[]>},
+    @Inject(MAT_DIALOG_DATA) public data: { 
+        contact:Contact, 
+        tasks:Observable<Task[]>,
+        notes:Observable<Note[]>
+      },
     private dialogRef: MatDialogRef<ContactDetailComponent>,
     private store: Store
   ) { }
 
   ngOnInit(): void {
     this.contact = this.data.contact;
-    this.tasks$ = this.data.tasks
+    this.tasks$ = this.data.tasks;
+    this.notes$ = this.data.notes;
     
     this.editConceptControls = [
       { 
@@ -155,6 +166,19 @@ export class ContactDetailComponent implements OnInit {
         default: this.contact.description,
       }
     ];
+
+    this.taskPipeOptions  = [
+      TaskOptions[0],
+      TaskOptions[1], 
+      TaskOptions[2]
+    ]
+
+    this.notePipeOptions = [
+      NoteOptions[0],
+      NoteOptions[1],
+      NoteOptions[2],
+      NoteOptions[3]
+    ]
 
   }
 

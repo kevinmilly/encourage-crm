@@ -88,7 +88,7 @@ export class AddNoteComponent implements OnInit {
         controlName: "body",
         type: "longString",
         required: true,
-        default: ''
+        default: 'No Body Provided'
       },
       {
         displayName: "Related Contact",

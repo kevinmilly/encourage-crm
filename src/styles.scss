@@ -267,3 +267,9 @@ $altTheme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
 h6 {
   margin-bottom: 0;
 }
+
+.detail-modal {
+  width: 90vmax;
+  height: 100%;
+  overflow: auto;
+}

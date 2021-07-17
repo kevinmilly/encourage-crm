@@ -33,12 +33,36 @@
       </ng-template>
   </enccrm-modal-card>
 
-  <enccrm-modal-card>
-      <div *ngFor="let task of tasks$ | async">
-        <span>{{task.taskName}}</span>
-        <span>{{task.description}}</span>
-      </div>
-  </enccrm-modal-card>
+
+    <enccrm-tab 
+      [labels]="['Highlights','Notes','Tasks']">
+    <div id="first">
+      Metrics
+    </div>
+    <div id="second">
+        <enccrm-table
+          *ngIf="notes$ | async as notes; else noNotesData"
+          [data]="notes"
+          [columns]="['title','noteType','priority','body']"
+          [displayNames]="['Title','Type','Priority','Body']"
+          [pipesNeeded]="notePipeOptions"
+          [pipeType]="'notes'">
+        </enccrm-table>
+        <ng-template #noNotesData>No Notes Data Yet</ng-template>
+    </div>  
+    <div id="third">
+      <enccrm-table
+        *ngIf="tasks$ | async as tasks; else noTaskData"
+        [data]="tasks"
+        [columns]="['taskName','taskType','priority','description']"
+        [displayNames]="['What to Do','Type','Priority','How to Do It']"
+        [pipesNeeded]="taskPipeOptions"
+        [pipeType]="'task'">
+      </enccrm-table>
+      <ng-template #noTaskData>No Task Data Yet</ng-template>
+    </div>
+  </enccrm-tab>
+
 
   
 

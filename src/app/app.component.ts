@@ -30,4 +30,8 @@ export class AppComponent  {
   toggleSideNav() {
     this.sidenavComponent.sidenav.toggle();
   }
+
+  logout() {
+    this.auth.signOut();
+  }
 }
