@@ -6,14 +6,15 @@ import { ContactDetailComponent } from './components/contact-detail/contact-deta
 import { ContactListComponent } from './components/contact-list/contact-list.component';
 import { ContactRoutingModule } from './contacts.routing.module';
 import * as fromConceptReducer from './state/index';
-
+import { RatingColorPipe } from './pipes/rating-color.pipe';
 
 
 @NgModule({
   declarations: [
    ContactListComponent,
    AddContactComponent,
-   ContactDetailComponent
+   ContactDetailComponent,
+   RatingColorPipe
   ],
   imports: [
     SharedModule,

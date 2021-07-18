@@ -9,6 +9,9 @@ export class DashboardComponent implements OnInit {
 
   @Input() data:any;
 
+  topContexts!:{context:string, amount:number};
+  mostImportantFriend:string = '';
+
   constructor() { }
 
   ngOnInit(): void {

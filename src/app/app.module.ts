@@ -16,8 +16,9 @@ import { reducers } from './store/reducers';
 
 
 
+
 @NgModule({
-  declarations: [
+  declarations: [ 
     AppComponent
   ],
   imports: [

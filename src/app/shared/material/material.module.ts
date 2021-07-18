@@ -30,6 +30,8 @@ import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatChipsModule } from '@angular/material/chips';
 
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 import { FlexLayoutModule, BREAKPOINT } from '@angular/flex-layout';
 
 import { NgxSpinnerModule } from "ngx-spinner";
@@ -68,6 +70,7 @@ const modules = [
   MatRippleModule,
   FlexLayoutModule,
   NgxSpinnerModule,
+  MatProgressSpinnerModule,
   MatAutocompleteModule
 ]
 

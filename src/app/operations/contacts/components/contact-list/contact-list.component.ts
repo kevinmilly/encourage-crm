@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild, ViewChildren } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
@@ -41,10 +41,53 @@ import { ContactDetailComponent } from '../contact-detail/contact-detail.compone
               <ng-template #noData><h1>No Data Yet</h1></ng-template>
             </enccrm-general-card>
             </div> 
+
+            <ng-container *ngTemplateOutlet="friendMetric"> </ng-container>
+
+            <ng-template #friendMetric let-rating="rating" let-diagnosis="diagnosis">
+                <h3>Friendship Rating:</h3>
+                  <div class="metric-detail">
+                      <h4 [style.color]="rating | ratingColor">{{rating}}/100</h4>
+                      <h5>{{diagnosis}}</h5>
+                  </div>
+            </ng-template>
+
+            <ng-template #familyMetric let-rating="rating" let-diagnosis="diagnosis">
+            <h3>Family Member Rating:</h3>
+                <div class="metric-detail">
+                  <h4 [style.color]="rating | ratingColor">{{rating}}/100</h4>
+                  <h5>{{diagnosis}}</h5>
+                </div>
+            </ng-template>
+
+            <ng-template #nonRelationMetric let-rating="rating" let-diagnosis="diagnosis">
+            <h3>Network Value Rating:</h3>
+                <div class="metric-detail">
+                    <h4 [style.color]="rating | ratingColor">{{rating}}/100</h4>
+                    <h5>{{diagnosis}}</h5>
+                </div>
+            </ng-template>
+
+            <ng-template #acquaintanceMetric let-rating="rating" let-diagnosis="diagnosis">
+            <h3>Potential Friendship Rating:</h3>
+              <div class="metric-detail">
+                <h4 [style.color]="rating | ratingColor">{{rating}}/100</h4>
+                <h5>{{diagnosis}}</h5>
+              </div>
+           </ng-template>
   `,
   styleUrls: ['./contact-list.component.scss']
 })
 export class ContactListComponent implements OnInit {
+
+  @ViewChild("friendMetric", { static: true })
+  public friendMetric!: HTMLElement;
+  @ViewChild("familyMetric", { static: true })
+  public familyMetric!: HTMLElement;
+  @ViewChild("nonRelationMetric", { static: true })
+  public nonRelationMetric!: HTMLElement;
+  @ViewChild("acquaintanceMetric", { static: true })
+  public acquaintanceMetric!: HTMLElement;
   
   private subs = new SubSink();
 
@@ -106,6 +149,7 @@ export class ContactListComponent implements OnInit {
   constructor(private store:Store, public dialog: MatDialog) { }
 
   ngOnInit(): void {
+  
     this.contactTypeFilter = new FormControl(this.contactTypes);
     this.pipeOptions = [
       ContactOptions[0],
@@ -140,6 +184,7 @@ export class ContactListComponent implements OnInit {
         contact:event,
         tasks: this.store.select(selectTasks).pipe(map((tasks:Task[]) => tasks.filter(task => task.contact.value === event.id))),
         notes: this.store.select(selectNotes).pipe(map((notes:Note[]) => notes.filter(note => note.contact.value === event.id))),
+        metric: this.getRelatedTemplateReference(+event.contactType)
         
       } 
     });
@@ -153,6 +198,18 @@ export class ContactListComponent implements OnInit {
       }
 
     });
+  }
+    getRelatedTemplateReference(contactType:number): any {
+      switch (contactType) {
+        case 13:
+          return this.nonRelationMetric 
+        case 0:
+          return this.friendMetric
+        case 14:
+          return this.acquaintanceMetric
+        default:
+          return this.familyMetric
+    }
   }
 
   deleteContact(event:fromOperations.Contact) {

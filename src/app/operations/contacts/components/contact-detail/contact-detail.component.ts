@@ -1,8 +1,9 @@
-import { Inject } from '@angular/core';
+import { ElementRef, Inject, TemplateRef } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { ContactType, Context, EnergyLevel, Priorities, Statuses } from '@operations/contacts';
+import { ContactMetricService } from '@operations/contacts/services/contact-metric.service';
 import { Contact, Task } from '@operations/index';
 import { Note, NoteOptions } from '@operations/notes';
 import { TaskOptions } from '@operations/task';
@@ -17,6 +18,10 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./contact-detail.component.scss']
 })
 export class ContactDetailComponent implements OnInit {
+
+  metricTemplate!: TemplateRef<HTMLElement>;
+  rating:number = 0;
+  diagnosis:string = '';
 
   editOpen=false;
   contact!: Contact;
@@ -79,16 +84,25 @@ export class ContactDetailComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: { 
         contact:Contact, 
         tasks:Observable<Task[]>,
-        notes:Observable<Note[]>
+        notes:Observable<Note[]>,
+        metric:TemplateRef<HTMLElement>
       },
-    private dialogRef: MatDialogRef<ContactDetailComponent>,
-    private store: Store
+      public contactMetricService:ContactMetricService,
+      private dialogRef: MatDialogRef<ContactDetailComponent>,
+      private store: Store
   ) { }
 
   ngOnInit(): void {
     this.contact = this.data.contact;
     this.tasks$ = this.data.tasks;
     this.notes$ = this.data.notes;
+    this.metricTemplate = this.data.metric;
+
+    this.rating = this.contactMetricService.getContactRating([
+      +this.contact.energyLevel,
+      +this.contact.priority
+    ],10)
+
     
     this.editConceptControls = [
       { 

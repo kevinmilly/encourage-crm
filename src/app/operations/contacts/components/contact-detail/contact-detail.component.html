@@ -37,7 +37,7 @@
     <enccrm-tab 
       [labels]="['Highlights','Notes','Tasks']">
     <div id="first">
-      Metrics
+      <ng-container *ngTemplateOutlet="metricTemplate; context: {rating:rating}"></ng-container>
     </div>
     <div id="second">
         <enccrm-table
