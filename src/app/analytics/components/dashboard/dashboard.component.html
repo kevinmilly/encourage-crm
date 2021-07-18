@@ -11,7 +11,7 @@
           fxAlign="center center"
           *ngIf="data && data.length > 0; else noStandardData"
         >
-          <div id="first">
+          <div id="first"> 
           
           </div>
           <hr />
@@ -45,6 +45,16 @@
           fxLayout="row"
           fxAlign="center center"
         >
+        <canvas baseChart 
+        height="100"
+        width="100"
+        [data]="pieData" 
+        [labels]="pieLabels" 
+        [chartType]="pieType"
+        [options]="pieOptions"
+        [colors]="chartColors"
+        [legend]="pieLegend"> 
+    </canvas>
         
         </div>
       </div>
@@ -66,6 +76,14 @@
             else noBarData
           "
         >
+        <canvas 
+            baseChart 
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType">
+       </canvas>
        
         </div>
         <ng-template #noBarData>
