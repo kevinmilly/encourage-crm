@@ -3,10 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { User } from '@core/auth/models/users';
 import { Store } from '@ngrx/store';
-import { contactActions } from '@operations/contacts/state';
-import { taskActions } from '@operations/task/state';
-
-
 
 @Component({
   selector: 'enccrm-sidenav',

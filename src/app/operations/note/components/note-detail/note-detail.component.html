@@ -1,0 +1,36 @@
+<h1>Note Details</h1>
+<enccrm-modal-card *ngIf="editNoteControls.length > 0">
+  <div class="header">
+    <div class="header__edit-choice">
+      <a
+        [style.color]="'blue'"
+        (click)="editOpen = false"
+        *ngIf="editOpen; else editingHeader"
+        >Stop Editing?</a
+      >
+      <ng-template #editingHeader>
+        <a [style.color]="'blue'" (click)="editOpen = true">Want to Edit?</a>
+      </ng-template>
+    </div>
+    <h2>{{ note.title }}</h2>
+    <h2>{{ note.contact.display }}</h2>
+    <h3
+      [innerHTML]="+note.priority | display_translator: 'priority':'note'"
+    ></h3>
+    <h4
+      [innerHTML]="+note.noteType | display_translator: 'noteType':'note'"
+    ></h4>
+  </div>
+  <div class="details" *ngIf="!editOpen; else editing">
+    <div><b>Body:</b> {{ note.body }}</div>
+  </div>
+
+  <ng-template #editing>
+    <enccrm-form
+      [controlsToCreate]="editNoteControls"
+      (onSubmit)="submit($event)"
+    >
+      <div horizontal>Edit {{ note.title }}</div>
+    </enccrm-form>
+  </ng-template>
+</enccrm-modal-card>

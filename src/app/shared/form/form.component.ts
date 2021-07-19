@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { IControlModel } from '@shared/models/control.model';
+import { FormSetupModel } from '@shared/models/form-setup.model';
 
 import * as moment from 'moment';
 
@@ -11,13 +11,13 @@ import * as moment from 'moment';
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit {
-  @Input() controlsToCreate: IControlModel[] = [];
+  @Input() controlsToCreate: FormSetupModel[] = [];
   @Input() orientation: string = 'horizontal';
   @Input() formatted: boolean = true;
   @Output() onSubmit = new EventEmitter();
 
- 
- 
+
+
 
   submission: any = {};
 
@@ -30,13 +30,13 @@ export class FormComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.dir(this.controlsToCreate);   
+    console.dir(this.controlsToCreate);
     this.generateControls(this.controlsToCreate);
-    
+
 
   }
 
-  generateControls(controlsToCreate: IControlModel[]) {
+  generateControls(controlsToCreate: FormSetupModel[]) {
     let vals = [];
     controlsToCreate.forEach(c => {
       vals = [];
@@ -115,12 +115,12 @@ export class FormComponent implements OnInit {
 
   submit() {
     this.controlsToCreate.forEach((control, i) => {
-      if(control.type === 'date') {
-         this.submission[control.controlName] = this.controlsCreated[i].value ? moment(new Date(this.controlsCreated[i].value)).format('LL') : '';
+      if (control.type === 'date') {
+        this.submission[control.controlName] = this.controlsCreated[i].value ? moment(new Date(this.controlsCreated[i].value)).format('LL') : '';
       } else {
-         this.submission[control.controlName] = this.controlsCreated[i].value;
+        this.submission[control.controlName] = this.controlsCreated[i].value;
       }
-     
+
     });
 
     this.onSubmit.emit(this.submission);
@@ -140,4 +140,3 @@ export class FormComponent implements OnInit {
 }
 
 
- 

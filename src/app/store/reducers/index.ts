@@ -1,5 +1,5 @@
 import { ActionReducerMap } from "@ngrx/store";
-import { noteReducer, NoteState } from "@operations/notes/state";
+import { noteReducer, NoteState } from "@operations/note/state";
 import { taskReducer, TaskState } from "@operations/task/state";
 import * as fromOperation from "../../operations/index";
 

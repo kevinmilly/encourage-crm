@@ -12,8 +12,8 @@ import { selectTasks } from '@operations/task/state/selectors/task.selectors';
 
 @Component({
   selector: 'enccrm-tasks',
-  template: 
-  ` 
+  template:
+    ` 
   <h1>Task List</h1>
   <div class="container">
     <enccrm-general-card> 
@@ -44,26 +44,26 @@ export class TasksComponent implements OnInit {
   private subs = new SubSink();
 
   dataSub: Subscription = new Subscription;
-  data:any[] = [];
-  dataSaved:any[] = []; 
+  data: any[] = [];
+  dataSaved: any[] = [];
 
 
-  columns:string[] = [
+  columns: string[] = [
     'taskName',
     'taskType', //choices
     'priority', //choices 
     'contact',
-    'description' 
+    'description'
   ];
-  displayNames:string[] = [
-    'Name', 
+  displayNames: string[] = [
+    'Name',
     'Task Type', //choices
     'Priority', //choices
     'Contact',
     'Description'
   ];
- 
-  taskTypes:string[] = [
+
+  taskTypes: string[] = [
     TaskType[0],
     TaskType[1],
     TaskType[2],
@@ -73,20 +73,20 @@ export class TasksComponent implements OnInit {
   pipeOptions: string[] = [];
   taskTypeFilter: FormControl = new FormControl;
 
-  tasks$:Observable<fromOperations.Task[]> | undefined;
+  tasks$: Observable<fromOperations.Task[]> | undefined;
 
-  constructor(private store:Store, public dialog: MatDialog) { }
+  constructor(private store: Store, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.taskTypeFilter = new FormControl(this.taskTypes);
     this.pipeOptions = [
       TaskOptions[0],
-      TaskOptions[1], 
+      TaskOptions[1],
       TaskOptions[2]
     ]
-    
+
     this.tasks$ = this.store.select(selectTasks);
-    
+
 
     this.subs.sink = this.tasks$.subscribe(data => {
 
@@ -101,20 +101,20 @@ export class TasksComponent implements OnInit {
     this.data = this.dataSaved.filter(d => this.taskTypeFilter.value.includes(TaskType[+d.taskType]));
   }
 
-  detailTask(event:fromOperations.Task) {
-   
-      const dialogRef = this.dialog.open(TaskDetailComponent, {
+  detailTask(event: fromOperations.Task) {
+
+    const dialogRef = this.dialog.open(TaskDetailComponent, {
       width: '90vw',
       height: '45rem',
-      data: { 
-        task:event
-        
-      } 
-    }); 
+      data: {
+        task: event
+
+      }
+    });
 
     dialogRef.afterClosed().subscribe(result => {
-    
-      if(result.action === 'delete') {
+
+      if (result.action === 'delete') {
         this.store.dispatch(fromTaskState.taskActions.deleteTask(result.task));
       } else { //add
 
@@ -123,7 +123,7 @@ export class TasksComponent implements OnInit {
     });
   }
 
-  deleteTask(event:fromOperations.Task) {
+  deleteTaskInDB(event: fromOperations.Task) {
     console.log("Need to implement");
   }
 

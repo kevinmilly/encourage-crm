@@ -12,8 +12,8 @@ import { TableComponent } from './table/table.component';
 import { ContactDetailTranslatorPipe } from './pipes/contact-detail-translator.pipe';
 import { StoreModule } from '@ngrx/store';
 import * as fromTask from '../operations/task/state/reducers/task.reducer';
-import * as fromNote from '../operations/notes/state/reducers/notes.reducer';
-import * as fromContactReducer from '@operations/contacts/state';
+import * as fromNote from '../operations/note/state/reducers/notes.reducer';
+import * as fromContactReducer from '@operations/contact/state';
 import { EffectsModule } from '@ngrx/effects';
 import { TaskEffects } from '@operations/task/state';
 

@@ -1,6 +1,6 @@
 
-export * from './contacts/models/interfaces/contact';
-export * from './notes/models/interfaces/note';
+export * from './contact/models/interfaces/contact';
+export * from './note/models/interfaces/note';
 
-export * from './contacts/state/index';
+export * from './contact/state/index';
 export * from './task/models/interfaces/task';

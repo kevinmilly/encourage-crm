@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ContactType, EnergyLevel, Priorities, Statuses, ContactOptions, Context } from '@operations/contacts';
-import { NoteOptions, NoteType } from '@operations/notes';
+import { ContactType, EnergyLevel, Priorities, Statuses, ContactOptions, Context } from '@operations/contact';
+import { NoteOptions, NoteType } from '@operations/note';
 import { TaskOptions, TaskType } from '@operations/task';
 
 

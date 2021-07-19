@@ -2,9 +2,8 @@ import { Injectable, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from '@core/auth/services/auth.service';
 
-import { Contact, Note, Task} from '@operations/index';
+import { Contact, Note, Task } from '@operations/index';
 import { Observable, of } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
 
 
 
@@ -23,16 +22,16 @@ export class BackendService {
 
   }
 
-  getContacts(): Observable<Contact[]> {
+  getContactsFromDB(): Observable<Contact[]> {
     return this.firestore.collection<Contact>(`user/${this.auth.user.uid}/Contacts`)
       .valueChanges();
   }
-  updateContact(contact: Contact) {
+  updateContactInDB(contact: Contact) {
     this.firestore.collection<Contact>(`user/${this.auth.user.uid}/Contacts`)
       .doc(contact.id).update(contact);
     return of({ ...contact })
   }
-  addContact(contact: Contact) {
+  addContactToDB(contact: Contact) {
     const contactToSubmit = { ...contact };
     contactToSubmit['id'] = this.idGenerator();
     console.dir(contactToSubmit);
@@ -43,28 +42,28 @@ export class BackendService {
     return of(contactToSubmit);
 
   }
-  deleteContact(contact: Contact) {
+  deleteContactInDB(contact: Contact) {
     this.firestore.collection<Contact>(`user/${this.auth.user.uid}/Contacts`)
       .doc(contact.id).delete();
     return of({ ...contact })
   }
 
-  
 
 
 
 
-  getTasks(): Observable<Task[]> {
-   
+
+  getTasksFromDB(): Observable<Task[]> {
+
     return this.firestore.collection<Task>(`user/${this.auth.user.uid}/Tasks`)
       .valueChanges();
   }
-  updateTask(task: Task) {
+  updateTaskInDB(task: Task) {
     this.firestore.collection<Task>(`user/${this.auth.user.uid}/Tasks`)
       .doc(task.id).update(task);
     return of({ ...task })
   }
-  addTask(task: Task) {
+  addTaskInDB(task: Task) {
     const taskToSubmit = { ...task };
     taskToSubmit['id'] = this.idGenerator();
     console.dir(taskToSubmit);
@@ -75,7 +74,7 @@ export class BackendService {
     return of(taskToSubmit);
 
   }
-  deleteTask(task: Task) {
+  deleteTaskInDB(task: Task) {
     this.firestore.collection<Task>(`user/${this.auth.user.uid}/Tasks`)
       .doc(task.id).delete();
     return of({ ...task })
@@ -85,31 +84,31 @@ export class BackendService {
 
 
 
-  getNotes(): Observable<Note[]> {
-   
+  getNotesFromDB(): Observable<Note[]> {
+
     return this.firestore.collection<Note>(`user/${this.auth.user.uid}/Notes`)
       .valueChanges();
   }
-  updateNote(task: Note) {
+  updateNoteInDB(note: Note) {
     this.firestore.collection<Note>(`user/${this.auth.user.uid}/Notes`)
-      .doc(task.id).update(task);
-    return of({ ...task })
+      .doc(note.id).update(note);
+    return of({ ...note })
   }
-  addNote(task: Note) {
-    const taskToSubmit = { ...task };
-    taskToSubmit['id'] = this.idGenerator();
-    console.dir(taskToSubmit);
+  addNoteInDB(note: Note) {
+    const noteToSubmit = { ...note };
+    noteToSubmit['id'] = this.idGenerator();
+    console.dir(noteToSubmit);
 
     this.firestore.collection<Note>(`user/${this.auth.user.uid}/Notes`)
-      .doc(taskToSubmit.id)
-      .set(taskToSubmit as Note, { merge: true });
-    return of(taskToSubmit);
+      .doc(noteToSubmit.id)
+      .set(noteToSubmit as Note, { merge: true });
+    return of(noteToSubmit);
 
   }
-  deleteNote(task: Note) {
-    this.firestore.collection<Note>(`user/${this.auth.user.uid}/Tasks`)
-      .doc(task.id).delete();
-    return of({ ...task })
+  deleteNoteInDB(note: Note) {
+    this.firestore.collection<Note>(`user/${this.auth.user.uid}/Notes`)
+      .doc(note.id).delete();
+    return of({ ...note })
   }
 
 

@@ -1,37 +1,37 @@
-import {AfterViewInit, Component, ViewChild, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
-import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import { AfterViewInit, Component, ViewChild, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatDialog } from '@angular/material/dialog';
 
-import * as fromContacts from '@operations/contacts/index';
-import { ContactDetailComponent } from '@operations/contacts/components/contact-detail/contact-detail.component';
+import * as fromContacts from '@operations/contact/index';
+import { ContactDetailComponent } from '@operations/contact/components/contact-detail/contact-detail.component';
 import { Store } from '@ngrx/store';
 
 
 @Component({
-  selector: 'enccrm-table', 
-  templateUrl: './table.component.html', 
-  styleUrls: ['./table.component.scss'] 
+  selector: 'enccrm-table',
+  templateUrl: './table.component.html',
+  styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit {
 
-  @Input() data:any[] = [];
-  @Input() columns:string[] = [];
-  @Input() displayNames:string[] = [];
-  @Input() action = false; 
-  @Input() pipesNeeded:string[] = [];
-  @Input() pipeType:string = ''
-  @Input() linksNeeded:string[] = [];
+  @Input() data: any[] = [];
+  @Input() columns: string[] = [];
+  @Input() displayNames: string[] = [];
+  @Input() action = false;
+  @Input() pipesNeeded: string[] = [];
+  @Input() pipeType: string = ''
+  @Input() linksNeeded: string[] = [];
 
   @Output() onZoom = new EventEmitter();
 
-  dataSaved:any[] = [];
+  dataSaved: any[] = [];
 
   displayedColumns: string[] = [];
   dataSource: MatTableDataSource<any> = new MatTableDataSource;
-  refColumns:string[] = []
+  refColumns: string[] = []
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort)
@@ -40,11 +40,11 @@ export class TableComponent implements OnInit {
 
 
   constructor(
-    private store:Store
+    private store: Store
   ) {
-   }
+  }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
     console.dir(this.linksNeeded);
     console.dir(this.pipesNeeded);
     this.displayedColumns = this.displayNames;
@@ -60,10 +60,10 @@ export class TableComponent implements OnInit {
     this.resetTableAndFilter(this.data);
   }
 
-  resetTableAndFilter(data:fromContacts.Contact[]) {
+  resetTableAndFilter(data: fromContacts.Contact[]) {
     this.dataSource = new MatTableDataSource([...data]);
     this.setupSortAndPagination();
-      
+
 
   }
 
@@ -81,7 +81,7 @@ export class TableComponent implements OnInit {
   }
 
 
-  onClicked(type:string,event:any) {
+  onClicked(type: string, event: any) {
     // if(type==='zoom') {
     //   this.rowClick(event);
     // } else if(type==='delete') {
@@ -94,10 +94,10 @@ export class TableComponent implements OnInit {
   setupSortAndPagination() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-  } 
+  }
 
-  launchModal(entity:any) {
-      this.onZoom.emit(entity);
+  launchModal(entity: any) {
+    this.onZoom.emit(entity);
   }
 
   // rowClick(event:fromContacts.Contact) {
@@ -110,7 +110,7 @@ export class TableComponent implements OnInit {
   //   });
 
   //   dialogRef.afterClosed().subscribe(result => {
-    
+
   //     if(result.action === 'update') {
   //       if (result.type === 'concept') {
   //         this.backend.editConcept(result.event as Contact);
@@ -121,7 +121,7 @@ export class TableComponent implements OnInit {
   //       if (result.type === 'concept') {
   //         this.backend.addConcepts(result.event as Contact);
   //       } else { //note
-  //           this.backend.addNote(result.event as INote);
+  //           this.backend.addNoteInDB(result.event as INote);
   //       }
   //     }
 

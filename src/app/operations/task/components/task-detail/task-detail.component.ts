@@ -1,10 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Priorities, Statuses, Contact } from '@operations/contacts';
-import { ContactDetailComponent } from '@operations/contacts/components/contact-detail/contact-detail.component';
+import { Priorities, Statuses, Contact } from '@operations/contact';
 import { TaskType } from '@operations/task';
 import { Task } from '@operations/task/models/interfaces/task';
-import { IControlModel } from '@shared/models/control.model';
+import { FormSetupModel } from '@shared/models/form-setup.model';
 
 @Component({
   selector: 'enccrm-task-detail',
@@ -13,7 +12,7 @@ import { IControlModel } from '@shared/models/control.model';
 })
 export class TaskDetailComponent implements OnInit {
 
-  editOpen=false;
+  editOpen = false;
   task!: Task;
 
   taskTypeChoices = [
@@ -35,12 +34,12 @@ export class TaskDetailComponent implements OnInit {
     { name: Statuses[1], value: 1 },
   ]
 
-  editConceptControls: IControlModel[] = [
+  editConceptControls: FormSetupModel[] = [
     {
       displayName: "Name",
       controlName: "taskName",
       type: "string",
-      required: true, 
+      required: true,
       default: '',
     },
     {
@@ -63,23 +62,23 @@ export class TaskDetailComponent implements OnInit {
       displayName: "Description",
       controlName: "description",
       type: "longString",
-      required: false, 
+      required: false,
       default: '',
     }
   ];
 
-  constructor (
-    @Inject(MAT_DIALOG_DATA) public data: { task:Task},
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: { task: Task },
     private dialogRef: MatDialogRef<TaskDetailComponent>
   ) { }
 
   ngOnInit(): void {
     this.task = this.data.task;
-  
+
 
   }
 
-  submit(event:any) {
+  submit(event: any) {
 
 
   }

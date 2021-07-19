@@ -10,44 +10,44 @@ export const taskFeatureKey = 'task';
 export interface TaskState extends EntityState<fromOperations.Task> {
   loaded: boolean;
   loading: boolean;
-  error:any;
+  error: any;
 }
 
 export const taskAdapter = createEntityAdapter<fromOperations.Task>();
 
 const initialTaskState = taskAdapter.getInitialState({
   loaded: false,
-  loading:false, 
-  error:null, 
+  loading: false,
+  error: null,
 })
 
 
 export const taskReducer = createReducer(
   initialTaskState,
 
-  on(TaskActions.taskActions.loadTaskSuccess,  (state,action) => {
-    return taskAdapter.setAll(action.tasks,{
-                                     ...state,
-                                     loaded:true,
-                                     loading:false
-                                     }); 
-}), 
-  on(TaskActions.taskActions.loadTasksFail, (state,action) => {
-    return {
-        ...state,
-        loaded:true, 
-        loading:false,
-        error: action.error 
-    }
-}),
-
-  on(TaskActions.taskActions.addTaskSuccess, (state,action) => {
-    return taskAdapter.addOne(action.task,state)
+  on(TaskActions.taskActions.loadTaskSuccess, (state, action) => {
+    return taskAdapter.setAll(action.tasks, {
+      ...state,
+      loaded: true,
+      loading: false
+    });
   }),
-  on(TaskActions.taskActions.addTaskFail, (state,action) => {
-      return {...state,error:action.error}
+  on(TaskActions.taskActions.loadTasksFail, (state, action) => {
+    return {
+      ...state,
+      loaded: true,
+      loading: false,
+      error: action.error
+    }
+  }),
+
+  on(TaskActions.taskActions.addTaskSuccess, (state, action) => {
+    return taskAdapter.addOne(action.task, state)
+  }),
+  on(TaskActions.taskActions.addTaskFail, (state, action) => {
+    return { ...state, error: action.error }
   }),
 
 );
 
-export const { selectAll } = taskAdapter.getSelectors();  
+export const { selectAll } = taskAdapter.getSelectors();
