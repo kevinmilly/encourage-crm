@@ -4,6 +4,7 @@ import { ReportsComponent } from './components/reports/reports.component';
 import { AnalyticsRoutingModule } from './analytics.routing.module';
 import { SharedModule } from '@shared/shared.module';
 import { MetricsComponent } from './components/metrics/metrics.component';
+import { ChartsModule } from 'ng2-charts';
 
 
 
@@ -15,7 +16,8 @@ import { MetricsComponent } from './components/metrics/metrics.component';
   ],
   imports: [
     AnalyticsRoutingModule,
-    SharedModule
+    SharedModule,
+    ChartsModule
   ]
 })
 export class AnalyticsModule { }

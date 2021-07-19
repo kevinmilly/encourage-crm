@@ -1,44 +1,50 @@
 <div class="dashboard-container">
-    <ngx-spinner></ngx-spinner>
-    <mat-card [class.mat-elevation-z8]="true" class="standard-metrics first-1">
-      <mat-card-header
-        ><mat-card-title>Highlights</mat-card-title></mat-card-header
-      >
-      <div class="card-container">
-        <div
-          class="card-container__graph-container"
-          fxLayout="row"
-          fxAlign="center center"
-          *ngIf="data && data.length > 0; else noStandardData"
-        >
-          <div id="first"> 
-          
-          </div>
-          <hr />
-          <br />
-          <div id="second">
-          
-            <ul class="double">
-              <ng-container *ngFor="let d of data">
-               
+      <mat-card [class.mat-elevation-z8]="true" class="standard-metric grid1">
+        <mat-card-header
+        ><mat-card-title>Highlights</mat-card-title>
+        </mat-card-header>
+        <div *ngIf="mostImportantFriend; else noStandardData">
+          <div class="standard-metric-container">
+                <ng-container 
+                *ngTemplateOutlet="standardMetricFormat; context:{header: 'Highest Rated Contact', metric:highestRatedContact && highestRatedContact.contactName}">
               </ng-container>
-            </ul>
+              <ng-container 
+                *ngTemplateOutlet="standardMetricFormat; context:{header: 'Lowest Rated Contact', metric:lowestRatedContact && lowestRatedContact.contactName}">
+              </ng-container>
+          </div>
+          <div class="standard-metric-container">
+                <ng-container 
+                *ngTemplateOutlet="standardMetricFormat; context:{header: 'Closest Family Member', metric:highestRatedFamilyMember && highestRatedFamilyMember.contactName}">
+              </ng-container>
+              <ng-container 
+                *ngTemplateOutlet="standardMetricFormat; context:{header: 'Most Distant Family Member', metric:mostDistantFamilyMember && mostDistantFamilyMember.contactName}">
+              </ng-container>
+          </div>
+          <div class="standard-metric-container">
+                <ng-container 
+                *ngTemplateOutlet="standardMetricFormat; context:{header: 'Closest Friend', metric:mostImportantFriend && mostImportantFriend.contactName}">
+              </ng-container>
+              <ng-container 
+                *ngTemplateOutlet="standardMetricFormat; context:{header: 'Most Distant Friend', metric:mostDistantFriend && mostDistantFriend.contactName}">
+              </ng-container>
+          </div>
+          <div class="standard-metric-container">
+            <ng-container 
+            *ngTemplateOutlet="standardMetricFormat; context:{header: 'Most Friend Rich Environement', metric:topEnvironment && topEnvironment}">
+          </ng-container>
           </div>
         </div>
-        <ng-template #noStandardData>
-          <div class="no-data">
-            <h1>Sorry. No Data to Measure yet.</h1>
-          </div>
-        </ng-template>
-      </div>
-    </mat-card>
-    <mat-card [class.mat-elevation-z8]="true" class="pie first-2">
+
+        <ng-template #noStandardData>No Data Yet</ng-template>
+      </mat-card>
+
+    <mat-card [class.mat-elevation-z8]="true" class="pie grid2">
       <mat-card-header
         ><mat-card-title>Contact Distribution</mat-card-title></mat-card-header
       >
       <div
         class="card-container"
-        *ngIf="data && data.length > 0; else noPieData"
+        *ngIf="contacts && contacts.length > 0; else noPieData"
       >
         <div
           class="card-container__graph-container"
@@ -64,7 +70,7 @@
         </div>
       </ng-template>
     </mat-card>
-    <mat-card [class.mat-elevation-z8]="true" class="bar second">
+    <mat-card [class.mat-elevation-z8]="true" class="bar grid3">
       <mat-card-header
         ><mat-card-title>Contact Volume</mat-card-title></mat-card-header
       >
@@ -72,7 +78,7 @@
         <div
           class="card-container__bar-graph-container"
           *ngIf="
-            data && data.length > 0;
+            contacts && contacts.length > 0;
             else noBarData
           "
         >
@@ -80,8 +86,8 @@
             baseChart 
             [datasets]="barChartData"
             [labels]="barChartLabels"
-            [options]="barChartOptions"
             [legend]="barChartLegend"
+            [colors]="chartColors"
             [chartType]="barChartType">
        </canvas>
        
@@ -95,3 +101,10 @@
     </mat-card>
   </div>
   
+
+  <ng-template #standardMetricFormat let-header="header" let-metric="metric">
+    <div class="standard-metric">
+      <h4>{{header}}</h4>
+      <h5>{{metric}}</h5>
+    </div>
+  </ng-template>

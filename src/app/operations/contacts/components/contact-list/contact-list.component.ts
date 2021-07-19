@@ -50,7 +50,7 @@ import { ContactDetailComponent } from '../contact-detail/contact-detail.compone
                       <h4 [style.color]="rating | ratingColor">{{rating}}/100</h4>
                       <h5>{{diagnosis}}</h5>
                   </div>
-            </ng-template>
+            </ng-template> 
 
             <ng-template #familyMetric let-rating="rating" let-diagnosis="diagnosis">
             <h3>Family Member Rating:</h3>

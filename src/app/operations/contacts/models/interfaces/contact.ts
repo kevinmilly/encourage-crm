@@ -5,10 +5,10 @@ export interface Contact {
     contactName: string;
     email: string;
     phone: string;
-    contactType: string; //choices
-    priority: string; //choices
-    energyLevel: string; //choices
-    context: string; //choices
+    contactType: number; //choices
+    priority: number; //choices
+    energyLevel: number; //choices
+    context: number; //choices
     age: number;
     birthDate: string;
     otherDate: string;
