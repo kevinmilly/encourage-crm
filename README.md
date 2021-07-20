@@ -50,6 +50,12 @@
 ## About The Project
 
   <img src="readme-assets/screenshot.JPG" alt="screenshot">
+  
+  CRMs help many businesses track their contacts to manage leads and current clients.  That's because they effectively offer visibility on a large and small scale.  Just like     CRMs help companies towards their goal of profit; I wanted to work on a Personal CRM, with the goal of encouragement and relationship maximization.  
+  
+  Personal CRMS aren't new however, I wanted to really focus on assisting the user through more actionable metrics.  The CRM would be more than just a database of contacts, but   it would emulate a business-oriented CRM; giving molding data into information that you can make decisions from.  These decisions could help you enrich your network and      identify relationships that may need some work.
+  
+  
 
 #### View all your contacts
 
@@ -60,7 +66,9 @@ Sort or filter by the different factors that you have used to categorize your co
 
 #### Concept Detail
 
-Drill down into a contact to see their related notes and tasks; including some additional personalized informaiton.
+Drill down into a contact to see their related notes and tasks; including some additional personalized information.
+
+<img src="readme-assets/contact-detail.gif" alt="contact-detail">
 
 #### Add New Contacts
 
@@ -68,9 +76,15 @@ Easily add more contacts to track.
 
 #### Tasks and Notes
 
+| Tasks | Notes |
+| --- | --- |
+| <img src="readme-assets/tasks.gif" alt="tasks"> | <img src="readme-assets/notes.gif" alt="notes"> |
+
 Setup tasks that are related to your contacts or take notes based on conversations.  
 
 #### Analytics
+
+<img src="readme-assets/analytics.gif" alt="contact-detail">
 
 Here's where it all comes together!  View the meaningful metrics at a glance based on your contact creation activity.
 
