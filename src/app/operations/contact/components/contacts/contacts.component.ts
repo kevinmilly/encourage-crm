@@ -9,6 +9,7 @@ import { Note, Task } from '@operations/index';
 import { selectNotes } from '@operations/note/state';
 import { taskActions } from '@operations/task/state';
 import { selectTasks } from '@operations/task/state/selectors/task.selectors';
+import * as moment from 'moment';
 import { Observable, of, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { SubSink } from 'subsink';
@@ -165,7 +166,8 @@ export class ContactListComponent implements OnInit {
     this.contacts$ = this.store.select(fromContactState.selectContacts);
 
     this.subs.sink = this.contacts$.subscribe(data => {
-      this.data = data;
+      this.data = data.map(d => ({...d, age: moment(new Date()).diff(moment(new Date(d.birthDate)), 'years')}));
+      console.dir(this.data);
       this.dataSaved = [...data];
     });
     this.subs.sink = this.contactTypeFilter.valueChanges.subscribe(() => this.contactFilter());

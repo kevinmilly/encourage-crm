@@ -49,23 +49,49 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
+  <img src="readme-assets/screenshot.JPG" alt="screenshot">
 
+#### View all your contacts
 
-<!-- <img src="readme-assets/screenshot.JPG" alt="screenshot"> -->
+You can view all the contacts holistically on the table view.
+Sort or filter by the different factors that you have used to categorize your contacts.
 
-#### Step 1
+<img src="readme-assets/contact-list.gif" alt="screenshot">
 
+#### Concept Detail
 
+Drill down into a contact to see their related notes and tasks; including some additional personalized informaiton.
 
-#### Step 2
+#### Add New Contacts
 
+Easily add more contacts to track.  
 
-#### Step 3
+#### Tasks and Notes
 
+Setup tasks that are related to your contacts or take notes based on conversations.  
+
+#### Analytics
+
+Here's where it all comes together!  View the meaningful metrics at a glance based on your contact creation activity.
 
 
 <!-- ROADMAP -->
 ## Roadmap
+
+- More work on the UI enhancement issues
+- More work on state management
+
+- Add 'Encouragement' features
+  - Based on contact type, bring in information on contact detail view to nurture the relationship 
+  - Contact pipeline (facilitate relationship building tracking)
+  - Add reminders for important dates
+  - Google Calendar integration
+  - Gmail integration
+
+- User convenience
+  - Contact Import/Export
+
+- More Contact Detail Metrics/Highlights
 
 
 <!-- GETTING STARTED -->
@@ -73,6 +99,7 @@
 
 ### End User Setup
 
+Launching Soon
 
 
 ### Developer Setup
@@ -88,7 +115,7 @@
 
 ### Built With
 
-* [Angular](https://ionicframework.com/docs/angular/your-first-app)
+* [Angular]
 * [Firebase](https://firebase.google.com/)
 
 
@@ -97,8 +124,6 @@
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-Please feel free to contribute through code or through theory.  Everyone has their own thoughts in regards to how we can all become more productivity.  If you have thoughts in regards to ideas, please feel free to 'Create an Issue' or give feedback through a feature suggestion.
 
 
 1. Fork the Project
