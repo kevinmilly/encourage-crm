@@ -1,3 +1,4 @@
+import { Update } from "@ngrx/entity";
 import { Action, createAction, props, union } from "@ngrx/store";
 
 import * as fromOperations from '@operations/index';
@@ -16,7 +17,7 @@ export enum ContactActionTypes {
     DELETE_CONTACT_FAIL = "[CONTACTS EFFECT] Delete CONTACTS Fail",
     DELETE_CONTACT_SUCCESS = "[CONTACTS EFFECT] Delete CONTACTS Success",
 }
-
+ 
 export const contactActions = {
     loadContacts: createAction(ContactActionTypes.LOAD_CONTACTS),
     loadContactsFail: createAction(
@@ -41,15 +42,7 @@ export const contactActions = {
     ),
     updateContact: createAction(
         ContactActionTypes.UPDATE_CONTACT,
-        props<{ contact: fromOperations.Contact }>()
-    ),
-    updateContactFail: createAction(
-        ContactActionTypes.UPDATE_CONTACT_FAIL,
-        props<{ error: any }>()
-    ),
-    updateContactSuccess: createAction(
-        ContactActionTypes.UPDATE_CONTACT_SUCCESS,
-        props<{ contact: fromOperations.Contact }>()
+        props<{ contact: Update<fromOperations.Contact> }>()
     ),
     deleteContact: createAction(
         ContactActionTypes.DELETE_CONTACT,

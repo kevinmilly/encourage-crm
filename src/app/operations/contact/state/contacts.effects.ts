@@ -42,13 +42,11 @@ export class ContactEffects {
   updateContacts$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromContactAction.contactActions.updateContact),
-      concatMap((action) => {
-        return this.backend.updateContactInDB(action.contact).pipe(
-          map((contact: Contact) => fromContactAction.contactActions.updateContactSuccess({ contact }))
-        )
-      }),
-      catchError(error => of(fromContactAction.contactActions.updateContactFail({ error })))
-    )
+      concatMap((action) => 
+         this.backend.updateContactInDB(action.contact.id, action.contact.changes)
+      ),
+    ),
+    {dispatch: false}
   );
 
   deleteContacts$ = createEffect(() =>

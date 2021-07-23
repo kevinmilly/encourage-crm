@@ -1,6 +1,7 @@
 import { Component, OnInit, TemplateRef, ViewChild, ViewChildren } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Update } from '@ngrx/entity';
 import { Store } from '@ngrx/store';
 import { Contact, ContactOptions, ContactType } from '@operations/contact';
 
@@ -192,13 +193,12 @@ export class ContactListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-
-      if (result.action === 'delete') {
-        this.store.dispatch(fromContactState.contactActions.deleteContact(result.contact));
-      } else { //add
-
-      }
-
+        const update: Update<fromOperations.Contact> = {
+          id: event.id,
+          changes: event
+        }
+        console.log({result});
+        this.store.dispatch(fromContactState.contactActions.updateContact({contact: update}));
     });
   }
   getRelatedTemplateReference(contactType: number): any {

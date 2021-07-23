@@ -26,10 +26,10 @@ export class BackendService {
     return this.firestore.collection<Contact>(`user/${this.auth.user.uid}/Contacts`)
       .valueChanges();
   }
-  updateContactInDB(contact: Contact) {
+  updateContactInDB(contactId:string | number, changes: Partial<Contact>) {
     this.firestore.collection<Contact>(`user/${this.auth.user.uid}/Contacts`)
-      .doc(contact.id).update(contact);
-    return of({ ...contact })
+      .doc(`${contactId}`).update(changes);
+    return of({ ...changes })
   }
   addContactToDB(contact: Contact) {
     const contactToSubmit = { ...contact };

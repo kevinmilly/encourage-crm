@@ -49,7 +49,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-  <img src="readme-assets/screenshot.JPG" alt="screenshot">
+  <img src="readme-assets/splash.PNG" alt="splash">
   
   CRMs help many businesses track their contacts to manage leads and current clients.  That's because they effectively offer visibility on a large and small scale.  Just like     CRMs help companies towards their goal of profit; I wanted to work on a Personal CRM, with the goal of encouragement and relationship maximization.  
   
@@ -62,7 +62,7 @@
 You can view all the contacts holistically on the table view.
 Sort or filter by the different factors that you have used to categorize your contacts.
 
-<img src="readme-assets/contact-list.gif" alt="screenshot">
+<img src="readme-assets/contact-list.gif" alt="contact-list">
 
 #### Concept Detail
 

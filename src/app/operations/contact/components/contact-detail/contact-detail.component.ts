@@ -196,7 +196,7 @@ export class ContactDetailComponent implements OnInit {
   }
 
   submit(event: any) {
-
+    this.dialogRef.close({event})
 
   }
 
