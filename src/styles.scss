@@ -1,16 +1,42 @@
-/**
-* Generated theme by Material Theme Generator
-* https://materialtheme.arcsine.dev
-* Fork at: https://materialtheme.arcsine.dev/?c=YHBhbGV0dGU$YHByaW1hcnk$YF48I2NiOTk3ZSIsIj9lcjwjZWZlMGQ4IiwiO2VyPCNiODdjNjF$LCIlPmBePCNmZmYxZTYiLCI~ZXI8I2ZmZmJmOCIsIjtlcjwjZmZlYmRifiwid2Fybj5gXjwjZTA3YTVmIiwiP2VyPCNmNmQ3Y2YiLCI7ZXI8I2QzNWQ0M34sIj9UZXh0PCMwMDAwMDAiLCI~PTwjZmFmYWZhIiwiO1RleHQ8I2ZmZmZmZiIsIjs9PCMyYzJjMmN$LCJmb250cz5bYEA8KC00fixgQDwoLTN$LGBAPCgtMn4sYEA8KC0xfixgQDxoZWFkbGluZX4sYEA8dGl0bGV$LGBAPHN1YiktMn4sYEA8c3ViKS0xfixgQDxib2R5LTJ$LGBAPGJvZHktMX4sYEA8YnV0dG9ufixgQDxjYXB0aW9ufixgQDxpbnB1dCIsInNpemU$bnVsbH1dLCJpY29uczxGaWxsZWQiLCI~bmVzcz50cnVlLCJ2ZXJzaW9uPjExfQ==
-*/
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
 @use '~@angular/material' as mat;
-
-@import "styles/main";
-
-@import "~@angular/material/theming";
+// Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$encouragement-crm-primary: mat.define-palette(mat.$indigo-palette);
+$encouragement-crm-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$encouragement-crm-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$encouragement-crm-theme: mat.define-light-theme((
+  color: (
+    primary: $encouragement-crm-primary,
+    accent: $encouragement-crm-accent,
+    warn: $encouragement-crm-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($encouragement-crm-theme);
+
+@import "styles/main"; 
+
+@import "~@angular/material/theming";
+
 
 // Fonts
 @import "https://fonts.googleapis.com/css?family=Material+Icons";
@@ -274,3 +300,5 @@ h6 {
   height: 100%;
   overflow: auto;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
