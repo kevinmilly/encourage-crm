@@ -21,62 +21,66 @@ import { ContactDetailComponent } from '../contact-detail/contact-detail.compone
 @Component({
   selector: 'enccrm-contact-list',
   template: `
-          <h1>Contact List</h1>
-          <div class="container">
-            <enccrm-general-card> 
-            <mat-form-field appearance="fill">
-              <mat-label>Contact Types</mat-label>
-              <mat-select [formControl]="contactTypeFilter" multiple>
-                <mat-option *ngFor="let type of contactTypes" [value]="type">{{type}}</mat-option>
-              </mat-select>
-            </mat-form-field>
-              <enccrm-table
-                *ngIf="data.length > 0; else noData"
-                [data]="data"
-                [columns]="columns"
-                [displayNames]="displayNames"
-                [pipesNeeded]="pipeOptions"
-                [pipeType]="'contact'"
-                [linksNeeded]="['contactName']"
-                (onZoom)="detailContact($event)"
-              ></enccrm-table>
-              <ng-template #noData><h1>No Data Yet</h1></ng-template>
-            </enccrm-general-card>
-            </div> 
+          <header>
+            <h1>Contact List</h1>
+          </header>
+          <main>
+              <div class="container">
+                <enccrm-general-card> 
+                  <mat-form-field appearance="fill">
+                    <mat-label>Contact Types</mat-label>
+                    <mat-select [formControl]="contactTypeFilter" multiple>
+                      <mat-option *ngFor="let type of contactTypes" [value]="type">{{type}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <enccrm-table
+                    *ngIf="data.length > 0; else noData"
+                    [data]="data"
+                    [columns]="columns"
+                    [displayNames]="displayNames"
+                    [pipesNeeded]="pipeOptions"
+                    [pipeType]="'contact'"
+                    [linksNeeded]="['contactName']"
+                    (onZoom)="detailContact($event)"
+                  ></enccrm-table>
+                  <ng-template #noData><h1>No Data Yet</h1></ng-template>
+                </enccrm-general-card>
+                </div> 
 
-            <ng-container *ngTemplateOutlet="friendMetric"> </ng-container>
+                // <ng-container *ngTemplateOutlet="friendMetric"> </ng-container>
 
-            <ng-template #friendMetric let-rating="rating" let-diagnosis="diagnosis">
-                <h3>Friendship Rating:</h3>
-                  <div class="metric-detail">
+                <ng-template #friendMetric let-rating="rating" let-diagnosis="diagnosis">
+                    <h3>Friendship Rating:</h3>
+                      <div class="metric-detail">
+                          <h4 [style.color]="rating | ratingColor">{{rating}}/100</h4>
+                          <h5>{{diagnosis}}</h5>
+                      </div>
+                </ng-template> 
+
+                <ng-template #familyMetric let-rating="rating" let-diagnosis="diagnosis">
+                    <h3>Family Member Rating:</h3>
+                    <div class="metric-detail">
                       <h4 [style.color]="rating | ratingColor">{{rating}}/100</h4>
                       <h5>{{diagnosis}}</h5>
-                  </div>
-            </ng-template> 
+                    </div>
+                </ng-template>
 
-            <ng-template #familyMetric let-rating="rating" let-diagnosis="diagnosis">
-            <h3>Family Member Rating:</h3>
-                <div class="metric-detail">
-                  <h4 [style.color]="rating | ratingColor">{{rating}}/100</h4>
-                  <h5>{{diagnosis}}</h5>
-                </div>
-            </ng-template>
+                <ng-template #nonRelationMetric let-rating="rating" let-diagnosis="diagnosis">
+                    <h3>Network Value Rating:</h3>
+                    <div class="metric-detail">
+                        <h4 [style.color]="rating | ratingColor">{{rating}}/100</h4>
+                        <h5>{{diagnosis}}</h5>
+                    </div>
+                </ng-template>
 
-            <ng-template #nonRelationMetric let-rating="rating" let-diagnosis="diagnosis">
-            <h3>Network Value Rating:</h3>
-                <div class="metric-detail">
-                    <h4 [style.color]="rating | ratingColor">{{rating}}/100</h4>
-                    <h5>{{diagnosis}}</h5>
-                </div>
-            </ng-template>
-
-            <ng-template #acquaintanceMetric let-rating="rating" let-diagnosis="diagnosis">
-            <h3>Potential Friendship Rating:</h3>
-              <div class="metric-detail">
-                <h4 [style.color]="rating | ratingColor">{{rating}}/100</h4>
-                <h5>{{diagnosis}}</h5>
-              </div>
-           </ng-template>
+                <ng-template #acquaintanceMetric let-rating="rating" let-diagnosis="diagnosis">
+                  <h3>Potential Friendship Rating:</h3>
+                    <div class="metric-detail">
+                      <h4 [style.color]="rating | ratingColor">{{rating}}/100</h4>
+                      <h5>{{diagnosis}}</h5>
+                    </div>
+              </ng-template>
+          </main>
   `,
   styleUrls: ['./contacts.component.scss']
 })

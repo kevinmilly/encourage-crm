@@ -8,6 +8,7 @@
       big: size === 'big'
     }"
     (click)="clicked.emit()"
+    (keypress)="clicked.emit()"
     [disabled]="disabled"
     color="accent"
   >
@@ -22,6 +23,7 @@
       big: size === 'big'
     }"
     (click)="clicked.emit()"
+    (keypress)="clicked.emit()"
     [disabled]="disabled"
     color="warn"
   ></button>
@@ -35,6 +37,7 @@
       big: size === 'big'
     }"
     (click)="clicked.emit()"
+    (keypress)="clicked.emit()"
     [disabled]="disabled"
   >
     <mat-icon>{{ content }}</mat-icon>
@@ -49,6 +52,7 @@
       'big-icon': size === 'big'
     }"
     (click)="clicked.emit()"
+    (keypress)="clicked.emit()"
     [disabled]="disabled"
   >
     <mat-icon>{{ content }}</mat-icon>
