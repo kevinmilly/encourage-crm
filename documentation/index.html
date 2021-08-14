@@ -1,0 +1,241 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>encouragement-crm documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	   <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/dark.css" media="(prefers-color-scheme: dark)">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="./" class="navbar-brand">encouragement-crm documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<p align="center">
+
+  <h3 align="center">Encouragement CRM</h3>
+
+  <p align="center">
+    A Personal CRM to Promote Encouragement Amongst Your Network
+    <br />
+    <a href="https://github.com/kevinmilly/encourage-crm"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <!-- <a href="readme-assets/">View Demo</a> -->
+    ·
+    <a href="https://github.com/kevinmilly/encourage-crm/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/kevinmilly/encourage-crm/issues">Request Feature</a>
+  </p>
+</p>
+
+
+
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+        <li><a href="#roadmap">Roadmap</a></li>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#end-user-setup">End User Setup</a></li>
+        <li><a href="#developer-setup">Developer Setup</a></li>
+      </ul>
+    </li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgements">Acknowledgements</a></li>
+  </ol>
+</details>
+
+
+
+<!-- ABOUT THE PROJECT -->
+<h2 id="about-the-project">About The Project</h2>
+  <img src="readme-assets/splash.PNG" alt="splash">
+  
+<p>  CRMs help many businesses track their contacts to manage leads and current clients.  That&#39;s because they effectively offer visibility on a large and small scale.  Just like     CRMs help companies towards their goal of profit; I wanted to work on a Personal CRM, with the goal of encouragement and relationship maximization.  </p>
+<p>  Personal CRMS aren&#39;t new however, I wanted to really focus on assisting the user through more actionable metrics.  The CRM would be more than just a database of contacts, but   it would emulate a business-oriented CRM; giving molding data into information that you can make decisions from.  These decisions could help you enrich your network and      identify relationships that may need some work.</p>
+<h4 id="view-all-your-contacts">View all your contacts</h4>
+<p>You can view all the contacts holistically on the table view.
+Sort or filter by the different factors that you have used to categorize your contacts.</p>
+<img src="readme-assets/contact-list.gif" alt="contact-list">
+
+<h4 id="concept-detail">Concept Detail</h4>
+<p>Drill down into a contact to see their related notes and tasks; including some additional personalized information.</p>
+<img src="readme-assets/contact-detail.gif" alt="contact-detail">
+
+<h4 id="add-new-contacts">Add New Contacts</h4>
+<p>Easily add more contacts to track.  </p>
+<h4 id="tasks-and-notes">Tasks and Notes</h4>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th>Tasks</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="readme-assets/tasks.gif" alt="tasks"></td>
+<td><img src="readme-assets/notes.gif" alt="notes"></td>
+</tr>
+</tbody>
+</table>
+<p>Setup tasks that are related to your contacts or take notes based on conversations.  </p>
+<h4 id="analytics">Analytics</h4>
+<img src="readme-assets/analytics.gif" alt="contact-detail">
+
+<p>Here&#39;s where it all comes together!  View the meaningful metrics at a glance based on your contact creation activity.</p>
+<!-- ROADMAP -->
+<h2 id="roadmap">Roadmap</h2>
+<ul>
+<li><p>More work on the UI enhancement issues</p>
+</li>
+<li><p>More work on state management</p>
+</li>
+<li><p>Add &#39;Encouragement&#39; features</p>
+<ul>
+<li>Based on contact type, bring in information on contact detail view to nurture the relationship </li>
+<li>Contact pipeline (facilitate relationship building tracking)</li>
+<li>Add reminders for important dates</li>
+<li>Google Calendar integration</li>
+<li>Gmail integration</li>
+</ul>
+</li>
+<li><p>User convenience</p>
+<ul>
+<li>Contact Import/Export</li>
+</ul>
+</li>
+<li><p>More Contact Detail Metrics/Highlights</p>
+</li>
+</ul>
+<!-- GETTING STARTED -->
+<h2 id="getting-started">Getting Started</h2>
+<h3 id="end-user-setup">End User Setup</h3>
+<p>Launching Soon</p>
+<h3 id="developer-setup">Developer Setup</h3>
+<ol>
+<li>Clone the repo<div><pre class="line-numbers"><code class="language-sh">git clone https://github.com/kevinmilly/encourage-crm.git</code></pre></div></li>
+<li>Install NPM packages<div><pre class="line-numbers"><code class="language-sh">npm install</code></pre></div></li>
+</ol>
+<h3 id="built-with">Built With</h3>
+<ul>
+<li>[Angular]</li>
+<li><a href="https://firebase.google.com/">Firebase</a></li>
+</ul>
+<!-- CONTRIBUTING -->
+<h2 id="contributing">Contributing</h2>
+<p>Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are <strong>greatly appreciated</strong>.</p>
+<ol>
+<li>Fork the Project</li>
+<li>Create your Feature Branch (<code>git checkout -b feature/AmazingFeature</code>)</li>
+<li>Commit your Changes (<code>git commit -m &#39;Add some AmazingFeature&#39;</code>)</li>
+<li>Push to the Branch (<code>git push origin feature/AmazingFeature</code>)</li>
+<li>Open a Pull Request</li>
+</ol>
+<!-- LICENSE -->
+<h2 id="license">License</h2>
+<p>Distributed under the MIT License. See <code>LICENSE</code> for more information.</p>
+<!-- CONTACT -->
+<h2 id="contact">Contact</h2>
+<p>Kevin Smith - <a href="https://www.linkedin.com/in/ksmithtech/">Connect with me on LinkedIn</a> - <a href="https://www.linkedin.com/in/ksmithtech/">https://www.linkedin.com/in/ksmithtech/</a></p>
+<p>Email me at: <a href="mailto:&#107;&#101;&#x76;&#105;&#110;&#x6d;&#105;&#x6c;&#108;&#121;&#x40;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#109;">&#107;&#101;&#x76;&#105;&#110;&#x6d;&#105;&#x6c;&#108;&#121;&#x40;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#109;</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+       
+       <script type="module" src="./js/menu-wc.js" defer></script>
+       <script nomodule src="./js/menu-wc_es5.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

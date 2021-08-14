@@ -14,28 +14,32 @@ import { selectTasks } from '@operations/task/state/selectors/task.selectors';
   selector: 'enccrm-tasks',
   template:
     ` 
-  <h1>Task List</h1>
-  <div class="container">
-    <enccrm-general-card> 
-    <mat-form-field appearance="fill">
-      <mat-label>Task Types</mat-label>
-      <mat-select [formControl]="taskTypeFilter" multiple>
-        <mat-option *ngFor="let type of taskTypes" [value]="type">{{type}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-      <enccrm-table
-        *ngIf="data.length > 0; else noData"
-        [data]="data"
-        [columns]="columns"
-        [displayNames]="displayNames"
-        [pipesNeeded]="pipeOptions"
-        [pipeType]="'task'"
-        [linksNeeded]="['taskName']" 
-        (onZoom)="detailTask($event)"
-      ></enccrm-table>
-      <ng-template #noData><h1>No Data Yet</h1></ng-template>
-    </enccrm-general-card>
-    </div>
+  <header>
+    <h1>Task List</h1>
+  </header>
+  <main>
+      <div class="container">
+        <enccrm-general-card> 
+        <mat-form-field appearance="fill">
+          <mat-label>Task Types</mat-label>
+          <mat-select [formControl]="taskTypeFilter" multiple>
+            <mat-option *ngFor="let type of taskTypes" [value]="type">{{type}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+          <enccrm-table
+            *ngIf="data.length > 0; else noData"
+            [data]="data"
+            [columns]="columns"
+            [displayNames]="displayNames"
+            [pipesNeeded]="pipeOptions"
+            [pipeType]="'task'"
+            [linksNeeded]="['taskName']" 
+            (onZoom)="detailTask($event)"
+          ></enccrm-table>
+          <ng-template #noData><h1>No Data Yet</h1></ng-template>
+        </enccrm-general-card>
+        </div>
+    </main>
   `,
   styleUrls: ['./tasks.component.scss']
 })
