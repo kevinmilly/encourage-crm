@@ -34,10 +34,10 @@ import { ContactDetailComponent } from '../contact-detail/contact-detail.compone
                     </mat-select>
                   </mat-form-field>
                   <enccrm-table
-                    *ngIf="data.length > 0; else noData"
-                    [data]="data"
-                    [columns]="columns"
-                    [displayNames]="displayNames"
+                    *ngIf="contactsRetrieved.length > 0; else noData"
+                    [data]="contactsRetrieved"
+                    [columns]="columnsForTable"
+                    [displayNames]="columnHeaderNames"
                     [pipesNeeded]="pipeOptions"
                     [pipeType]="'contact'"
                     [linksNeeded]="['contactName']"
@@ -47,7 +47,7 @@ import { ContactDetailComponent } from '../contact-detail/contact-detail.compone
                 </enccrm-general-card>
                 </div> 
 
-                // <ng-container *ngTemplateOutlet="friendMetric"> </ng-container>
+            
 
                 <ng-template #friendMetric let-rating="rating" let-diagnosis="diagnosis">
                     <h3>Friendship Rating:</h3>
@@ -86,6 +86,7 @@ import { ContactDetailComponent } from '../contact-detail/contact-detail.compone
 })
 export class ContactListComponent implements OnInit {
 
+  //  These will be used to pass custom html into the contact detail modal
   @ViewChild("friendMetric", { static: true })
   public friendMetric!: HTMLElement;
   @ViewChild("familyMetric", { static: true })
@@ -95,66 +96,45 @@ export class ContactListComponent implements OnInit {
   @ViewChild("acquaintanceMetric", { static: true })
   public acquaintanceMetric!: HTMLElement;
 
-  private subs = new SubSink();
+  private subs:SubSink;
+  contactsRetrievedSub: Subscription;
+  contactsRetrieved: Contact[] = [];
+  contactsRetrievedSaved: Contact[] = [];
 
-  dataSub: Subscription = new Subscription;
-  data: Contact[] = [];
-  dataSaved: Contact[] = [];
 
+  columnsForTable: string[];
 
-  columns: string[] = [
-    'contactName',
-    'email',
-    'phone',
-    'contactType', //choices
-    'priority', //choices
-    'energyLevel', //choices
-    'age',
-    'birthDate',
-    'otherDate',
-    'known',//choices
-    'description'
-  ];
-  displayNames: string[] = [
-    'Name',
-    'Email',
-    'Phone',
-    'Contact Type', //choices
-    'Priority', //choices
-    'Energy Level', //choices
-    'Age',
-    'Birth Date',
-    'Other Date',
-    'Known From', //choices
-    'Description'
-  ];
+  columnHeaderNames: string[];
 
-  contactTypes: string[] = [
-    ContactType[0],
-    ContactType[1],
-    ContactType[2],
-    ContactType[3],
-    ContactType[4],
-    ContactType[5],
-    ContactType[6],
-    ContactType[7],
-    ContactType[8],
-    ContactType[9],
-    ContactType[10],
-    ContactType[11],
-    ContactType[12],
-    ContactType[13],
-    ContactType[14]
-  ]
+  contactTypes: string[];
 
-  pipeOptions: string[] = [];
-  contactTypeFilter: FormControl = new FormControl;
+  pipeOptions: string[];
+  contactTypeFilter: FormControl;
 
   contacts$: Observable<fromOperations.Contact[]> | undefined;
 
-  constructor(private store: Store, public dialog: MatDialog) { }
+  constructor(private store: Store, public dialog: MatDialog) {
 
-  ngOnInit(): void {
+    this.subs = new SubSink();
+    this.contactsRetrievedSub = new Subscription;
+
+    this.contactTypes = [
+      ContactType[0],
+      ContactType[1],
+      ContactType[2],
+      ContactType[3],
+      ContactType[4],
+      ContactType[5],
+      ContactType[6],
+      ContactType[7],
+      ContactType[8],
+      ContactType[9],
+      ContactType[10],
+      ContactType[11],
+      ContactType[12],
+      ContactType[13],
+      ContactType[14]
+    ]
 
     this.contactTypeFilter = new FormControl(this.contactTypes);
     this.pipeOptions = [
@@ -164,27 +144,78 @@ export class ContactListComponent implements OnInit {
       ContactOptions[3],
       ContactOptions[4]
     ]
+    this.contactTypeFilter = new FormControl;
 
-    this.store.dispatch(fromContactState.contactActions.loadContacts());
-    this.store.dispatch(taskActions.loadTasks());
+    this.columnsForTable = [
+      'contactName',
+      'email',
+      'phone',
+      'contactType', 
+      'priority', 
+      'energyLevel', 
+      'age',
+      'birthDate',
+      'otherDate',
+      'known',
+      'description'
+    ];
+    this.columnHeaderNames = [
+      'Name',
+      'Email',
+      'Phone',
+      'Contact Type', 
+      'Priority', 
+      'Energy Level', 
+      'Age',
+      'Birth Date',
+      'Other Date',
+      'Known From', 
+      'Description'
+    ];
 
-    this.contacts$ = this.store.select(fromContactState.selectContacts);
+  }
 
-    this.subs.sink = this.contacts$.subscribe(data => {
-      this.data = data.map(d => ({...d, age: moment(new Date()).diff(moment(new Date(d.birthDate)), 'years')}));
-      console.dir(this.data);
-      this.dataSaved = [...data];
-    });
+  ngOnInit(): void {
+
+    this.loadStateThenContacts();
+
+    //setup Filter
     this.subs.sink = this.contactTypeFilter.valueChanges.subscribe(() => this.contactFilter());
 
   }
 
+  /**
+   * Gathers state from store and sets it up contact data for component
+   */
+  loadStateThenContacts(): void {
+    this.store.dispatch(fromContactState.contactActions.loadContacts());
+    this.store.dispatch(taskActions.loadTasks());
+    
+    this.contacts$ = this.store.select(fromContactState.selectContacts);
+
+    //gathering data for table display, and adding age calculation dynamically
+    this.subs.sink = this.contacts$.subscribe(data => {
+      this.contactsRetrieved = data.map(d => ({...d, age: moment(new Date()).diff(moment(new Date(d.birthDate)), 'years')}));
+      this.contactsRetrievedSaved = [...data];
+    });
+  }
+
+  /**
+   * Reacts to user contact type filtering on UI
+   */
   contactFilter() {
-    this.data = this.dataSaved.filter(d => this.contactTypeFilter.value.includes(ContactType[+d.contactType]));
+    this.contactsRetrieved = this.contactsRetrievedSaved.filter(d => this.contactTypeFilter.value.includes(ContactType[+d.contactType]));
 
   }
 
-  detailContact(event: fromOperations.Contact) {
+  /**
+   * 
+   * Launches a modal showing more details of the contact clicked from the table.
+   * The data passed to the modal include notes, tasks, and metrics related to the contact.
+   * The modal will allow editing of the contact, updating upon close of the modal.
+   * @param event (Contact) a reference to the contact clicked on in the table
+   */
+  detailContact(event: fromOperations.Contact):void {
     const dialogRef = this.dialog.open(ContactDetailComponent, {
       panelClass: 'detail-modal',
       data: {
@@ -205,7 +236,13 @@ export class ContactListComponent implements OnInit {
         this.store.dispatch(fromContactState.contactActions.updateContact({contact: update}));
     });
   }
-  getRelatedTemplateReference(contactType: number): any {
+
+  /**
+   * 
+   * @param contactType enum indexes on ContactType enum
+   * @returns HTMLElement the applicable template reference
+   */
+  getRelatedTemplateReference(contactType: number): HTMLElement {
     switch (contactType) {
       case 13:
         return this.nonRelationMetric
