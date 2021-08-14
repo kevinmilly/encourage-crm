@@ -6,7 +6,7 @@
   <p align="center">
     A Personal CRM to Promote Encouragement Amongst Your Network
     <br />
-    <a href="https://github.com/kevinmilly/encourage-crm"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/kevinmilly/encourage-crm/documentation/overview.html"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <!-- <a href="readme-assets/">View Demo</a> -->
