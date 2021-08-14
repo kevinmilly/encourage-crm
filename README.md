@@ -6,7 +6,7 @@
   <p align="center">
     A Personal CRM to Promote Encouragement Amongst Your Network
     <br />
-    <a href="https://github.com/kevinmilly/encourage-crm/documentation/overview.html"><strong>Explore the docs »</strong></a>
+    <a href="#documentation"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <!-- <a href="readme-assets/">View Demo</a> -->
@@ -37,10 +37,10 @@
         <li><a href="#developer-setup">Developer Setup</a></li>
       </ul>
     </li>
+     <li><a href="#documentation">Documentation</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
 
@@ -149,6 +149,7 @@ Contributions are what make the open source community such an amazing place to b
 ## Documentation
 1. **compodoc -s** to serve the documentation page
 2. Visit the localhost port specified
+3. Visit the _Overview_ page.
 
 
 <!-- LICENSE -->
