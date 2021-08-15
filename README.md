@@ -6,7 +6,7 @@
   <p align="center">
     A Personal CRM to Promote Encouragement Amongst Your Network
     <br />
-    <a href="#documentation"><strong>Explore the docs »</strong></a>
+    <a href="https://kevinmilly.github.io/encourage-crm/overview.html"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <!-- <a href="readme-assets/">View Demo</a> -->
@@ -37,7 +37,6 @@
         <li><a href="#developer-setup">Developer Setup</a></li>
       </ul>
     </li>
-     <li><a href="#documentation">Documentation</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -145,11 +144,6 @@ Contributions are what make the open source community such an amazing place to b
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
-## Documentation
-1. **compodoc -s** to serve the documentation page
-2. Visit the localhost port specified
-3. Visit the _Overview_ page.
 
 
 <!-- LICENSE -->
